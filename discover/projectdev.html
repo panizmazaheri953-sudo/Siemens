@@ -148,6 +148,21 @@
     .fc-tag{display:inline-block;margin-top:1rem;padding:.2rem .7rem;font-family:var(--font-condensed);font-weight:700;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;background:var(--olive);color:var(--cream)}
     .fc-tag.r{background:var(--rose-dark)}
 
+      /* SYSTEM ARCHITECTURE */
+    #architecture{padding:6rem 4rem;background:var(--cream)}
+    .arch-head{display:flex;flex-direction:column;margin-bottom:1rem;gap:2rem}
+    .arch-head h2{font-family:var(--font-display);font-size:clamp(2.2rem,3.5vw,4.2rem);line-height:.95}
+    .arch-head h2 em{color:var(--olive);font-style:italic}
+    .arch-head p{font-size:1.2rem;line-height:1.7;color:var(--muted)}
+    .arch-box{background:var(--cream);padding:2.5rem;position:relative;overflow:hidden}
+    .arch-box::before{content:'ARCHITECTURE';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--font-display);font-size:7rem;font-weight:900;color:rgba(255,255,255,.025);letter-spacing:.1em;white-space:nowrap;pointer-events:none;opacity: 0}
+    .arch-layers-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#FAF8F2;margin-top:1.5rem}
+    .al{background:var(--ink);padding:1.2rem;text-align:center;transition:background .2s;cursor:default}
+    .al:hover{background:var(--olive)}
+    .al-label{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--rose);margin-bottom:.4rem}
+    .al-name{font-family:var(--font-display);font-size:1rem;color:var(--cream);margin-bottom:.3rem}
+    .al-tech{font-family:var(--font-mono);font-size:.62rem;color:var(--olive-light)}
+    
     /* ── CHALLENGES TABLE ── */
     #challenges{background:var(--cream)}
     .ch-table{width:100%;border-collapse:collapse}
@@ -236,7 +251,7 @@
 </section>
 
 
-<!-- CONNECTION DIAGRAM -->
+<!-- CONNECTION DIAGRAM 
 <section id="connection">
   <div class="conn-head fade-up">
     <h2>How Both<br><span class="a">Sides Connect</span></h2>
@@ -248,7 +263,7 @@
         <marker id="arr" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto"><path d="M0,1 L6,3.5 L0,6 Z" fill="#C8D4A0" opacity=".8"/></marker>
         <marker id="arr2" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto"><path d="M0,1 L6,3.5 L0,6 Z" fill="#E8A5A0"/></marker>
       </defs>
-      <!-- PC1 group -->
+      <!-- PC1 group 
       <rect x="10" y="20" width="2" height="160" fill="#3D4826"/>
       <text x="22" y="38" font-family="Barlow Condensed" font-weight="700" font-size="9" fill="rgba(200,212,160,.5)" letter-spacing="2">PC 1 — DATA ACQUISITION</text>
       <rect x="22" y="55" width="110" height="44" rx="3" fill="#3D4826" stroke="#5C6B3A" stroke-width="1.5"/>
@@ -261,17 +276,17 @@
       <text x="225" y="90" text-anchor="middle" font-family="Barlow Condensed" font-size="7" fill="#888">JSON transform</text>
       <line x1="275" y1="77" x2="320" y2="77" stroke="#C8D4A0" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#arr)"><animate attributeName="stroke-dashoffset" values="0;-16" dur="2.2s" repeatCount="indefinite"/></line>
       <text x="297" y="70" text-anchor="middle" font-family="Barlow Condensed" font-size="7" fill="#C8D4A0">MQTT/TLS</text>
-      <!-- HiveMQ centre -->
+      <!-- HiveMQ centre 
       <rect x="320" y="44" width="120" height="66" rx="4" fill="#5C6B3A" stroke="#C8D4A0" stroke-width="2"/>
       <text x="380" y="72" text-anchor="middle" font-family="Barlow Condensed" font-weight="900" font-size="11" fill="#EDF0E0" letter-spacing="1">HIVEMQ</text>
       <text x="380" y="87" text-anchor="middle" font-family="Barlow Condensed" font-size="7" fill="#C8D4A0">Cloud Broker · MQTT/TLS</text>
       <circle cx="380" cy="100" r="3.5" fill="#E8A5A0"><animate attributeName="opacity" values="1;.2;1" dur="1.4s" repeatCount="indefinite"/></circle>
-      <!-- PC2 group -->
+      <!-- PC2 group 
       <line x1="440" y1="77" x2="485" y2="77" stroke="#C8D4A0" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#arr)"><animate attributeName="stroke-dashoffset" values="0;-16" dur="2s" repeatCount="indefinite"/></line>
       <text x="463" y="70" text-anchor="middle" font-family="Barlow Condensed" font-size="7" fill="#C8D4A0">subscribe</text>
       <text x="680" y="38" font-family="Barlow Condensed" font-weight="700" font-size="9" fill="rgba(200,212,160,.5)" letter-spacing="2">PC 2 — VIRTUAL ENV</text>
       <rect x="908" y="20" width="2" height="160" fill="#3D4826"/>
-      <!-- virtual env box -->
+      <!-- virtual env box 
       <rect x="485" y="44" width="415" height="66" rx="3" fill="#1C1F14" stroke="#7A8C4E" stroke-width="1.5"/>
       <text x="697" y="68" text-anchor="middle" font-family="Barlow Condensed" font-weight="700" font-size="8" fill="#C8D4A0" letter-spacing="1">VIRTUAL COMMISSIONING ENVIRONMENT</text>
       <rect x="498" y="77" width="85" height="24" rx="2" fill="#3D4826" stroke="#5C6B3A"/>
@@ -282,13 +297,159 @@
       <text x="742" y="93" text-anchor="middle" font-family="Barlow Condensed" font-weight="700" font-size="7.5" fill="#C8D4A0">Siemens NX</text>
       <rect x="794" y="77" width="97" height="24" rx="2" fill="#3D4826" stroke="#5C6B3A"/>
       <text x="842" y="93" text-anchor="middle" font-family="Barlow Condensed" font-weight="700" font-size="7.5" fill="#C8D4A0">Robotic Suite</text>
-      <!-- data packets -->
+      <!-- data packets
       <circle r="3.5" fill="#E8A5A0"><animateMotion dur="3.5s" repeatCount="indefinite" path="M132,77 L175,77"/><animate attributeName="opacity" values="0;1;1;0" dur="3.5s" repeatCount="indefinite"/></circle>
       <circle r="3" fill="#C8D4A0"><animateMotion dur="4s" repeatCount="indefinite" begin="1s" path="M275,77 L320,77"/><animate attributeName="opacity" values="0;1;1;0" dur="4s" repeatCount="indefinite" begin="1s"/></circle>
       <circle r="3" fill="#C8D4A0"><animateMotion dur="3.5s" repeatCount="indefinite" begin="2s" path="M440,77 L485,77"/><animate attributeName="opacity" values="0;1;1;0" dur="3.5s" repeatCount="indefinite" begin="2s"/></circle>
     </svg>
   </div>
+</section>-->
+  
+  
+  <!-- ARCHITECTURE -->
+<section id="architecture">
+  <div class="arch-head fade-up">
+  <h2>How both<br><em>sides connect</em></h2>
+  <p class="arch-description">Five layers connect the physical Festo CP Lab to a fully operational virtual commissioning environment across two computers, secured with MQTT over TLS following the Purdue cybersecurity model.</p>
+</div>
+  <div class="arch-box fade-up">
+    <svg width="100%" viewBox="0 0 1000 520" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrGreen" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto">
+      <path d="M0,1 L6,3.5 L0,6 Z" fill="#80A040" opacity=".8"/>
+    </marker>
+    <marker id="arrPink" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto">
+      <path d="M0,1 L6,3.5 L0,6 Z" fill="#E8A5A0"/>
+    </marker>
+    <marker id="arrOrange" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto">
+      <path d="M0,1 L6,3.5 L0,6 Z" fill="#D4A030"/>
+    </marker>
+    <marker id="arrBlue" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto">
+      <path d="M0,1 L6,3.5 L0,6 Z" fill="#5B8CA0"/>
+    </marker>
+    <filter id="textShadow">
+      <feDropShadow dx="0" dy="0" stdDeviation="1" flood-color="#1C1F14" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- ETIQUETAS DE CAPA -->
+  <text x="20" y="55" font-family="DM Mono" font-size="9" fill="rgba(35, 38, 42, 0.9)" letter-spacing="2">PHYSICAL</text>
+  <text x="20" y="155" font-family="DM Mono" font-size="9" fill="rgba(35, 38, 42, 0.9)" letter-spacing="2">ACQUISITION 1 (UP)</text>
+  <text x="20" y="255" font-family="DM Mono" font-size="9" fill="rgba(35, 38, 42, 0.9)" letter-spacing="2">CLOUD BROKER</text>
+  <text x="20" y="355" font-family="DM Mono" font-size="9" fill="rgba(35, 38, 42, 0.9)" letter-spacing="2">ACQUISITION 2 (DOWN)</text>
+  <text x="20" y="455" font-family="DM Mono" font-size="9" fill="rgba(35, 38, 42, 0.9)" letter-spacing="2">VIRTUAL ENV</text>
+
+  <!-- fondos de capa -->
+  <rect x="0" y="30" width="1000" height="70" fill="rgba(85, 90, 95, 0.18)" rx="4" stroke="#6B6F75" stroke-width="0.5"/>
+  <rect x="0" y="130" width="1000" height="70" fill="rgba(85, 90, 95, 0.18)" rx="4" stroke="#6B6F75" stroke-width="0.5"/>
+  <rect x="0" y="230" width="1000" height="70" fill="rgba(85, 90, 95, 0.18)" rx="4" stroke="#6B6F75" stroke-width="0.5"/>
+  <rect x="0" y="330" width="1000" height="70" fill="rgba(85, 90, 95, 0.18)" rx="4" stroke="#6B6F75" stroke-width="0.5"/>
+  <rect x="0" y="430" width="1000" height="70" fill="rgba(85, 90, 95, 0.18)" rx="4" stroke="#6B6F75" stroke-width="0.5"/>
+
+  <!-- ========== CAPA PHYSICAL ========== -->
+  <rect x="250" y="43" width="160" height="44" rx="4" fill="#3D4826" stroke="#5C6B3A" stroke-width="1.5"/>
+  <text x="330" y="64" text-anchor="middle" font-family="DM Mono" font-size="10" fill="#C8D4A0">Festo CP Lab</text>
+  <text x="330" y="78" text-anchor="middle" font-family="DM Mono" font-size="7" fill="#7A8C4E">Physical line</text>
+
+  <!-- Flecha PHYSICAL → ACQ1 (OPC-UA) -->
+  <line x1="330" y1="87" x2="330" y2="130" stroke="#80A040" stroke-width="1.8" stroke-dasharray="5 3" marker-end="url(#arrGreen)">
+    <animate attributeName="stroke-dashoffset" values="0;-16" dur="2s" repeatCount="indefinite"/>
+  </line>
+  <text x="340" y="112" font-family="DM Mono" font-size="7" fill="#80A040">OPC-UA</text>
+
+  <!-- ========== CAPA ACQUISITION 1 ========== -->
+  <!-- Node-RED 1 -->
+  <rect x="230" y="143" width="200" height="44" rx="4" fill="#1C1F14" stroke="#E8A5A0" stroke-width="1.2"/>
+  <text x="330" y="163" text-anchor="middle" font-family="DM Mono" font-size="10" fill="#E8A5A0">Node-RED (Bridge UP)</text>
+  
+  <!-- Conectores internos en Node-RED 1 -->
+  <rect x="240" y="170" width="60" height="12" rx="2" fill="#2A2F1C" stroke="#80A040" stroke-width="0.5"/>
+  <text x="270" y="179" text-anchor="middle" font-family="DM Mono" font-size="6" fill="#80A040">OPC-UA in</text>
+  
+  <rect x="360" y="170" width="60" height="12" rx="2" fill="#2A2F1C" stroke="#E8A5A0" stroke-width="0.5"/>
+  <text x="390" y="179" text-anchor="middle" font-family="DM Mono" font-size="6" fill="#E8A5A0">MQTT out</text>
+
+  <!-- Flecha ACQ1 → BROKER (MQTT) -->
+  <line x1="390" y1="187" x2="390" y2="230" stroke="#E8A5A0" stroke-width="1.8" stroke-dasharray="5 3" marker-end="url(#arrPink)">
+    <animate attributeName="stroke-dashoffset" values="0;-16" dur="2s" repeatCount="indefinite"/>
+  </line>
+  <text x="400" y="212" font-family="DM Mono" font-size="7" fill="#E8A5A0">MQTT</text>
+
+  <!-- ========== CAPA CLOUD BROKER ========== -->
+  <rect x="290" y="243" width="200" height="44" rx="5" fill="#5C6B3A" stroke="#C8D4A0" stroke-width="1.5"/>
+  <text x="390" y="264" text-anchor="middle" font-family="DM Mono" font-size="10" fill="#EDF0E0">HiveMQ Cloud Broker</text>
+  <text x="390" y="278" text-anchor="middle" font-family="DM Mono" font-size="7" fill="#C8D4A0">MQTT over TLS</text>
+
+  <!-- Flecha BROKER → ACQ2 (MQTT bajada) -->
+  <line x1="390" y1="287" x2="330" y2="330" stroke="#E8A5A0" stroke-width="1.8" stroke-dasharray="5 3" marker-end="url(#arrPink)">
+    <animate attributeName="stroke-dashoffset" values="0;-16" dur="2.5s" repeatCount="indefinite"/>
+  </line>
+  <text x="340" y="312" font-family="DM Mono" font-size="7" fill="#E8A5A0">MQTT</text>
+
+  <!-- ========== CAPA ACQUISITION 2 ========== -->
+  <!-- Node-RED 2 -->
+  <rect x="230" y="343" width="200" height="44" rx="4" fill="#1C1F14" stroke="#E8A5A0" stroke-width="1.2"/>
+  <text x="330" y="363" text-anchor="middle" font-family="DM Mono" font-size="10" fill="#E8A5A0">Node-RED (Bridge DOWN)</text>
+  
+  <!-- Conectores internos en Node-RED 2 -->
+  <rect x="240" y="370" width="60" height="12" rx="2" fill="#2A2F1C" stroke="#E8A5A0" stroke-width="0.5"/>
+  <text x="270" y="379" text-anchor="middle" font-family="DM Mono" font-size="6" fill="#E8A5A0">MQTT in</text>
+  
+  <rect x="360" y="370" width="60" height="12" rx="2" fill="#2A2F1C" stroke="#80A040" stroke-width="0.5"/>
+  <text x="390" y="379" text-anchor="middle" font-family="DM Mono" font-size="6" fill="#80A040">OPC-UA out</text>
+
+  <!-- Flecha ACQ2 → VIRTUAL ENV (OPC-UA) -->
+  <line x1="390" y1="387" x2="390" y2="430" stroke="#80A040" stroke-width="1.8" stroke-dasharray="5 3" marker-end="url(#arrGreen)">
+    <animate attributeName="stroke-dashoffset" values="0;-16" dur="2s" repeatCount="indefinite"/>
+  </line>
+  <text x="400" y="412" font-family="DM Mono" font-size="7" fill="#80A040">OPC-UA</text>
+
+   <!-- ========== CAPA VIRTUAL ENV ========== -->
+  <!-- TIA Portal (centro) -->
+  <rect x="370" y="443" width="130" height="44" rx="4" fill="#1C1F14" stroke="#7A8C4E" stroke-width="1.5"/>
+  <text x="435" y="464" text-anchor="middle" font-family="DM Mono" font-size="10" fill="#C8D4A0">TIA Portal V20</text>
+  <text x="435" y="478" text-anchor="middle" font-family="DM Mono" font-size="7" fill="#7A8C4E">PLC + PLCSIM Adv</text>
+
+  <!-- Siemens NX (izquierda) -->
+  <rect x="200" y="443" width="120" height="44" rx="4" fill="#1C1F14" stroke="#7A8C4E" stroke-width="1.2"/>
+  <text x="260" y="464" text-anchor="middle" font-family="DM Mono" font-size="10" fill="#C8D4A0">Siemens NX</text>
+  <text x="260" y="478" text-anchor="middle" font-family="DM Mono" font-size="7" fill="#7A8C4E">Digital Twin</text>
+
+  <!-- Flecha bidireccional NX ↔ TIA (dos flechas opuestas) -->
+  <line x1="320" y1="465" x2="370" y2="465" stroke="#D4A030" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrOrange)">
+    <animate attributeName="stroke-dashoffset" values="0;-20" dur="1.8s" repeatCount="indefinite"/>
+  </line>
+  <line x1="370" y1="455" x2="320" y2="455" stroke="#5B8CA0" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrBlue)">
+    <animate attributeName="stroke-dashoffset" values="0;-20" dur="1.8s" repeatCount="indefinite"/>
+  </line>
+  <text x="345" y="448" text-anchor="middle" font-family="DM Mono" font-size="6" fill="#5B8CA0">Signals</text>
+  <text x="345" y="488" text-anchor="middle" font-family="DM Mono" font-size="6" fill="#D4A030">Commands</text>
+
+  <!-- Simatic Robotic Suite (derecha) -->
+  <rect x="550" y="443" width="140" height="44" rx="4" fill="#1C1F14" stroke="#5C6B3A" stroke-width="1.2"/>
+  <text x="620" y="464" text-anchor="middle" font-family="DM Mono" font-size="10" fill="#C8D4A0">Simatic Robotic Suite</text>
+  <text x="620" y="478" text-anchor="middle" font-family="DM Mono" font-size="7" fill="#7A8C4E">Robot programming</text>
+
+  <!-- Flecha bidireccional TIA ↔ Robotic Suite (dos flechas opuestas) -->
+  <line x1="500" y1="465" x2="550" y2="465" stroke="#D4A030" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrOrange)">
+    <animate attributeName="stroke-dashoffset" values="0;-20" dur="2s" repeatCount="indefinite"/>
+  </line>
+  <line x1="550" y1="455" x2="500" y2="455" stroke="#5B8CA0" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrBlue)">
+    <animate attributeName="stroke-dashoffset" values="0;-20" dur="2s" repeatCount="indefinite"/>
+  </line>
+  <text x="525" y="448" text-anchor="middle" font-family="DM Mono" font-size="6" fill="#5B8CA0">Signals</text>
+  <text x="525" y="488" text-anchor="middle" font-family="DM Mono" font-size="6" fill="#D4A030">Commands</text>
+</svg>
+  </div>
+  <div class="arch-layers-bar fade-up">
+    <div class="al"><div class="al-label">Layer 01</div><div class="al-name">Physical Line</div><div class="al-tech">Festo CP Lab · Sensors · Robot</div></div>
+    <div class="al"><div class="al-label">Layer 02</div><div class="al-name">Data Acquisition</div><div class="al-tech">OPC-UA · JSON transform · MQTT</div></div>
+    <div class="al"><div class="al-label">Layer 03</div><div class="al-name">Cloud Broker</div><div class="al-tech">HiveMQ · MQTT/TLS · Purdue Model</div></div>
+    <div class="al"><div class="al-label">Layer 04</div><div class="al-name">Data Acquisition</div><div class="al-tech">MQTT · JSON transform · OPC-UA</div></div>
+    <div class="al"><div class="al-label">Layer 05</div><div class="al-name">Virtual Env</div><div class="al-tech">TIA Portal · NX · Robotic Suite</div></div>
+  </div>
 </section>
+
 
 <!-- UNIFIED TIMELINE -->
 <section id="timeline">
