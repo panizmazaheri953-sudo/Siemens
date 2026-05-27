@@ -121,6 +121,34 @@
     footer p{font-size:.72rem;color:var(--muted);font-family:var(--font-mono)}
     footer a{color:var(--olive-light);text-decoration:none;font-family:var(--font-mono);font-size:.72rem;margin-left:1.5rem}
     footer a:hover{color:var(--rose)}
+      .cards-section { padding: 2rem 0; font-family: 'DM Sans', var(--font-sans); }
+  .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .card-scene { height: 320px; perspective: 900px; cursor: pointer; }
+  .card-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 0.65s cubic-bezier(0.4,0,0.2,1); }
+  .card-scene:hover .card-inner { transform: rotateY(180deg); }
+  .card-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; border: 0.5px solid var(--color-border-tertiary); }
+  .card-back { transform: rotateY(180deg); }
+
+  .card-front { background: #949e7b; }
+  .card-front-inner { display: flex; flex-direction: column; height: 100%; }
+  .card-visual { flex: 1; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .card-front-text { padding: 14px 16px; border-top: 0.5px solid rgba(200,212,160,0.15); }
+  .card-eyebrow { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #E8A5A0; margin-bottom: 4px; }
+  .card-title { font-size: 15px; font-weight: 500; color: #EDF0E0; line-height: 1.2; margin-bottom: 4px; }
+  .card-subtitle { font-size: 11px; color: #f3f6f4; font-family: 'DM Mono', monospace; }
+
+  .card-back { background: #EDF0E0; padding: 18px; display: flex; flex-direction: column; }
+  .back-label { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: #5C6B3A; margin-bottom: 10px; }
+  .back-title { font-size: 14px; font-weight: 500; color: #1C1F14; margin-bottom: 12px; line-height: 1.2; }
+  .back-bullets { list-style: none; margin: 0 0 14px; padding: 0; display: flex; flex-direction: column; gap: 7px; }
+  .back-bullets li { font-size: 12px; color: #3A3D2E; line-height: 1.45; padding-left: 14px; position: relative; }
+  .back-bullets li::before { content: ''; position: absolute; left: 0; top: 7px; width: 5px; height: 5px; background: #C4706A; border-radius: 50%; }
+  .back-conclusion { margin-top: auto; font-size: 11.5px; color: #3D4826; line-height: 1.5; border-top: 1px solid rgba(92,107,58,0.2); padding-top: 10px; font-style: italic; }
+
+  .hint-chip { position: absolute; bottom: 10px; right: 12px; font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(243 246 244); }
+
+  @media (max-width: 680px) {
+    .cards-grid { grid-template-columns: 1fr 1fr; }
     @media(max-width:900px){
       #hero,#team{grid-template-columns:1fr}
       #overview{grid-template-columns:1fr}
@@ -359,6 +387,8 @@
   <div class="ts-item"><span class="ts-dot"></span>UA Expert</div>
 </div>
 
+  
+  
   
 <!-- Sección Challenge con íconos SVG estilo "Explore my work" -->
 <section id="challenge" style="padding: 6rem 4rem; background: var(--cream);">
@@ -647,6 +677,418 @@
     }
   }
 </style>
+  
+  <!-- Encabezado -->
+<div class="fade-up" style="max-width: 900px; margin: 0 auto 4rem auto; text-align: center;">
+  <p style="font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--olive); margin-bottom: 1rem;">THE SOLUTION</p>
+  <h2 style="font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.1; margin-bottom: 1.5rem; color: var(--ink);">
+    Siemens Xcelerator + <em style="color: var(--rose-dark);">Open Standards</em><br>
+    for <em style="color: var(--olive);">Scalable Remote</em> Commissioning
+  </h2>
+  <p style="font-size: 1.1rem; line-height: 1.7; color: var(--ink-mid); max-width: 700px; margin: 0 auto;">
+    A distributed IoT-enabled architecture that bridges physical production cells with virtual commissioning environments.
+  </p>
+</div>
+  
+  <div class="cards-section">
+  <div class="cards-grid">
+
+    <!-- CARD 1: Siemens NX -->
+    <div class="card-scene">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <div class="card-visual">
+            <svg viewBox="0 0 220 170" width="220" height="170" xmlns="http://www.w3.org/2000/svg">
+              <defs><pattern id="g1" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M18 0L0 0 0 18" fill="none" stroke="rgba(92,107,58,.12)" stroke-width=".5"/></pattern></defs>
+              <rect width="220" height="170" fill="url(#g1)"/>
+              <rect x="30" y="28" width="160" height="110" rx="5" fill="#0d1008" stroke="#3D4826" stroke-width="1.5"/>
+              <rect x="30" y="28" width="160" height="18" rx="5" fill="#3D4826"/>
+              <rect x="30" y="39" width="160" height="7" fill="#3D4826"/>
+              <circle cx="40" cy="37" r="3" fill="#E8A5A0" opacity=".7"/>
+              <circle cx="50" cy="37" r="3" fill="#C8D4A0" opacity=".5"/>
+              <circle cx="60" cy="37" r="3" fill="#7A8C4E" opacity=".5"/>
+              <text x="120" y="39" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#7A8C4E" letter-spacing="1">SIEMENS NX · DIGITAL TWIN</text>
+              <!-- Conveyor -->
+              <rect x="50" y="95" width="120" height="14" rx="2" fill="#333"/>
+              <rect x="54" y="97" width="112" height="10" rx="1" fill="#2a2a2a"/>
+              <ellipse cx="54" cy="102" rx="3" ry="7" fill="#444"/>
+              <ellipse cx="166" cy="102" rx="3" ry="7" fill="#444"/>
+              <!-- Robot arm sketch -->
+              <line x1="75" y1="93" x2="90" y2="72" stroke="#5C6B3A" stroke-width="5" stroke-linecap="round"/>
+              <line x1="90" y1="72" x2="112" y2="62" stroke="#3D4826" stroke-width="4" stroke-linecap="round"/>
+              <line x1="112" y1="62" x2="122" y2="56" stroke="#555" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="75" cy="93" r="5" fill="#2e2e2e" stroke="#5C6B3A" stroke-width="1.5"/>
+              <circle cx="90" cy="72" r="4" fill="#2e2e2e" stroke="#5C6B3A" stroke-width="1.2"/>
+              <circle cx="112" cy="62" r="3" fill="#2e2e2e" stroke="#7A8C4E" stroke-width="1"/>
+              <!-- signal lines -->
+              <line x1="122" y1="56" x2="155" y2="56" stroke="#E8A5A0" stroke-width="1" stroke-dasharray="3 3" opacity=".6"><animate attributeName="stroke-dashoffset" values="0;-12" dur="2s" repeatCount="indefinite"/></line>
+              <rect x="155" y="50" width="25" height="12" rx="2" fill="#1C1F14" stroke="#E8A5A0" stroke-width=".8"/>
+              <text x="167" y="58" text-anchor="middle" font-family="DM Mono,monospace" font-size="5.5" fill="#E8A5A0">I/O</text>
+              <!-- grid box highlight -->
+              <rect x="38" y="52" width="28" height="36" rx="2" fill="#1a2010" stroke="#5C6B3A" stroke-width=".8" opacity=".8"/>
+              <text x="52" y="63" text-anchor="middle" font-family="DM Mono,monospace" font-size="5" fill="#7A8C4E">SIM</text>
+              <text x="52" y="72" text-anchor="middle" font-family="DM Mono,monospace" font-size="4.5" fill="#5C6B3A">LIVE</text>
+              <circle cx="52" cy="80" r="3" fill="#E8A5A0" opacity=".8"><animate attributeName="opacity" values="1;.2;1" dur="1.4s" repeatCount="indefinite"/></circle>
+            </svg>
+            <span class="hint-chip">hover to flip</span>
+          </div>
+          <div class="card-front-text">
+            <div class="card-eyebrow">Digital twin</div>
+            <div class="card-title">Siemens NX</div>
+            <div class="card-subtitle">Real-time virtual process recreation</div>
+          </div>
+        </div>
+        <div class="card-face card-back">
+          <div class="back-label">What it does</div>
+          <div class="back-title">Digital Twin Simulation</div>
+          <ul class="back-bullets">
+            <li>Recreates the production cell as a synchronized digital twin</li>
+            <li>Simulates conveyors, grippers, and robot interaction</li>
+            <li>Receives real operational signals from the physical system</li>
+            <li>Enables realistic virtual commissioning workflows</li>
+          </ul>
+          <div class="back-conclusion">Extends virtual commissioning beyond static simulation into operationally relevant digital twin validation.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 2: SIMATIC Robot Programming Suite -->
+    <div class="card-scene">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <div class="card-visual">
+            <svg viewBox="0 0 220 170" width="220" height="170" xmlns="http://www.w3.org/2000/svg">
+              <defs><pattern id="g2" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M18 0L0 0 0 18" fill="none" stroke="rgba(92,107,58,.12)" stroke-width=".5"/></pattern></defs>
+              <rect width="220" height="170" fill="url(#g2)"/>
+              <!-- trajectory path -->
+              <path d="M 60 130 C 60 80 160 60 160 60" fill="none" stroke="#E8A5A0" stroke-width="1.2" stroke-dasharray="5 4" opacity=".5"/>
+              <path d="M 60 130 C 75 100 130 75 160 60" fill="none" stroke="#5C6B3A" stroke-width="1.8" stroke-dasharray="5 4" opacity=".6"/>
+              <!-- waypoint dots -->
+              <circle cx="90" cy="110" r="3.5" fill="#E8A5A0" opacity=".8"/>
+              <circle cx="118" cy="88" r="3.5" fill="#E8A5A0" opacity=".8"/>
+              <circle cx="143" cy="72" r="3.5" fill="#E8A5A0" opacity=".8"/>
+              <!-- robot arm -->
+              <rect x="48" y="128" width="24" height="8" rx="2" fill="#2e2e2e"/>
+              <rect x="52" y="118" width="16" height="12" rx="3" fill="#3a3a3a" stroke="#555" stroke-width=".8"/>
+              <line x1="60" y1="118" x2="68" y2="95" stroke="#4a4a4a" stroke-width="8" stroke-linecap="round"/>
+              <line x1="60" y1="118" x2="68" y2="95" stroke="#5C6B3A" stroke-width="5" stroke-linecap="round"/>
+              <line x1="68" y1="95" x2="90" y2="80" stroke="#3D4826" stroke-width="6" stroke-linecap="round"/>
+              <line x1="68" y1="95" x2="90" y2="80" stroke="#5C6B3A" stroke-width="3.5" stroke-linecap="round"/>
+              <line x1="90" y1="80" x2="108" y2="72" stroke="#444" stroke-width="4.5" stroke-linecap="round"/>
+              <circle cx="60" cy="118" r="6" fill="#2e2e2e" stroke="#5C6B3A" stroke-width="1.5"/>
+              <circle cx="68" cy="95" r="5" fill="#2e2e2e" stroke="#5C6B3A" stroke-width="1.2"/>
+              <circle cx="90" cy="80" r="4" fill="#2e2e2e" stroke="#7A8C4E" stroke-width="1"/>
+              <circle cx="108" cy="72" r="3" fill="#2e2e2e" stroke="#7A8C4E" stroke-width=".8"/>
+              <!-- gripper -->
+              <rect x="104" y="60" width="8" height="12" rx="1.5" fill="#3D4826" stroke="#5C6B3A" stroke-width=".8"/>
+              <rect x="101" y="56" width="4" height="8" rx="1" fill="#5C6B3A"/>
+              <rect x="112" y="56" width="4" height="8" rx="1" fill="#5C6B3A"/>
+              <!-- kinematic labels -->
+              <text x="150" y="95" font-family="DM Mono,monospace" font-size="7" fill="#7A8C4E" letter-spacing=".5">J1–J6</text>
+              <text x="150" y="106" font-family="DM Mono,monospace" font-size="6.5" fill="#E8A5A0">kinematics</text>
+              <!-- vendor logos hint -->
+              <rect x="148" y="30" width="50" height="10" rx="1.5" fill="#1C1F14" stroke="#3D4826" stroke-width=".7"/>
+              <text x="173" y="38" text-anchor="middle" font-family="DM Mono,monospace" font-size="6" fill="#C8D4A0" letter-spacing="1">UR · FANUC ·  KUKA </text>
+              <!-- animated dot along path -->
+              <circle r="4" fill="#E8A5A0" opacity=".9">
+                <animateMotion dur="3s" repeatCount="indefinite" path="M 60 130 C 75 100 130 75 160 60"/>
+                <animate attributeName="opacity" values="0;1;1;0" dur="3s" repeatCount="indefinite"/>
+              </circle>
+            </svg>
+            <span class="hint-chip">hover to flip</span>
+          </div>
+          <div class="card-front-text">
+            <div class="card-eyebrow">Robot engineering</div>
+            <div class="card-title">SIMATIC Robot Programming Suite</div>
+            <div class="card-subtitle">Vendor-independent robot programming workflow</div>
+          </div>
+        </div>
+        <div class="card-face card-back">
+          <div class="back-label">What it does</div>
+          <div class="back-title">Unified Robot Engineering</div>
+          <ul class="back-bullets">
+            <li>Generates and validates robot trajectories</li>
+            <li>Calculates robot kinematics inside the Siemens ecosystem</li>
+            <li>Simplifies programming across UR, FANUC, and KUKA and other major robots</li>
+         
+          </ul>
+          <div class="back-conclusion">Reduces vendor-specific tool dependency while enabling integrated robot-cell simulation.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 3: TIA Portal & PLCSIM -->
+    <div class="card-scene">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <div class="card-visual">
+            <svg viewBox="0 0 220 170" width="220" height="170" xmlns="http://www.w3.org/2000/svg">
+              <defs><pattern id="g3" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M18 0L0 0 0 18" fill="none" stroke="rgba(92,107,58,.12)" stroke-width=".5"/></pattern></defs>
+              <rect width="220" height="170" fill="url(#g3)"/>
+              <!-- HMI screen mockup -->
+              <rect x="25" y="24" width="80" height="55" rx="3" fill="#0d1008" stroke="#5C6B3A" stroke-width="1.2"/>
+              <rect x="25" y="24" width="80" height="10" rx="3" fill="#3D4826"/>
+              <rect x="25" y="29" width="80" height="5" fill="#3D4826"/>
+              <text x="65" y="32" text-anchor="middle" font-family="DM Mono,monospace" font-size="5.5" fill="#C8D4A0" letter-spacing="1">HMI · S7-1500</text>
+              <!-- signal blocks -->
+              <rect x="30" y="40" width="16" height="8" rx="1" fill="#3D4826" stroke="#5C6B3A" stroke-width=".6"/>
+              <text x="38" y="46" text-anchor="middle" font-family="DM Mono,monospace" font-size="4.5" fill="#C8D4A0">I0.0</text>
+              <rect x="30" y="52" width="16" height="8" rx="1" fill="#1C3310" stroke="#5C6B3A" stroke-width=".6"/>
+              <text x="38" y="58" text-anchor="middle" font-family="DM Mono,monospace" font-size="4.5" fill="#7A8C4E">Q0.1</text>
+              <rect x="50" y="40" width="16" height="8" rx="1" fill="#3D4826" stroke="#5C6B3A" stroke-width=".6"/>
+              <text x="58" y="46" text-anchor="middle" font-family="DM Mono,monospace" font-size="4.5" fill="#C8D4A0">I0.2</text>
+              <rect x="50" y="52" width="16" height="8" rx="1" fill="#1C3310" stroke="#E8A5A0" stroke-width=".6"/>
+              <text x="58" y="58" text-anchor="middle" font-family="DM Mono,monospace" font-size="4.5" fill="#E8A5A0">ERR</text>
+              <circle cx="78" cy="44" r="4" fill="#5C6B3A"><animate attributeName="fill" values="#5C6B3A;#E8A5A0;#5C6B3A" dur="2s" repeatCount="indefinite"/></circle>
+              <circle cx="78" cy="56" r="4" fill="#3D4826"/>
+              <!-- Ladder logic rung -->
+              <rect x="118" y="22" width="82" height="64" rx="3" fill="#0d1008" stroke="#E8A5A0" stroke-width="1"/>
+              <rect x="118" y="22" width="82" height="10" rx="3" fill="#1C1F14"/>
+              <text x="159" y="30" text-anchor="middle" font-family="DM Mono,monospace" font-size="5.5" fill="#E8A5A0" letter-spacing="1">FBD</text>
+              <!-- rung 1 -->
+              <line x1="123" y1="44" x2="195" y2="44" stroke="#5C6B3A" stroke-width="1" opacity=".6"/>
+              <line x1="123" y1="44" x2="123" y2="54" stroke="#C8D4A0" stroke-width="1.5"/>
+              <line x1="195" y1="44" x2="195" y2="54" stroke="#C8D4A0" stroke-width="1.5"/>
+              <rect x="133" y="40" width="10" height="8" rx="1" fill="none" stroke="#C8D4A0" stroke-width="1.2"/>
+              <line x1="135" y1="40" x2="141" y2="48" stroke="#C8D4A0" stroke-width=".8"/>
+              <rect x="152" y="40" width="10" height="8" rx="1" fill="none" stroke="#E8A5A0" stroke-width="1.2"/>
+              <rect x="154" y="42" width="6" height="4" fill="#E8A5A0" opacity=".5"/>
+              <line x1="175" y1="38" x2="175" y2="50" stroke="#7A8C4E" stroke-width="1.5"/>
+              <line x1="171" y1="44" x2="179" y2="44" stroke="#7A8C4E" stroke-width="1.5"/>
+              <!-- rung 2 -->
+              <line x1="123" y1="62" x2="195" y2="62" stroke="#5C6B3A" stroke-width="1" opacity=".5"/>
+              <line x1="123" y1="62" x2="123" y2="72" stroke="#C8D4A0" stroke-width="1.5"/>
+              <line x1="195" y1="62" x2="195" y2="72" stroke="#C8D4A0" stroke-width="1.5"/>
+              <rect x="133" y="58" width="10" height="8" rx="1" fill="none" stroke="#C8D4A0" stroke-width="1.2"/>
+              <rect x="152" y="58" width="10" height="8" rx="1" fill="none" stroke="#7A8C4E" stroke-width="1.2"/>
+              <line x1="175" y1="56" x2="175" y2="68" stroke="#5C6B3A" stroke-width="1.5"/>
+              <line x1="171" y1="62" x2="179" y2="62" stroke="#5C6B3A" stroke-width="1.5"/>
+              <!-- signal flow -->
+              <line x1="105" y1="54" x2="118" y2="54" stroke="#E8A5A0" stroke-width="1.2" stroke-dasharray="3 3"><animate attributeName="stroke-dashoffset" values="0;-12" dur="1.5s" repeatCount="indefinite"/></line>
+              <!-- PLCSIM tag -->
+              <rect x="50" y="98" width="120" height="18" rx="2.5" fill="#1C1F14" stroke="#5C6B3A" stroke-width="1"/>
+              <text x="110" y="110" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#C8D4A0" letter-spacing=".8">PLCSIM ADVANCED · VIRTUAL S7</text>
+              <!-- animated scan cycle -->
+              <rect x="50" y="120" width="0" height="4" rx="1" fill="#5C6B3A"><animate attributeName="width" values="0;120;0" dur="2.5s" repeatCount="indefinite"/></rect>
+              <text x="110" y="140" text-anchor="middle" font-family="DM Mono,monospace" font-size="6" fill="#7A8C4E">scan cycle running</text>
+            </svg>
+            <span class="hint-chip">hover to flip</span>
+          </div>
+          <div class="card-front-text">
+            <div class="card-eyebrow">PLC engineering</div>
+            <div class="card-title">TIA Portal V20 + PLCSIM Advanced</div>
+            <div class="card-subtitle">Automation logic inside the virtual environment</div>
+          </div>
+        </div>
+        <div class="card-face card-back">
+          <div class="back-label">What it does</div>
+          <div class="back-title">PLC Engineering & Logic Validation</div>
+          <ul class="back-bullets">
+            <li>Programs and validates automation sequences virtually</li>
+            <li>Simulates the S7-1500 PLC environment without hardware</li>
+            <li>Receives real industrial signals through OPC UA</li>
+            <li>Enables remote commissioning logic validation</li>
+          </ul>
+          <div class="back-conclusion">Allows automation behavior to be tested using real production-cell conditions before physical deployment.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 4: OPC UA -->
+    <div class="card-scene">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <div class="card-visual">
+            <svg viewBox="0 0 220 170" width="220" height="170" xmlns="http://www.w3.org/2000/svg">
+              <defs><pattern id="g4" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M18 0L0 0 0 18" fill="none" stroke="rgba(92,107,58,.12)" stroke-width=".5"/></pattern></defs>
+              <rect width="220" height="170" fill="url(#g4)"/>
+              <!-- central node -->
+              <circle cx="110" cy="85" r="22" fill="#3D4826" stroke="#C8D4A0" stroke-width="1.8"/>
+              <text x="110" y="81" text-anchor="middle" font-family="DM Mono,monospace" font-size="7.5" fill="#EDF0E0" font-weight="500">OPC</text>
+              <text x="110" y="92" text-anchor="middle" font-family="DM Mono,monospace" font-size="7.5" fill="#EDF0E0" font-weight="500">UA</text>
+              <!-- ring -->
+              <circle cx="110" cy="85" r="34" fill="none" stroke="#5C6B3A" stroke-width=".8" stroke-dasharray="4 4" opacity=".5"/>
+              <!-- nodes -->
+              <circle cx="48" cy="42" r="14" fill="#1C1F14" stroke="#E8A5A0" stroke-width="1.2"/>
+              <text x="48" y="40" text-anchor="middle" font-family="DM Mono,monospace" font-size="5.5" fill="#E8A5A0">FESTO</text>
+              <text x="48" y="50" text-anchor="middle" font-family="DM Mono,monospace" font-size="5" fill="#888">CP Lab</text>
+              <circle cx="172" cy="42" r="14" fill="#1C1F14" stroke="#C8D4A0" stroke-width="1.2"/>
+              <text x="172" y="40" text-anchor="middle" font-family="DM Mono,monospace" font-size="5.5" fill="#C8D4A0">NX</text>
+              <text x="172" y="50" text-anchor="middle" font-family="DM Mono,monospace" font-size="5" fill="#888">Twin</text>
+              <circle cx="48" cy="130" r="14" fill="#1C1F14" stroke="#7A8C4E" stroke-width="1.2"/>
+              <text x="48" y="128" text-anchor="middle" font-family="DM Mono,monospace" font-size="5.5" fill="#7A8C4E">TIA</text>
+              <text x="48" y="138" text-anchor="middle" font-family="DM Mono,monospace" font-size="5" fill="#888">Portal</text>
+              <circle cx="172" cy="130" r="14" fill="#1C1F14" stroke="#7A8C4E" stroke-width="1.2"/>
+              <text x="172" y="128" text-anchor="middle" font-family="DM Mono,monospace" font-size="5.5" fill="#7A8C4E">UA</text>
+              <text x="172" y="138" text-anchor="middle" font-family="DM Mono,monospace" font-size="5" fill="#888">Expert</text>
+              <!-- connections animated -->
+              <line x1="60" y1="52" x2="90" y2="68" stroke="#E8A5A0" stroke-width="1.2" stroke-dasharray="4 3"><animate attributeName="stroke-dashoffset" values="0;-14" dur="1.8s" repeatCount="indefinite"/></line>
+              <line x1="158" y1="52" x2="130" y2="68" stroke="#C8D4A0" stroke-width="1.2" stroke-dasharray="4 3"><animate attributeName="stroke-dashoffset" values="0;-14" dur="2.2s" repeatCount="indefinite"/></line>
+              <line x1="60" y1="120" x2="90" y2="103" stroke="#7A8C4E" stroke-width="1.2" stroke-dasharray="4 3"><animate attributeName="stroke-dashoffset" values="0;-14" dur="2s" repeatCount="indefinite"/></line>
+              <line x1="158" y1="120" x2="130" y2="103" stroke="#7A8C4E" stroke-width="1.2" stroke-dasharray="4 3"><animate attributeName="stroke-dashoffset" values="0;-14" dur="1.6s" repeatCount="indefinite"/></line>
+              <!-- traveling dots -->
+              <circle r="3.5" fill="#E8A5A0" opacity=".9"><animateMotion dur="2s" repeatCount="indefinite" path="M60,52 L90,68"/><animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite"/></circle>
+              <circle r="3" fill="#C8D4A0" opacity=".9"><animateMotion dur="2.5s" repeatCount="indefinite" begin=".5s" path="M130,68 L158,52"/><animate attributeName="opacity" values="0;1;0" dur="2.5s" repeatCount="indefinite" begin=".5s"/></circle>
+            </svg>
+            <span class="hint-chip">hover to flip</span>
+          </div>
+          <div class="card-front-text">
+            <div class="card-eyebrow">Interoperability</div>
+            <div class="card-title">OPC UA</div>
+            <div class="card-subtitle">Standardized OT communication</div>
+          </div>
+        </div>
+        <div class="card-face card-back">
+          <div class="back-label">What it does</div>
+          <div class="back-title">Industrial Interoperability Layer</div>
+          <ul class="back-bullets">
+         
+            <li>Transfers industrial process variables in real time</li>
+            <li>Enables vendor-independent interoperability</li>
+            <li>Synchronizes operational states into the digital twin</li>
+          </ul>
+          <div class="back-conclusion">Creates a scalable communication bridge between industrial hardware and distributed engineering environments.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 5: MQTT over TLS -->
+    <div class="card-scene">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <div class="card-visual">
+            <svg viewBox="0 0 220 170" width="220" height="170" xmlns="http://www.w3.org/2000/svg">
+              <defs><pattern id="g5" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M18 0L0 0 0 18" fill="none" stroke="rgba(92,107,58,.12)" stroke-width=".5"/></pattern></defs>
+              <rect width="220" height="170" fill="url(#g5)"/>
+              <!-- PC1 publisher -->
+              <rect x="14" y="65" width="48" height="36" rx="3" fill="#1C1F14" stroke="#5C6B3A" stroke-width="1.2"/>
+              <text x="38" y="80" text-anchor="middle" font-family="DM Mono,monospace" font-size="6" fill="#C8D4A0">PC 1</text>
+              <text x="38" y="91" text-anchor="middle" font-family="DM Mono,monospace" font-size="5.5" fill="#7A8C4E">PUBLISH</text>
+              <!-- PC2 subscriber -->
+              <rect x="158" y="65" width="48" height="36" rx="3" fill="#1C1F14" stroke="#5C6B3A" stroke-width="1.2"/>
+              <text x="182" y="80" text-anchor="middle" font-family="DM Mono,monospace" font-size="6" fill="#C8D4A0">PC 2</text>
+              <text x="182" y="91" text-anchor="middle" font-family="DM Mono,monospace" font-size="5.5" fill="#7A8C4E">SUBSCRIBE</text>
+              <!-- HiveMQ cloud broker -->
+              <rect x="78" y="30" width="64" height="40" rx="4" fill="#3D4826" stroke="#C8D4A0" stroke-width="1.5"/>
+              <text x="110" y="47" text-anchor="middle" font-family="DM Mono,monospace" font-size="6.5" fill="#EDF0E0">HiveMQ</text>
+              <text x="110" y="57" text-anchor="middle" font-family="DM Mono,monospace" font-size="5.5" fill="#C8D4A0">cloud broker</text>
+              <circle cx="122" cy="43" r="3" fill="#E8A5A0"><animate attributeName="opacity" values="1;.2;1" dur="1.4s" repeatCount="indefinite"/></circle>
+              <!-- lines publisher to broker -->
+              <line x1="62" y1="75" x2="78" y2="55" stroke="#C8D4A0" stroke-width="1.3" stroke-dasharray="4 3"><animate attributeName="stroke-dashoffset" values="0;-14" dur="2s" repeatCount="indefinite"/></line>
+              <line x1="142" y1="55" x2="158" y2="75" stroke="#C8D4A0" stroke-width="1.3" stroke-dasharray="4 3"><animate attributeName="stroke-dashoffset" values="0;-14" dur="2s" repeatCount="indefinite"/></line>
+              <!-- TLS lock badge -->
+              <rect x="88" y="95" width="44" height="20" rx="3" fill="#1C1F14" stroke="#E8A5A0" stroke-width="1"/>
+              <text x="110" y="108" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#E8A5A0">TLS 🔒</text>
+              <!-- data packets -->
+              <circle r="4" fill="#E8A5A0" opacity=".9"><animateMotion dur="2.2s" repeatCount="indefinite" path="M62,78 Q110,35 142,58"/><animate attributeName="opacity" values="0;1;1;0" dur="2.2s" repeatCount="indefinite"/></circle>
+              <circle r="3.5" fill="#C8D4A0" opacity=".85"><animateMotion dur="2.2s" repeatCount="indefinite" begin="1.1s" path="M142,58 Q110,35 62,78"/><animate attributeName="opacity" values="0;1;1;0" dur="2.2s" repeatCount="indefinite" begin="1.1s"/></circle>
+              <!-- Purdue label -->
+              <rect x="14" y="120" width="192" height="14" rx="2" fill="#0d1008" stroke="#3D4826" stroke-width=".7"/>
+              <text x="110" y="130" text-anchor="middle" font-family="DM Mono,monospace" font-size="6" fill="#7A8C4E" letter-spacing="1">PURDUE CYBERSECURITY MODEL</text>
+            </svg>
+            <span class="hint-chip">hover to flip</span>
+          </div>
+          <div class="card-front-text">
+            <div class="card-eyebrow">Secure IoT comms</div>
+            <div class="card-title">MQTT over TLS</div>
+            <div class="card-subtitle">Remote industrial data synchronization</div>
+          </div>
+        </div>
+        <div class="card-face card-back">
+          <div class="back-label">What it does</div>
+          <div class="back-title">Secure Distributed IoT Communication</div>
+          <ul class="back-bullets">
+            <li>Securely transmits industrial signals over the internet using TLS</li>
+            <li>Uses publish/subscribe architecture through HiveMQ</li>
+            <li>Connects geographically separated engineering systems</li>
+            <li>Supports scalable remote commissioning workflows</li>
+          </ul>
+          <div class="back-conclusion">Enables distributed Industry 4.0 engineering while maintaining secure industrial communication practices.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 6: Festo CP Lab -->
+    <div class="card-scene">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <div class="card-visual">
+            <svg viewBox="0 0 220 170" width="220" height="170" xmlns="http://www.w3.org/2000/svg">
+              <defs><pattern id="g6" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M18 0L0 0 0 18" fill="none" stroke="rgba(92,107,58,.12)" stroke-width=".5"/></pattern>
+              <clipPath id="bc6"><rect x="50" y="108" width="136" height="14"/></clipPath></defs>
+              <rect width="220" height="170" fill="url(#g6)"/>
+              <!-- floor -->
+              <rect x="0" y="140" width="220" height="30" fill="#2a2d1e" opacity=".6"/>
+              <!-- conveyor -->
+              <rect x="48" y="106" width="140" height="20" rx="3" fill="#555"/>
+              <rect x="52" y="108" width="132" height="16" rx="2" fill="#444"/>
+              <g clip-path="url(#bc6)">
+                <g><rect x="52" y="108" width="8" height="16" fill="#3a3a3a" rx="1"/>
+                <rect x="70" y="108" width="8" height="16" fill="#3a3a3a" rx="1"/>
+                <rect x="88" y="108" width="8" height="16" fill="#3a3a3a" rx="1"/>
+                <rect x="106" y="108" width="8" height="16" fill="#3a3a3a" rx="1"/>
+                <rect x="124" y="108" width="8" height="16" fill="#3a3a3a" rx="1"/>
+                <rect x="142" y="108" width="8" height="16" fill="#3a3a3a" rx="1"/>
+                <rect x="160" y="108" width="8" height="16" fill="#3a3a3a" rx="1"/>
+                <animateTransform attributeName="transform" type="translate" values="0,0;-18,0" dur="1s" repeatCount="indefinite"/>
+                </g>
+              </g>
+              <ellipse cx="52" cy="116" rx="3" ry="8" fill="#3a3a3a"/>
+              <ellipse cx="184" cy="116" rx="3" ry="8" fill="#3a3a3a"/>
+              <!-- robot arm above conveyor -->
+              <rect x="84" y="130" width="28" height="10" rx="2" fill="#2e2e2e"/>
+              <rect x="88" y="122" width="20" height="10" rx="2" fill="#3a3a3a" stroke="#555" stroke-width=".8"/>
+              <line x1="98" y1="122" x2="95" y2="96" stroke="#4a4a4a" stroke-width="7" stroke-linecap="round"/>
+              <line x1="98" y1="122" x2="95" y2="96" stroke="#5C6B3A" stroke-width="4.5" stroke-linecap="round"/>
+              <line x1="95" y1="96" x2="120" y2="80" stroke="#3D4826" stroke-width="6" stroke-linecap="round"/>
+              <line x1="95" y1="96" x2="120" y2="80" stroke="#5C6B3A" stroke-width="3.5" stroke-linecap="round"/>
+              <line x1="120" y1="80" x2="135" y2="72" stroke="#444" stroke-width="4" stroke-linecap="round"/>
+              <circle cx="98" cy="122" r="6" fill="#2e2e2e" stroke="#5C6B3A" stroke-width="1.5"/>
+              <circle cx="95" cy="96" r="5" fill="#2e2e2e" stroke="#5C6B3A" stroke-width="1.2"/>
+              <circle cx="120" cy="80" r="4" fill="#2e2e2e" stroke="#7A8C4E" stroke-width="1"/>
+              <!-- gripper -->
+              <rect x="127" y="62" width="12" height="10" rx="1.5" fill="#222" stroke="#555" stroke-width=".8"/>
+              <rect x="124" y="57" width="4" height="7" rx="1" fill="#3D4826"/>
+              <rect x="135" y="57" width="4" height="7" rx="1" fill="#3D4826"/>
+              <!-- part on conveyor -->
+              <rect x="144" y="99" width="22" height="12" rx="2" fill="#E8A5A0" stroke="#C4706A" stroke-width="1"/>
+              <!-- live data labels -->
+              <rect x="14" y="22" width="56" height="42" rx="3" fill="#0d1008" stroke="#E8A5A0" stroke-width=".8"/>
+              <text x="42" y="34" text-anchor="middle" font-family="DM Mono,monospace" font-size="5.5" fill="#E8A5A0">LIVE</text>
+              <text x="42" y="44" text-anchor="middle" font-family="DM Mono,monospace" font-size="5" fill="#C8D4A0">speed:</text>
+              <text x="42" y="53" text-anchor="middle" font-family="DM Mono,monospace" font-size="6" fill="#7A8C4E">0.3 m/s</text>
+              <text x="42" y="61" text-anchor="middle" font-family="DM Mono,monospace" font-size="4.5" fill="#5C6B3A">OPC-UA ✓</text>
+              <circle cx="64" cy="25" r="3" fill="#E8A5A0"><animate attributeName="opacity" values="1;.2;1" dur="1.2s" repeatCount="indefinite"/></circle>
+              <!-- fault indicator -->
+              <rect x="150" y="22" width="56" height="26" rx="3" fill="#0d1008" stroke="#5C6B3A" stroke-width=".8"/>
+              <text x="178" y="33" text-anchor="middle" font-family="DM Mono,monospace" font-size="5.5" fill="#C8D4A0">I/O STATE</text>
+              <text x="178" y="44" text-anchor="middle" font-family="DM Mono,monospace" font-size="5.5" fill="#5C6B3A">NOMINAL ✓</text>
+            </svg>
+            <span class="hint-chip">hover to flip</span>
+          </div>
+          <div class="card-front-text">
+            <div class="card-eyebrow">Physical layer</div>
+            <div class="card-title">Festo CP Lab</div>
+            <div class="card-subtitle">Real operational data integration</div>
+          </div>
+        </div>
+        <div class="card-face card-back">
+          <div class="back-label">What it does</div>
+          <div class="back-title">Real Industrial Process Validation</div>
+          <ul class="back-bullets">
+            <li>Provides real production-cell signals and operational states</li>
+            <li>Generates live faults, warnings, and I/O conditions</li>
+            <li>Acts as the physical validation layer for the digital twin</li>
+            <li>Synchronizes live process behavior into the virtual environment</li>
+          </ul>
+          <div class="back-conclusion">Moves the project beyond theoretical simulation by integrating real industrial process behavior.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
   
   
   <!-- Sección WHY THIS MATTERS - inspirada en Machine Qualification -->
