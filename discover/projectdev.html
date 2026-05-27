@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Technical Development — IoT Virtual Commissioning</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --olive:#5C6B3A;--olive-dark:#3D4826;--olive-mid:#7A8C4E;--olive-light:#C8D4A0;--olive-pale:#EDF0E0;
+      --rose:#E8A5A0;--rose-dark:#C4706A;--rose-mid:#D48880;--rose-light:#F5D0CC;--rose-pale:#FCF0EE;
+      --cream:#F7F4EE;--ink:#1C1F14;--ink-mid:#3A3D2E;--muted:#7A7D70;
+      --font-display:'Bebas Neue',sans-serif;
+      --font-condensed:'Barlow Condensed',sans-serif;
+      --font-body:'Barlow',sans-serif;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font-body);background:var(--cream);color:var(--ink);overflow-x:hidden}
+
+    /* ── NAV ── */
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:60px;background:var(--ink);border-bottom:2px solid var(--olive-dark)}
+    .nav-logo{font-family:var(--font-condensed);font-weight:900;font-size:1.1rem;letter-spacing:.08em;color:var(--olive-light);text-decoration:none;text-transform:uppercase}
+    .nav-links{display:flex;list-style:none}
+    .nav-links a{display:block;padding:0 1.2rem;height:60px;line-height:60px;font-family:var(--font-condensed);font-weight:700;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--olive-light);text-decoration:none;transition:background .2s,color .2s}
+    .nav-links a:hover,.nav-links a.active{background:var(--olive);color:var(--cream)}
+    .nav-cta{display:flex;align-items:center;gap:.6rem;background:var(--rose);color:var(--ink);padding:0 1.5rem;height:60px;font-family:var(--font-condensed);font-weight:700;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:background .2s,color .2s;white-space:nowrap}
+    .nav-cta:hover{background:var(--rose-dark);color:var(--cream)}
+    .nav-cta .dot{width:7px;height:7px;background:var(--olive);border-radius:50%}
+    .nav-cta:hover .dot{background:var(--cream)}
+
+    /* ── PAGE HERO ── */
+    #page-hero{margin-top:60px;display:grid;grid-template-columns:1fr 1fr;min-height:320px}
+    .ph-left{background:var(--ink);padding:4rem 3.5rem;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
+    .ph-left::before{content:'DEVELOPMENT';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--font-display);font-size:7rem;color:rgba(255,255,255,.025);white-space:nowrap;pointer-events:none;letter-spacing:.05em}
+    .ph-eyebrow{font-family:var(--font-condensed);font-weight:700;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--rose);margin-bottom:.8rem}
+    .ph-left h1{font-family:var(--font-display);font-size:clamp(3.5rem,5vw,5.5rem);line-height:.9;color:var(--cream);text-transform:uppercase}
+    .ph-left h1 .a{color:var(--olive-light)}
+    .ph-right{background:var(--olive-pale);padding:4rem 3.5rem;display:flex;flex-direction:column;justify-content:center}
+    .ph-right p{font-size:1rem;line-height:1.75;color:var(--ink-mid);max-width:420px}
+    .ph-right p strong{color:var(--olive-dark);font-weight:700}
+    .ph-meta{display:flex;gap:1px;margin-top:2rem;background:var(--olive-light)}
+    .ph-meta-item{background:var(--cream);padding:1rem 1.5rem;flex:1}
+    .ph-meta-item .lbl{font-family:var(--font-condensed);font-weight:700;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.3rem}
+    .ph-meta-item .val{font-family:var(--font-condensed);font-weight:900;font-size:1rem;color:var(--olive-dark)}
+
+    /* ── TECH STRIP ── */
+    .tech-strip{background:var(--olive-dark);padding:.85rem 2.5rem;display:flex;align-items:center;gap:2rem;overflow:hidden;flex-wrap:wrap}
+    .ts-lbl{font-family:var(--font-condensed);font-weight:700;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--rose);white-space:nowrap;border-right:1px solid #5C6B3A;padding-right:1.5rem;margin-right:.5rem}
+    .ts-item{font-family:var(--font-condensed);font-weight:600;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--olive-light);white-space:nowrap;display:flex;align-items:center;gap:.45rem}
+    .ts-dot{width:5px;height:5px;background:var(--rose);border-radius:50%;flex-shrink:0}
+
+    /* ── UTILITIES ── */
+    .section-lbl{font-family:var(--font-condensed);font-weight:700;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--olive);margin-bottom:.75rem}
+    .fade-up{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+    .fade-up.visible{opacity:1;transform:translateY(0)}
+
+    /* ── CONNECTION DIAGRAM ── */
+    #connection{padding:5rem 4rem;background:var(--cream)}
+    .conn-head{display:grid;grid-template-columns:1fr 1fr;align-items:end;margin-bottom:3rem;gap:2rem}
+    .conn-head h2{font-family:var(--font-display);font-size:clamp(3rem,4vw,4.5rem);line-height:.9;text-transform:uppercase}
+    .conn-head h2 .a{color:var(--olive)}
+    .conn-head p{font-size:.92rem;line-height:1.7;color:var(--muted)}
+    .conn-box{background:var(--ink);padding:2rem;position:relative;overflow:hidden}
+
+    /* ── UNIFIED TIMELINE ── */
+    #timeline{padding:6rem 4rem;background:var(--olive-pale)}
+    .tl-header{margin-bottom:4rem}
+    .tl-header h2{font-family:var(--font-display);font-size:clamp(3rem,4vw,4.5rem);line-height:.9;text-transform:uppercase;margin-bottom:.5rem}
+    .tl-header h2 .a{color:var(--rose-dark)}
+    .tl-header p{font-family:var(--font-condensed);font-size:.85rem;color:var(--muted);letter-spacing:.05em}
+
+    /* timeline layout: left spine + right content */
+    .unified-tl{position:relative;max-width:900px}
+    .unified-tl::before{content:'';position:absolute;left:22px;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--olive),var(--rose-light))}
+
+    .tl-step{position:relative;padding-left:70px;margin-bottom:2rem}
+    .tl-step-dot{position:absolute;left:0;top:0;width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1.1rem;z-index:2;border:3px solid var(--olive-pale);transition:transform .2s}
+    .tl-step-dot.success{background:var(--olive);color:var(--cream)}
+    .tl-step-dot.partial{background:var(--cream);color:var(--olive);border-color:var(--olive-light)}
+    .tl-step-dot.blocked{background:var(--rose-light);color:var(--rose-dark);border-color:var(--rose)}
+    .tl-step-dot.info{background:var(--ink);color:var(--olive-light)}
+
+    /* expandable card */
+    .tl-card{background:var(--cream);border:1px solid var(--olive-light);overflow:hidden;transition:box-shadow .2s,transform .2s}
+    .tl-card:hover{box-shadow:0 6px 24px rgba(0,0,0,.08);transform:translateY(-2px)}
+    .tl-card-header{padding:1.5rem 2rem;cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;user-select:none}
+    .tl-card-header:hover .tl-toggle{background:var(--olive);color:var(--cream)}
+    .tl-card-meta{flex:1}
+    .tl-step-week{font-family:var(--font-condensed);font-weight:700;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--olive);margin-bottom:.3rem}
+    .tl-card-meta h3{font-family:var(--font-display);font-size:1.8rem;text-transform:uppercase;line-height:1;color:var(--ink);margin-bottom:.5rem}
+    .tl-card-summary{font-size:.88rem;color:var(--muted);line-height:1.5}
+    .tl-tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.75rem}
+    .tl-tag{padding:.2rem .7rem;font-family:var(--font-condensed);font-weight:700;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase}
+    .tl-tag.g{background:var(--olive);color:var(--cream)}
+    .tl-tag.r{background:var(--rose-light);color:var(--rose-dark)}
+    .tl-tag.n{background:var(--olive-light);color:var(--olive-dark)}
+    .tl-tag.b{background:var(--ink);color:var(--olive-light)}
+    .tl-toggle{width:36px;height:36px;flex-shrink:0;background:var(--olive-light);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;transition:background .2s,color .2s;color:var(--olive-dark)}
+
+    /* expandable body */
+    .tl-card-body{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1)}
+    .tl-card-body.open{max-height:1200px}
+    .tl-card-inner{padding:0 2rem 2rem 2rem;border-top:1px solid var(--olive-light)}
+
+    /* detail grid inside card */
+    .detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem}
+    .detail-grid.single{grid-template-columns:1fr}
+    .detail-block{background:var(--olive-pale);padding:1.2rem}
+    .detail-block.dark{background:var(--ink);color:var(--cream)}
+    .detail-block.rose{background:var(--rose-pale)}
+    .detail-block .db-lbl{font-family:var(--font-condensed);font-weight:700;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.6rem}
+    .detail-block.dark .db-lbl{color:var(--rose)}
+    .detail-block:not(.dark) .db-lbl{color:var(--olive)}
+    .detail-block p,.detail-block li{font-size:.85rem;line-height:1.65}
+    .detail-block.dark p,.detail-block.dark li{color:#bbb}
+    .detail-block:not(.dark) p,.detail-block:not(.dark) li{color:var(--ink-mid)}
+    .detail-block ul{padding-left:1.1rem}
+    .detail-block li{margin-bottom:.3rem}
+    .detail-block code{font-family:var(--font-condensed);font-weight:700;font-size:.82rem;background:rgba(92,107,58,.15);padding:.1rem .4rem;color:var(--olive-dark)}
+    .detail-block.dark code{background:rgba(200,212,160,.12);color:var(--olive-light)}
+
+    /* image placeholder */
+    .img-placeholder{background:#2a2d1e;border:1px dashed #3a3d2e;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.5rem;padding:2rem;margin-top:1.5rem;min-height:200px}
+    .img-placeholder span{font-family:var(--font-condensed);font-weight:700;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:#555}
+    .img-placeholder .ip-icon{font-size:2rem;opacity:.3}
+    .img-placeholder.light{background:var(--olive-pale);border-color:var(--olive-light)}
+    .img-placeholder.light span{color:var(--muted)}
+
+    /* outcome banner inside card */
+    .outcome-banner{margin-top:1.5rem;padding:1rem 1.5rem;border-left:4px solid var(--olive);background:var(--cream);display:flex;align-items:flex-start;gap:1rem}
+    .outcome-banner.blocked{border-left-color:var(--rose-dark);background:var(--rose-pale)}
+    .outcome-banner.partial{border-left-color:var(--olive-mid)}
+    .ob-icon{font-size:1.3rem;flex-shrink:0;margin-top:.1rem}
+    .ob-text{font-size:.85rem;line-height:1.6;color:var(--ink-mid)}
+    .ob-text strong{font-weight:700;color:var(--ink)}
+
+    /* ── KEY FINDINGS STRIP ── */
+    #findings{background:var(--ink);padding:5rem 4rem}
+    #findings h2{font-family:var(--font-display);font-size:clamp(3rem,4vw,4.5rem);line-height:.9;text-transform:uppercase;color:var(--cream);margin-bottom:3rem}
+    #findings h2 .a{color:var(--rose)}
+    .findings-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#333}
+    .finding-card{background:var(--ink-mid);padding:2.5rem 2rem;transition:background .2s}
+    .finding-card:hover{background:var(--olive-dark)}
+    .fc-num{font-family:var(--font-display);font-size:4rem;line-height:1;color:var(--olive-mid);margin-bottom:.75rem}
+    .fc-title{font-family:var(--font-condensed);font-weight:900;font-size:1.1rem;text-transform:uppercase;color:var(--cream);margin-bottom:.75rem}
+    .fc-text{font-size:.85rem;line-height:1.65;color:#888}
+    .fc-tag{display:inline-block;margin-top:1rem;padding:.2rem .7rem;font-family:var(--font-condensed);font-weight:700;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;background:var(--olive);color:var(--cream)}
+    .fc-tag.r{background:var(--rose-dark)}
+
+    /* ── CHALLENGES TABLE ── */
+    #challenges{background:var(--cream)}
+    .ch-table{width:100%;border-collapse:collapse}
+    .ch-table tr{border-bottom:1px solid #ccc}
+    .ch-table tr:first-child{border-top:1px solid #ccc}
+    .ch-table td{padding:2rem 3rem;vertical-align:middle}
+    .ch-table tr:nth-child(odd){background:var(--ink);color:var(--cream)}
+    .ch-table tr:nth-child(even){background:var(--olive-pale)}
+    .ch-num{font-family:var(--font-display);font-size:3.5rem;width:90px;white-space:nowrap}
+    .ch-table tr:nth-child(odd) .ch-num{color:var(--rose)}
+    .ch-table tr:nth-child(even) .ch-num{color:var(--olive)}
+    .ch-title{font-family:var(--font-condensed);font-weight:900;font-size:1.2rem;text-transform:uppercase;width:240px}
+    .ch-table tr:nth-child(odd) .ch-title{color:var(--olive-light)}
+    .ch-table tr:nth-child(even) .ch-title{color:var(--olive-dark)}
+    .ch-text{font-size:.9rem;line-height:1.7;opacity:.82}
+    .ch-status{width:120px;text-align:right}
+    .status-pill{display:inline-block;padding:.3rem .9rem;font-family:var(--font-condensed);font-weight:700;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase}
+    .status-pill.solved{background:var(--olive);color:var(--cream)}
+    .status-pill.workaround{background:var(--rose-light);color:var(--rose-dark)}
+    .status-pill.open{background:var(--ink);color:var(--olive-light)}
+
+    /* ── CTA BANNER ── */
+    .cta-banner{background:var(--olive);padding:3rem 4rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem}
+    .cta-banner h3{font-family:var(--font-display);font-size:2.8rem;text-transform:uppercase;color:var(--cream);line-height:1}
+    .cta-banner p{font-family:var(--font-condensed);font-weight:700;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--olive-light);margin-top:.4rem}
+    .cta-links{display:flex;gap:1rem;flex-wrap:wrap}
+    .cta-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.8rem;font-family:var(--font-condensed);font-weight:700;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .2s;border:none;cursor:pointer}
+    .cta-btn.dk{background:var(--ink);color:var(--cream)}
+    .cta-btn.dk:hover{background:var(--rose);color:var(--ink)}
+    .cta-btn.lt{background:var(--cream);color:var(--ink)}
+    .cta-btn.lt:hover{background:var(--rose-light)}
+
+    /* ── FOOTER ── */
+    footer{background:var(--ink);color:var(--cream);padding:3rem 4rem;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:2rem}
+    .foot-logo{font-family:var(--font-display);font-size:1.8rem;text-transform:uppercase;color:var(--rose-light);margin-bottom:.4rem}
+    footer p{font-size:.72rem;color:var(--muted);font-family:var(--font-condensed)}
+    footer a{color:var(--olive-light);text-decoration:none;font-family:var(--font-condensed);font-size:.72rem;margin-left:1.5rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+    footer a:hover{color:var(--rose)}
+
+    @media(max-width:900px){
+      #page-hero{grid-template-columns:1fr}
+      .conn-head{grid-template-columns:1fr}
+      .detail-grid{grid-template-columns:1fr}
+      .findings-grid{grid-template-columns:1fr}
+      nav{padding:0 1.5rem}
+      .nav-links{display:none}
+      #connection,#timeline,#findings,#challenges{padding:4rem 1.5rem}
+      .cta-banner{padding:2rem 1.5rem}
+      footer{padding:2rem 1.5rem;flex-direction:column;align-items:flex-start}
+      .ph-left,.ph-right{padding:3rem 1.5rem}
+      .ch-table td{padding:1.5rem}
+      .ch-num{font-size:2.5rem;width:60px}
+      .ch-title{font-size:1rem;width:140px}
+      .tl-step{padding-left:56px}
+      .tl-step-dot{width:38px;height:38px;font-size:.9rem}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">IoT · Virtual Commissioning</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="background.html">Background</a></li>
+    <li><a href="development.html" class="active">Development</a></li>
+    <li><a href="results.html">Results</a></li>
+  </ul>
+  <a class="nav-cta" href="results.html">Results<span class="dot"></span></a>
+</nav>
+
+<!-- PAGE HERO -->
+<section id="page-hero">
+  <div class="ph-left">
+    <p class="ph-eyebrow">Step-by-step technical walkthrough</p>
+    <h1>Technical<br><span class="a">Development</span></h1>
+  </div>
+  <div class="ph-right">
+    <p>A unified walkthrough of how the <strong>IoT data pipeline</strong> and the <strong>virtual commissioning environment</strong> were built, connected, and validated — step by step, decision by decision.</p>
+    <div class="ph-meta">
+      <div class="ph-meta-item"><div class="lbl">Stages</div><div class="val">4 Complete</div></div>
+      <div class="ph-meta-item"><div class="lbl">Tools</div><div class="val">7 Integrated</div></div>
+      <div class="ph-meta-item"><div class="lbl">Protocols</div><div class="val">OPC-UA · MQTT</div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CONNECTION DIAGRAM -->
+<section id="connection">
+  <div class="conn-head fade-up">
+    <h2>How Both<br><span class="a">Sides Connect</span></h2>
+    <p>The project runs across two computers. PC 1 handles physical data acquisition from the Festo CP Lab. PC 2 runs the entire virtual commissioning environment. HiveMQ cloud broker is the bridge — data flows in real time via MQTT over TLS.</p>
+  </div>
+  <div class="conn-box fade-up">
+    <svg width="100%" viewBox="0 0 920 200" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arr" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto"><path d="M0,1 L6,3.5 L0,6 Z" fill="#C8D4A0" opacity=".8"/></marker>
+        <marker id="arr2" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto"><path d="M0,1 L6,3.5 L0,6 Z" fill="#E8A5A0"/></marker>
+      </defs>
+      <!-- PC1 group -->
+      <rect x="10" y="20" width="2" height="160" fill="#3D4826"/>
+      <text x="22" y="38" font-family="Barlow Condensed" font-weight="700" font-size="9" fill="rgba(200,212,160,.5)" letter-spacing="2">PC 1 — DATA ACQUISITION</text>
+      <rect x="22" y="55" width="110" height="44" rx="3" fill="#3D4826" stroke="#5C6B3A" stroke-width="1.5"/>
+      <text x="77" y="76" text-anchor="middle" font-family="Barlow Condensed" font-weight="700" font-size="9" fill="#C8D4A0">FESTO CP LAB</text>
+      <text x="77" y="90" text-anchor="middle" font-family="Barlow Condensed" font-size="7" fill="#7A8C4E">OPC-UA Server</text>
+      <line x1="132" y1="77" x2="175" y2="77" stroke="#E8A5A0" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#arr2)"><animate attributeName="stroke-dashoffset" values="0;-16" dur="1.8s" repeatCount="indefinite"/></line>
+      <text x="153" y="70" text-anchor="middle" font-family="Barlow Condensed" font-size="7" fill="#E8A5A0">OPC-UA</text>
+      <rect x="175" y="55" width="100" height="44" rx="3" fill="#1C1F14" stroke="#E8A5A0" stroke-width="1"/>
+      <text x="225" y="76" text-anchor="middle" font-family="Barlow Condensed" font-weight="700" font-size="9" fill="#E8A5A0">NODE-RED</text>
+      <text x="225" y="90" text-anchor="middle" font-family="Barlow Condensed" font-size="7" fill="#888">JSON transform</text>
+      <line x1="275" y1="77" x2="320" y2="77" stroke="#C8D4A0" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#arr)"><animate attributeName="stroke-dashoffset" values="0;-16" dur="2.2s" repeatCount="indefinite"/></line>
+      <text x="297" y="70" text-anchor="middle" font-family="Barlow Condensed" font-size="7" fill="#C8D4A0">MQTT/TLS</text>
+      <!-- HiveMQ centre -->
+      <rect x="320" y="44" width="120" height="66" rx="4" fill="#5C6B3A" stroke="#C8D4A0" stroke-width="2"/>
+      <text x="380" y="72" text-anchor="middle" font-family="Barlow Condensed" font-weight="900" font-size="11" fill="#EDF0E0" letter-spacing="1">HIVEMQ</text>
+      <text x="380" y="87" text-anchor="middle" font-family="Barlow Condensed" font-size="7" fill="#C8D4A0">Cloud Broker · MQTT/TLS</text>
+      <circle cx="380" cy="100" r="3.5" fill="#E8A5A0"><animate attributeName="opacity" values="1;.2;1" dur="1.4s" repeatCount="indefinite"/></circle>
+      <!-- PC2 group -->
+      <line x1="440" y1="77" x2="485" y2="77" stroke="#C8D4A0" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#arr)"><animate attributeName="stroke-dashoffset" values="0;-16" dur="2s" repeatCount="indefinite"/></line>
+      <text x="463" y="70" text-anchor="middle" font-family="Barlow Condensed" font-size="7" fill="#C8D4A0">subscribe</text>
+      <text x="680" y="38" font-family="Barlow Condensed" font-weight="700" font-size="9" fill="rgba(200,212,160,.5)" letter-spacing="2">PC 2 — VIRTUAL ENV</text>
+      <rect x="908" y="20" width="2" height="160" fill="#3D4826"/>
+      <!-- virtual env box -->
+      <rect x="485" y="44" width="415" height="66" rx="3" fill="#1C1F14" stroke="#7A8C4E" stroke-width="1.5"/>
+      <text x="697" y="68" text-anchor="middle" font-family="Barlow Condensed" font-weight="700" font-size="8" fill="#C8D4A0" letter-spacing="1">VIRTUAL COMMISSIONING ENVIRONMENT</text>
+      <rect x="498" y="77" width="85" height="24" rx="2" fill="#3D4826" stroke="#5C6B3A"/>
+      <text x="540" y="93" text-anchor="middle" font-family="Barlow Condensed" font-weight="700" font-size="7.5" fill="#C8D4A0">TIA Portal V20</text>
+      <rect x="595" y="77" width="95" height="24" rx="2" fill="#3D4826" stroke="#5C6B3A"/>
+      <text x="642" y="93" text-anchor="middle" font-family="Barlow Condensed" font-weight="700" font-size="7.5" fill="#C8D4A0">PLCSIM Advanced</text>
+      <rect x="702" y="77" width="80" height="24" rx="2" fill="#3D4826" stroke="#5C6B3A"/>
+      <text x="742" y="93" text-anchor="middle" font-family="Barlow Condensed" font-weight="700" font-size="7.5" fill="#C8D4A0">Siemens NX</text>
+      <rect x="794" y="77" width="97" height="24" rx="2" fill="#3D4826" stroke="#5C6B3A"/>
+      <text x="842" y="93" text-anchor="middle" font-family="Barlow Condensed" font-weight="700" font-size="7.5" fill="#C8D4A0">Robotic Suite</text>
+      <!-- data packets -->
+      <circle r="3.5" fill="#E8A5A0"><animateMotion dur="3.5s" repeatCount="indefinite" path="M132,77 L175,77"/><animate attributeName="opacity" values="0;1;1;0" dur="3.5s" repeatCount="indefinite"/></circle>
+      <circle r="3" fill="#C8D4A0"><animateMotion dur="4s" repeatCount="indefinite" begin="1s" path="M275,77 L320,77"/><animate attributeName="opacity" values="0;1;1;0" dur="4s" repeatCount="indefinite" begin="1s"/></circle>
+      <circle r="3" fill="#C8D4A0"><animateMotion dur="3.5s" repeatCount="indefinite" begin="2s" path="M440,77 L485,77"/><animate attributeName="opacity" values="0;1;1;0" dur="3.5s" repeatCount="indefinite" begin="2s"/></circle>
+    </svg>
+  </div>
+</section>
+
+<!-- UNIFIED TIMELINE -->
+<section id="timeline">
+  <div class="tl-header fade-up">
+    <p class="section-lbl">Step-by-step walkthrough</p>
+    <h2>The <span class="a">Development</span><br>Journey</h2>
+    <p>Click any step to expand the full technical detail, decisions made, and what happened.</p>
+  </div>
+
+  <div class="unified-tl">
+
+    <!-- STEP 1 -->
+    <div class="tl-step fade-up">
+      <div class="tl-step-dot success">S1</div>
+      <div class="tl-card">
+        <div class="tl-card-header" onclick="toggleCard(this)">
+          <div class="tl-card-meta">
+            <div class="tl-step-week">Stage 01 · Research & Architecture Design</div>
+            <h3>Feasibility Study & System Design</h3>
+            <p class="tl-card-summary">Both sides of the team investigated whether connecting a live production line to a virtual commissioning environment via IoT was technically feasible — and designed the architecture to do it.</p>
+            <div class="tl-tags">
+              <span class="tl-tag g">Complete</span>
+              <span class="tl-tag n">OPC-UA</span>
+              <span class="tl-tag n">MQTT</span>
+              <span class="tl-tag n">Purdue Model</span>
+              <span class="tl-tag b">Both sides</span>
+            </div>
+          </div>
+          <button class="tl-toggle" aria-label="Expand">+</button>
+        </div>
+        <div class="tl-card-body">
+          <div class="tl-card-inner">
+            <div class="detail-grid">
+              <div class="detail-block">
+                <div class="db-lbl">IoT Side — What was researched</div>
+                <ul>
+                  <li>Evaluated OPC-UA as the acquisition protocol from the Festo CP Lab — chosen for its structured data model and compatibility with industrial systems.</li>
+                  <li>Investigated MQTT as the cloud transport layer — chosen for its lightweight pub/sub model, perfect for IoT over unreliable networks.</li>
+                  <li>Reviewed the <code>Purdue Model</code> for OT/IT cybersecurity separation: physical layer, control layer, and cloud layer should be isolated.</li>
+                  <li>Selected HiveMQ Cloud as broker for its MQTT over TLS support and free tier for prototyping.</li>
+                </ul>
+              </div>
+              <div class="detail-block">
+                <div class="db-lbl">Virtual Commissioning Side — What was researched</div>
+                <ul>
+                  <li>Reviewed Siemens NX MCD (Mechatronic Concept Designer) as the digital twin environment for signal-based simulation.</li>
+                  <li>Confirmed TIA Portal V20 + PLCSIM Advanced as the PLC emulation stack — enabling virtual PLC running without physical hardware.</li>
+                  <li>Identified Simatic Robotic Suite as the robot programming layer — key advantage: vendor-agnostic, supports multiple robot brands.</li>
+                  <li>Defined OPC-UA as the handshake protocol between the MQTT subscriber and the virtual PLC.</li>
+                </ul>
+              </div>
+              <div class="detail-block dark">
+                <div class="db-lbl">Architecture Decision</div>
+                <p>The two-PC architecture was defined: PC 1 handles all physical data acquisition; PC 2 is fully dedicated to the virtual environment. HiveMQ acts as the secure bridge between them, keeping OT and IT layers separated per the Purdue Model.</p>
+              </div>
+              <div class="detail-block rose">
+                <div class="db-lbl">Key challenge identified early</div>
+                <p>The main technical challenge anticipated: <strong>data format translation</strong>. MQTT delivers JSON payloads; OPC-UA on PC 2 expects a structured node model. Node-RED was selected as the transformation middleware to bridge this gap.</p>
+              </div>
+            </div>
+            <div class="img-placeholder light">
+              <div class="ip-icon">🖼</div>
+              <span>Screenshot placeholder — Architecture diagram / research notes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="tl-step fade-up">
+      <div class="tl-step-dot success">S2</div>
+      <div class="tl-card">
+        <div class="tl-card-header" onclick="toggleCard(this)">
+          <div class="tl-card-meta">
+            <div class="tl-step-week">Stage 02 · IoT Side — PC 1</div>
+            <h3>OPC-UA Server & Node-RED Pipeline</h3>
+            <p class="tl-card-summary">Setting up the data acquisition side: extracting live CP Lab data via OPC-UA, transforming it in Node-RED, and publishing to HiveMQ via MQTT over TLS.</p>
+            <div class="tl-tags">
+              <span class="tl-tag g">Complete</span>
+              <span class="tl-tag n">OPC-UA</span>
+              <span class="tl-tag n">Node-RED</span>
+              <span class="tl-tag n">HiveMQ</span>
+              <span class="tl-tag b">PC 1</span>
+            </div>
+          </div>
+          <button class="tl-toggle" aria-label="Expand">+</button>
+        </div>
+        <div class="tl-card-body">
+          <div class="tl-card-inner">
+            <div class="detail-grid">
+              <div class="detail-block">
+                <div class="db-lbl">OPC-UA Server Setup</div>
+                <ul>
+                  <li>Configured the OPC-UA server connected to the Festo CP Lab to expose live sensor and actuator data as addressable nodes.</li>
+                  <li>Mapped relevant process variables (conveyor states, sensor readings, station signals) to OPC-UA node addresses.</li>
+                  <li>Tested direct OPC-UA subscription using UA Expert to confirm data was being published correctly before moving to Node-RED.</li>
+                </ul>
+              </div>
+              <div class="detail-block">
+                <div class="db-lbl">Node-RED: JSON → OPC-UA Transform</div>
+                <ul>
+                  <li>MQTT messages from HiveMQ arrive as raw JSON payloads — OPC-UA on PC 2 cannot consume JSON directly.</li>
+                  <li>Node-RED flow extracts fields from the JSON object and maps each value to the corresponding OPC-UA node address.</li>
+                  <li>This was the most technically demanding transformation: maintaining data types (bool, int, float) across the protocol boundary.</li>
+                  <li>Tested multiple Node-RED node configurations until data integrity was confirmed end-to-end.</li>
+                </ul>
+              </div>
+              <div class="detail-block dark">
+                <div class="db-lbl">MQTT/TLS — HiveMQ Configuration</div>
+                <p>MQTT broker configured on HiveMQ Cloud with TLS encryption. Credentials and certificates managed per Purdue Model security requirements. The broker receives publications from PC 1 and delivers them to subscribers on PC 2. Connection stability was tested across sessions.</p>
+              </div>
+              <div class="detail-block rose">
+                <div class="db-lbl">Constraint encountered</div>
+                <p>University computers do not grant admin rights — <strong>Node-RED with OPC-UA nodes could not be installed</strong> on the lab machines directly. The pipeline was designed and validated on personal hardware, and the OPC-UA behaviour was demonstrated using UA Expert as a subscriber proxy.</p>
+              </div>
+            </div>
+            <div class="img-placeholder light">
+              <div class="ip-icon">🖼</div>
+              <span>Screenshot placeholder — Node-RED flow / HiveMQ broker dashboard</span>
+            </div>
+            <div class="outcome-banner">
+              <div class="ob-icon">✅</div>
+              <div class="ob-text"><strong>Outcome:</strong> End-to-end data flow validated. CP Lab data travels from OPC-UA server → Node-RED → MQTT/TLS → HiveMQ → subscriber. Communication confirmed working with UA Expert as the OPC-UA client on PC 2.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="tl-step fade-up">
+      <div class="tl-step-dot success">S3</div>
+      <div class="tl-card">
+        <div class="tl-card-header" onclick="toggleCard(this)">
+          <div class="tl-card-meta">
+            <div class="tl-step-week">Stage 03 · Virtual Side — PC 2</div>
+            <h3>Siemens NX Digital Twin & Robot Programming</h3>
+            <p class="tl-card-summary">Building the virtual commissioning environment: configuring the NX digital twin of the CP Lab, programming the robot in Simatic Robotic Suite, and mapping all I/O signals for PLC synchronisation.</p>
+            <div class="tl-tags">
+              <span class="tl-tag g">Complete</span>
+              <span class="tl-tag n">Siemens NX</span>
+              <span class="tl-tag n">Simatic Robotic Suite</span>
+              <span class="tl-tag n">Signal Mapping</span>
+              <span class="tl-tag b">PC 2</span>
+            </div>
+          </div>
+          <button class="tl-toggle" aria-label="Expand">+</button>
+        </div>
+        <div class="tl-card-body">
+          <div class="tl-card-inner">
+            <div class="detail-grid">
+              <div class="detail-block">
+                <div class="db-lbl">Simatic Robotic Suite — Robot Programming</div>
+                <ul>
+                  <li>Imported the reference frame for the CP Lab output station into Simatic Robotic Suite.</li>
+                  <li>Defined and validated the robot pickup points — the exact Cartesian coordinates where the robot must pick and place parts.</li>
+                  <li>Programmed the point path sequence: the ordered list of positions the robot travels through for each cycle.</li>
+                  <li>Simatic Robotic Suite is vendor-agnostic — this same configuration can be applied to robots from KUKA, ABB, Fanuc, and others, not just Siemens hardware.</li>
+                </ul>
+              </div>
+              <div class="detail-block">
+                <div class="db-lbl">Siemens NX — Digital Twin Configuration</div>
+                <ul>
+                  <li>Replicated the robot positioning defined in Simatic Robotic Suite inside the Siemens NX MCD model.</li>
+                  <li>Configured all relevant signals in the NX file: input signals (triggers from PLC) and output signals (feedback to PLC).</li>
+                  <li>Each conveyor station, sensor, and actuator from the physical CP Lab was represented as a kinematic body with associated signal connections.</li>
+                  <li>The NX model was validated to confirm it responds correctly when signals are toggled — matching expected physical behaviour.</li>
+                </ul>
+              </div>
+              <div class="detail-block dark">
+                <div class="db-lbl">NX ↔ Simatic Robotic Suite Integration</div>
+                <p>The NX environment and Simatic Robotic Suite share a common signal interface. Robot movements programmed in Simatic Robotic Suite are reflected in the NX simulation in real time. This was validated by sending signals from TIA Portal through PLCSIM Advanced and observing correct movement response in both environments simultaneously.</p>
+              </div>
+              <div class="detail-block rose">
+                <div class="db-lbl">Design decision: no supports</div>
+                <p>The robot program was built to operate <strong>without relying on HMI trigger signals</strong> as a contingency plan — anticipating the licensing issue with HMI that was later encountered. This allowed the cell to demonstrate full automatic functioning despite the constraint.</p>
+              </div>
+            </div>
+            <div class="img-placeholder light">
+              <div class="ip-icon">🖼</div>
+              <span>Screenshot placeholder — Siemens NX model / Simatic Robotic Suite pickup points</span>
+            </div>
+            <div class="outcome-banner">
+              <div class="ob-icon">✅</div>
+              <div class="ob-text"><strong>Outcome:</strong> Robot program validated in Simatic Robotic Suite. NX digital twin configured with all CP Lab signals. NX ↔ Robotic Suite communication confirmed — both environments respond correctly to PLC signals.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="tl-step fade-up">
+      <div class="tl-step-dot partial">S4</div>
+      <div class="tl-card">
+        <div class="tl-card-header" onclick="toggleCard(this)">
+          <div class="tl-card-meta">
+            <div class="tl-step-week">Stage 04 · Integration — Both sides</div>
+            <h3>TIA Portal Programming & Full System Validation</h3>
+            <p class="tl-card-summary">Connecting the IoT data pipeline to the virtual commissioning environment: programming the PLC in TIA Portal, validating the OPC-UA handshake, and demonstrating the full system working end-to-end.</p>
+            <div class="tl-tags">
+              <span class="tl-tag g">Complete</span>
+              <span class="tl-tag n">TIA Portal V20</span>
+              <span class="tl-tag n">PLCSIM Advanced</span>
+              <span class="tl-tag r">Licensing constraints</span>
+              <span class="tl-tag b">Both sides</span>
+            </div>
+          </div>
+          <button class="tl-toggle" aria-label="Expand">+</button>
+        </div>
+        <div class="tl-card-body">
+          <div class="tl-card-inner">
+            <div class="detail-grid">
+              <div class="detail-block">
+                <div class="db-lbl">TIA Portal V20 — PLC Programming</div>
+                <ul>
+                  <li>Programmed the PLC logic in TIA Portal V20 to control the full cell sequence: conveyor movements, station triggers, and robot activation.</li>
+                  <li>Configured the OPC-UA server within TIA Portal so that the PLC's data model is exposed and subscribable by external clients.</li>
+                  <li>Mapped PLC output tags to the NX signal interface — each signal in NX corresponds to a tag in the TIA Portal program.</li>
+                  <li>PLCSIM Advanced runs the PLC program virtually — no physical hardware required for validation.</li>
+                </ul>
+              </div>
+              <div class="detail-block">
+                <div class="db-lbl">OPC-UA Handshake Validation</div>
+                <ul>
+                  <li>The intended validation was: CP Lab OPC-UA data → Node-RED → MQTT → HiveMQ → PC 2 → OPC-UA to TIA Portal.</li>
+                  <li>Due to university admin rights restrictions, TIA Portal could not be installed on lab PCs and Node-RED OPC-UA nodes were inaccessible.</li>
+                  <li><strong>Workaround:</strong> UA Expert was used as an OPC-UA subscriber to simulate the PLC subscriber behaviour — confirming that data arrives correctly at the OPC-UA endpoint on PC 2.</li>
+                  <li>The OPC-UA handshake was fully validated: data structure, node addresses, and data types confirmed correct.</li>
+                </ul>
+              </div>
+              <div class="detail-block dark">
+                <div class="db-lbl">HMI Licensing Issue & Workaround</div>
+                <p>The university's Siemens license expired mid-project, removing access to the HMI component. The HMI was the intended source of the trigger signal that activates the robot's point path sequence. <strong>Workaround:</strong> an alternative PLC program was developed that demonstrates automatic cell functioning — all components (conveyor, robot, NX twin) operate in sequence, demonstrating full system feasibility even without the HMI trigger.</p>
+              </div>
+              <div class="detail-block rose">
+                <div class="db-lbl">What was demonstrated</div>
+                <ul>
+                  <li>NX and Simatic Robotic Suite working simultaneously with correct signal exchange.</li>
+                  <li>PLC signals correctly driving robot movements visible in both virtual environments.</li>
+                  <li>OPC-UA data flow validated end-to-end with UA Expert.</li>
+                  <li>Automatic cell cycle functioning — demonstrating the full architecture is viable.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="img-placeholder light">
+              <div class="ip-icon">🖼</div>
+              <span>Screenshot placeholder — TIA Portal program / UA Expert OPC-UA validation / NX + Robotic Suite running</span>
+            </div>
+            <div class="outcome-banner partial">
+              <div class="ob-icon">⚠️</div>
+              <div class="ob-text"><strong>Outcome:</strong> Full system feasibility demonstrated. OPC-UA handshake validated via UA Expert. NX ↔ Simatic Robotic Suite ↔ TIA Portal communication confirmed. The intended HMI-triggered sequence could not be completed due to license expiry — replaced with an automatic sequence program that demonstrates all components working correctly.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end unified-tl -->
+</section>
+
+<!-- KEY FINDINGS -->
+<section id="findings">
+  <h2 class="fade-up">Key <span class="a">Findings</span></h2>
+  <div class="findings-grid fade-up">
+    <div class="finding-card">
+      <div class="fc-num">01</div>
+      <div class="fc-title">IoT Handshake Works</div>
+      <p class="fc-text">End-to-end OPC-UA → Node-RED → MQTT/TLS → HiveMQ → OPC-UA data flow was validated. Real CP Lab data travels to the virtual environment correctly, with data types and node addresses preserved across the protocol boundary.</p>
+      <span class="fc-tag">Validated ✓</span>
+    </div>
+    <div class="finding-card">
+      <div class="fc-num">02</div>
+      <div class="fc-title">Virtual Cell is Functional</div>
+      <p class="fc-text">NX, Simatic Robotic Suite and TIA Portal work together as expected. Signals are sent and received correctly. The robot performs its programmed sequence. The digital twin responds to PLC commands as the physical system would.</p>
+      <span class="fc-tag">Validated ✓</span>
+    </div>
+    <div class="finding-card">
+      <div class="fc-num">03</div>
+      <div class="fc-title">JSON→OPC-UA is the Hard Part</div>
+      <p class="fc-text">The most technically demanding step was transforming MQTT JSON payloads into OPC-UA structured data. Node-RED solves this elegantly — but requires careful field mapping and data-type management to maintain integrity across protocols.</p>
+      <span class="fc-tag">Key insight</span>
+    </div>
+    <div class="finding-card">
+      <div class="fc-num">04</div>
+      <div class="fc-title">Licensing is a Real Barrier</div>
+      <p class="fc-text">University licensing and admin rights restrictions prevented full end-to-end PLC validation on lab machines. This is a real-world constraint any organisation faces — the project demonstrates why open protocols (OPC-UA, MQTT) reduce vendor dependency.</p>
+      <span class="fc-tag r">Constraint</span>
+    </div>
+    <div class="finding-card">
+      <div class="fc-num">05</div>
+      <div class="fc-title">Vendor-Agnostic by Design</div>
+      <p class="fc-text">Simatic Robotic Suite supports KUKA, ABB, Fanuc, and others — not just Siemens robots. OPC-UA and MQTT are open standards. The architecture is not locked to any vendor and can be replicated with different hardware combinations.</p>
+      <span class="fc-tag">Architecture strength</span>
+    </div>
+    <div class="finding-card">
+      <div class="fc-num">06</div>
+      <div class="fc-title">Cybersecurity Matters</div>
+      <p class="fc-text">MQTT over TLS on HiveMQ Cloud, following the Purdue Model, provides a solid baseline. The architecture naturally separates OT (physical line) from IT (cloud and virtual env), reducing attack surface — though VPN and firewall layers would strengthen it further.</p>
+      <span class="fc-tag">Purdue Model</span>
+    </div>
+  </div>
+</section>
+
+<!-- CHALLENGES TABLE -->
+<section id="challenges">
+  <table class="ch-table fade-up">
+    <tr>
+      <td class="ch-num">01</td>
+      <td class="ch-title">Admin Rights on Lab PCs</td>
+      <td class="ch-text">University machines do not permit software installation without admin rights. Node-RED OPC-UA nodes and TIA Portal could not be deployed on lab computers, limiting where the pipeline could run.</td>
+      <td class="ch-status"><span class="status-pill workaround">Workaround</span></td>
+    </tr>
+    <tr>
+      <td class="ch-num">02</td>
+      <td class="ch-title">JSON → OPC-UA Transform</td>
+      <td class="ch-text">MQTT delivers unstructured JSON; OPC-UA expects typed, node-addressed data. Building a reliable Node-RED mapping that preserves data types across the protocol boundary required significant iteration.</td>
+      <td class="ch-status"><span class="status-pill solved">Solved</span></td>
+    </tr>
+    <tr>
+      <td class="ch-num">03</td>
+      <td class="ch-title">HMI License Expiry</td>
+      <td class="ch-text">The university's Siemens license expired during the project, removing access to the HMI. This prevented the HMI-triggered robot sequence from being completed as originally designed.</td>
+      <td class="ch-status"><span class="status-pill workaround">Workaround</span></td>
+    </tr>
+    <tr>
+      <td class="ch-num">04</td>
+      <td class="ch-title">OPC-UA PLC Validation</td>
+      <td class="ch-text">Direct TIA Portal ↔ OPC-UA validation on lab hardware was blocked. UA Expert was used as an OPC-UA subscriber to simulate the PLC behaviour and confirm data arrives correctly at the correct node addresses.</td>
+      <td class="ch-status"><span class="status-pill solved">Solved</span></td>
+    </tr>
+  </table>
+</section>
+
+<!-- CTA -->
+<div class="cta-banner fade-up">
+  <div>
+    <h3>See the Full<br>Analysis</h3>
+    <p>Results, reflections, and future development</p>
+  </div>
+  <div class="cta-links">
+    <a href="background.html" class="cta-btn lt">← Background</a>
+    <a href="results.html" class="cta-btn dk">Results & Analysis →</a>
+  </div>
+</div>
+
+<footer>
+  <div>
+    <div class="foot-logo">IoT Virtual Commissioning</div>
+    <p>Siemens Xcelerator 2025 · Paniz Etemad Mazaheri &amp; Analucia Vera</p>
+  </div>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="background.html">Background</a>
+    <a href="development.html">Development</a>
+    <a href="results.html">Results</a>
+  </div>
+</footer>
+
+<script>
+  function toggleCard(header) {
+    const body = header.nextElementSibling;
+    const btn = header.querySelector('.tl-toggle');
+    const isOpen = body.classList.contains('open');
+    body.classList.toggle('open', !isOpen);
+    btn.textContent = isOpen ? '+' : '−';
+    btn.style.background = isOpen ? '' : 'var(--olive)';
+    btn.style.color = isOpen ? '' : 'var(--cream)';
+  }
+  const obs = new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:.1});
+  document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
