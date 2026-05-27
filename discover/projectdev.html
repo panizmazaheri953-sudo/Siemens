@@ -451,266 +451,603 @@
 </section>
 
 
-<!-- UNIFIED TIMELINE -->
-<section id="timeline">
-  <div class="tl-header fade-up">
+
+<!-- FULL WIDTH HORIZONTAL TIMELINE WITH GALLERY BUTTONS -->
+<section id="timeline" style="width: 100%; max-width: 100%; overflow-x: auto; padding: 2rem 0;">
+  <div class="tl-header fade-up" style="text-align: center; margin-bottom: 3rem;">
     <p class="section-lbl">Step-by-step walkthrough</p>
     <h2>The <span class="a">Development</span><br>Journey</h2>
     <p>Click any step to expand the full technical detail, decisions made, and what happened.</p>
   </div>
 
-  <div class="unified-tl">
+  <div class="horizontal-tl-full">
 
     <!-- STEP 1 -->
-    <div class="tl-step fade-up">
-      <div class="tl-step-dot success">S1</div>
-      <div class="tl-card">
-        <div class="tl-card-header" onclick="toggleCard(this)">
-          <div class="tl-card-meta">
-            <div class="tl-step-week">Stage 01 · Research & Architecture Design</div>
+    <div class="tl-step-full fade-up">
+      <div class="tl-step-connector-full">
+        <div class="tl-step-dot-full success">1</div>
+        <div class="tl-step-line-full"></div>
+      </div>
+      <div class="tl-card-full">
+        <div class="tl-card-header-full" onclick="toggleCardFull(this)">
+          <div class="tl-card-meta-full">
+            <div class="tl-step-week-full">Stage 01 · Research & Architecture Design</div>
             <h3>Feasibility Study & System Design</h3>
-            <p class="tl-card-summary">Both sides of the team investigated whether connecting a live production line to a virtual commissioning environment via IoT was technically feasible — and designed the architecture to do it.</p>
-            <div class="tl-tags">
-              <span class="tl-tag g">Complete</span>
-              <span class="tl-tag n">OPC-UA</span>
-              <span class="tl-tag n">MQTT</span>
-              <span class="tl-tag n">Purdue Model</span>
-              <span class="tl-tag b">Both sides</span>
+            <p class="tl-card-summary-full">Both sides investigated whether connecting a live production line to a virtual commissioning environment via IoT was technically feasible — and designed the architecture to do it.</p>
+            <div class="tl-tags-full">
+              <span class="tl-tag-full g">Complete</span>
+              <span class="tl-tag-full n">OPC-UA</span>
+              <span class="tl-tag-full n">MQTT</span>
+              <span class="tl-tag-full n">Purdue Model</span>
             </div>
           </div>
-          <button class="tl-toggle" aria-label="Expand">+</button>
+          <button class="tl-toggle-full" aria-label="Expand">+</button>
         </div>
-        <div class="tl-card-body">
-          <div class="tl-card-inner">
-            <div class="detail-grid">
-              <div class="detail-block">
-                <div class="db-lbl">IoT Side — What was researched</div>
+        <div class="tl-card-body-full">
+          <div class="tl-card-inner-full">
+            <div class="detail-grid-full">
+              <div class="detail-block-full">
+                <div class="db-lbl-full">IoT Side — What was researched</div>
                 <ul>
-                  <li>Evaluated OPC-UA as the acquisition protocol from the Festo CP Lab — chosen for its structured data model and compatibility with industrial systems.</li>
-                  <li>Investigated MQTT as the cloud transport layer — chosen for its lightweight pub/sub model, perfect for IoT over unreliable networks.</li>
-                  <li>Reviewed the <code>Purdue Model</code> for OT/IT cybersecurity separation: physical layer, control layer, and cloud layer should be isolated.</li>
-                  <li>Selected HiveMQ Cloud as broker for its MQTT over TLS support and free tier for prototyping.</li>
+                  <li>Evaluated OPC-UA as the acquisition protocol from the Festo CP Lab.</li>
+                  <li>Investigated MQTT as the cloud transport layer.</li>
+                  <li>Reviewed the Purdue Model for OT/IT cybersecurity separation.</li>
+                  <li>Selected HiveMQ Cloud as broker for MQTT over TLS support.</li>
                 </ul>
               </div>
-              <div class="detail-block">
-                <div class="db-lbl">Virtual Commissioning Side — What was researched</div>
+              <div class="detail-block-full">
+                <div class="db-lbl-full">Virtual Commissioning Side — What was researched</div>
                 <ul>
-                  <li>Reviewed Siemens NX MCD (Mechatronic Concept Designer) as the digital twin environment for signal-based simulation.</li>
-                  <li>Confirmed TIA Portal V20 + PLCSIM Advanced as the PLC emulation stack — enabling virtual PLC running without physical hardware.</li>
-                  <li>Identified Simatic Robotic Suite as the robot programming layer — key advantage: vendor-agnostic, supports multiple robot brands.</li>
-                  <li>Defined OPC-UA as the handshake protocol between the MQTT subscriber and the virtual PLC.</li>
+                  <li>Reviewed Siemens NX MCD as the digital twin environment.</li>
+                  <li>Confirmed TIA Portal V20 + PLCSIM Advanced as the PLC emulation stack.</li>
+                  <li>Identified Simatic Robotic Suite as the robot programming layer.</li>
+                  <li>Defined OPC-UA as the handshake protocol.</li>
                 </ul>
               </div>
-              <div class="detail-block dark">
-                <div class="db-lbl">Architecture Decision</div>
-                <p>The two-PC architecture was defined: PC 1 handles all physical data acquisition; PC 2 is fully dedicated to the virtual environment. HiveMQ acts as the secure bridge between them, keeping OT and IT layers separated per the Purdue Model.</p>
+              <div class="detail-block-full dark">
+                <div class="db-lbl-full">Architecture Decision</div>
+                <p>The two-PC architecture was defined: PC 1 handles physical data acquisition; PC 2 is dedicated to the virtual environment. HiveMQ acts as the secure bridge.</p>
               </div>
-              <div class="detail-block rose">
-                <div class="db-lbl">Key challenge identified early</div>
-                <p>The main technical challenge anticipated: <strong>data format translation</strong>. MQTT delivers JSON payloads; OPC-UA on PC 2 expects a structured node model. Node-RED was selected as the transformation middleware to bridge this gap.</p>
-              </div>
-            </div>
-            <div class="img-placeholder light">
-              <div class="ip-icon">🖼</div>
-              <span>Screenshot placeholder — Architecture diagram / research notes</span>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- STEP 2 -->
-    <div class="tl-step fade-up">
-      <div class="tl-step-dot success">S2</div>
-      <div class="tl-card">
-        <div class="tl-card-header" onclick="toggleCard(this)">
-          <div class="tl-card-meta">
-            <div class="tl-step-week">Stage 02 · IoT Side — PC 1</div>
+    <!-- STEP 2 - WITH GALLERY BUTTON -->
+    <div class="tl-step-full fade-up">
+      <div class="tl-step-connector-full">
+        <div class="tl-step-dot-full success">2</div>
+        <div class="tl-step-line-full"></div>
+      </div>
+      <div class="tl-card-full">
+        <div class="tl-card-header-full" onclick="toggleCardFull(this)">
+          <div class="tl-card-meta-full">
+            <div class="tl-step-week-full">Stage 02 · IoT Side — PC 1</div>
             <h3>OPC-UA Server & Node-RED Pipeline</h3>
-            <p class="tl-card-summary">Setting up the data acquisition side: extracting live CP Lab data via OPC-UA, transforming it in Node-RED, and publishing to HiveMQ via MQTT over TLS.</p>
-            <div class="tl-tags">
-              <span class="tl-tag g">Complete</span>
-              <span class="tl-tag n">OPC-UA</span>
-              <span class="tl-tag n">Node-RED</span>
-              <span class="tl-tag n">HiveMQ</span>
-              <span class="tl-tag b">PC 1</span>
+            <p class="tl-card-summary-full">Setting up the data acquisition side: extracting live CP Lab data via OPC-UA, transforming it in Node-RED, and publishing to HiveMQ via MQTT over TLS.</p>
+            <div class="tl-tags-full">
+              <span class="tl-tag-full g">Complete</span>
+              <span class="tl-tag-full n">OPC-UA</span>
+              <span class="tl-tag-full n">Node-RED</span>
+              <span class="tl-tag-full n">HiveMQ</span>
             </div>
           </div>
-          <button class="tl-toggle" aria-label="Expand">+</button>
+          <button class="tl-toggle-full" aria-label="Expand">+</button>
         </div>
-        <div class="tl-card-body">
-          <div class="tl-card-inner">
-            <div class="detail-grid">
-              <div class="detail-block">
-                <div class="db-lbl">OPC-UA Server Setup</div>
+        <div class="tl-card-body-full">
+          <div class="tl-card-inner-full">
+            <div class="detail-grid-full">
+              <div class="detail-block-full">
+                <div class="db-lbl-full">OPC-UA Server Setup</div>
                 <ul>
-                  <li>Configured the OPC-UA server connected to the Festo CP Lab to expose live sensor and actuator data as addressable nodes.</li>
-                  <li>Mapped relevant process variables (conveyor states, sensor readings, station signals) to OPC-UA node addresses.</li>
-                  <li>Tested direct OPC-UA subscription using UA Expert to confirm data was being published correctly before moving to Node-RED.</li>
+                  <li>Configured OPC-UA server to expose live CP Lab sensor/actuator data.</li>
+                  <li>Mapped process variables to OPC-UA node addresses.</li>
+                  <li>Tested direct subscription using UA Expert.</li>
                 </ul>
               </div>
-              <div class="detail-block">
-                <div class="db-lbl">Node-RED: JSON → OPC-UA Transform</div>
+              <div class="detail-block-full">
+                <div class="db-lbl-full">Node-RED: JSON → OPC-UA Transform</div>
                 <ul>
-                  <li>MQTT messages from HiveMQ arrive as raw JSON payloads — OPC-UA on PC 2 cannot consume JSON directly.</li>
-                  <li>Node-RED flow extracts fields from the JSON object and maps each value to the corresponding OPC-UA node address.</li>
-                  <li>This was the most technically demanding transformation: maintaining data types (bool, int, float) across the protocol boundary.</li>
-                  <li>Tested multiple Node-RED node configurations until data integrity was confirmed end-to-end.</li>
+                  <li>MQTT JSON payloads transformed to OPC-UA structured nodes.</li>
+                  <li>Maintained data types (bool, int, float) across protocol boundary.</li>
                 </ul>
               </div>
-              <div class="detail-block dark">
-                <div class="db-lbl">MQTT/TLS — HiveMQ Configuration</div>
-                <p>MQTT broker configured on HiveMQ Cloud with TLS encryption. Credentials and certificates managed per Purdue Model security requirements. The broker receives publications from PC 1 and delivers them to subscribers on PC 2. Connection stability was tested across sessions.</p>
-              </div>
-              <div class="detail-block rose">
-                <div class="db-lbl">Constraint encountered</div>
-                <p>University computers do not grant admin rights — <strong>Node-RED with OPC-UA nodes could not be installed</strong> on the lab machines directly. The pipeline was designed and validated on personal hardware, and the OPC-UA behaviour was demonstrated using UA Expert as a subscriber proxy.</p>
+              <div class="detail-block-full dark">
+                <div class="db-lbl-full">MQTT/TLS — HiveMQ</div>
+                <p>Broker configured with TLS encryption per Purdue Model. Receives publications from PC 1, delivers to subscribers on PC 2.</p>
               </div>
             </div>
-            <div class="img-placeholder light">
-              <div class="ip-icon">🖼</div>
-              <span>Screenshot placeholder — Node-RED flow / HiveMQ broker dashboard</span>
+            <div class="outcome-banner-full">
+           
+              <div class="ob-text-full"><strong>Outcome:</strong> End-to-end data flow validated. Communication confirmed with UA Expert as OPC-UA client on PC 2.</div>
             </div>
-            <div class="outcome-banner">
-              <div class="ob-icon">✅</div>
-              <div class="ob-text"><strong>Outcome:</strong> End-to-end data flow validated. CP Lab data travels from OPC-UA server → Node-RED → MQTT/TLS → HiveMQ → subscriber. Communication confirmed working with UA Expert as the OPC-UA client on PC 2.</div>
+            <!-- GALLERY BUTTON FOR STEP 2 -->
+            <div class="gallery-button-container">
+              <button class="gallery-btn" onclick="scrollToGallery()">
+               
+                View Node-RED & HiveMQ Dashboard Screenshots
+                <span class="btn-arrow">→</span>
+              </button>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- STEP 3 -->
-    <div class="tl-step fade-up">
-      <div class="tl-step-dot success">S3</div>
-      <div class="tl-card">
-        <div class="tl-card-header" onclick="toggleCard(this)">
-          <div class="tl-card-meta">
-            <div class="tl-step-week">Stage 03 · Virtual Side — PC 2</div>
+    <!-- STEP 3 - WITH GALLERY BUTTON -->
+    <div class="tl-step-full fade-up">
+      <div class="tl-step-connector-full">
+        <div class="tl-step-dot-full success">3</div>
+        <div class="tl-step-line-full"></div>
+      </div>
+      <div class="tl-card-full">
+        <div class="tl-card-header-full" onclick="toggleCardFull(this)">
+          <div class="tl-card-meta-full">
+            <div class="tl-step-week-full">Stage 03 · Virtual Side — PC 2</div>
             <h3>Siemens NX Digital Twin & Robot Programming</h3>
-            <p class="tl-card-summary">Building the virtual commissioning environment: configuring the NX digital twin of the CP Lab, programming the robot in Simatic Robotic Suite, and mapping all I/O signals for PLC synchronisation.</p>
-            <div class="tl-tags">
-              <span class="tl-tag g">Complete</span>
-              <span class="tl-tag n">Siemens NX</span>
-              <span class="tl-tag n">Simatic Robotic Suite</span>
-              <span class="tl-tag n">Signal Mapping</span>
-              <span class="tl-tag b">PC 2</span>
+            <p class="tl-card-summary-full">Building the virtual commissioning environment: configuring the NX digital twin, programming the robot in Simatic Robotic Suite, and mapping I/O signals.</p>
+            <div class="tl-tags-full">
+              <span class="tl-tag-full g">Complete</span>
+              <span class="tl-tag-full n">Siemens NX</span>
+              <span class="tl-tag-full n">Simatic Robotic Suite</span>
+              <span class="tl-tag-full n">Signal Mapping</span>
             </div>
           </div>
-          <button class="tl-toggle" aria-label="Expand">+</button>
+          <button class="tl-toggle-full" aria-label="Expand">+</button>
         </div>
-        <div class="tl-card-body">
-          <div class="tl-card-inner">
-            <div class="detail-grid">
-              <div class="detail-block">
-                <div class="db-lbl">Simatic Robotic Suite — Robot Programming</div>
+        <div class="tl-card-body-full">
+          <div class="tl-card-inner-full">
+            <div class="detail-grid-full">
+              <div class="detail-block-full">
+                <div class="db-lbl-full">Simatic Robotic Suite</div>
                 <ul>
-                  <li>Imported the reference frame for the CP Lab output station into Simatic Robotic Suite.</li>
-                  <li>Defined and validated the robot pickup points — the exact Cartesian coordinates where the robot must pick and place parts.</li>
-                  <li>Programmed the point path sequence: the ordered list of positions the robot travels through for each cycle.</li>
-                  <li>Simatic Robotic Suite is vendor-agnostic — this same configuration can be applied to robots from KUKA, ABB, Fanuc, and others, not just Siemens hardware.</li>
+                  <li>Imported reference frame for CP Lab output station.</li>
+                  <li>Defined and validated robot pickup points.</li>
+                  <li>Programmed point path sequence — vendor-agnostic configuration.</li>
                 </ul>
               </div>
-              <div class="detail-block">
-                <div class="db-lbl">Siemens NX — Digital Twin Configuration</div>
+              <div class="detail-block-full">
+                <div class="db-lbl-full">Siemens NX Configuration</div>
                 <ul>
-                  <li>Replicated the robot positioning defined in Simatic Robotic Suite inside the Siemens NX MCD model.</li>
-                  <li>Configured all relevant signals in the NX file: input signals (triggers from PLC) and output signals (feedback to PLC).</li>
-                  <li>Each conveyor station, sensor, and actuator from the physical CP Lab was represented as a kinematic body with associated signal connections.</li>
-                  <li>The NX model was validated to confirm it responds correctly when signals are toggled — matching expected physical behaviour.</li>
+                  <li>Replicated robot positioning inside NX MCD model.</li>
+                  <li>Configured all signals: inputs from PLC, outputs to PLC.</li>
+                  <li>Validated NX response matches physical behaviour.</li>
                 </ul>
               </div>
-              <div class="detail-block dark">
-                <div class="db-lbl">NX ↔ Simatic Robotic Suite Integration</div>
-                <p>The NX environment and Simatic Robotic Suite share a common signal interface. Robot movements programmed in Simatic Robotic Suite are reflected in the NX simulation in real time. This was validated by sending signals from TIA Portal through PLCSIM Advanced and observing correct movement response in both environments simultaneously.</p>
-              </div>
-              <div class="detail-block rose">
-                <div class="db-lbl">Design decision: no supports</div>
-                <p>The robot program was built to operate <strong>without relying on HMI trigger signals</strong> as a contingency plan — anticipating the licensing issue with HMI that was later encountered. This allowed the cell to demonstrate full automatic functioning despite the constraint.</p>
+              <div class="detail-block-full dark">
+                <div class="db-lbl-full">NX ↔ Robotic Suite Integration</div>
+                <p>Robot movements programmed in Simatic Robotic Suite reflected in NX simulation in real time via shared signal interface.</p>
               </div>
             </div>
-            <div class="img-placeholder light">
-              <div class="ip-icon">🖼</div>
-              <span>Screenshot placeholder — Siemens NX model / Simatic Robotic Suite pickup points</span>
+            <div class="outcome-banner-full">
+             
+              <div class="ob-text-full"><strong>Outcome:</strong> Robot program validated. NX ↔ Robotic Suite communication confirmed — both respond correctly to PLC signals.</div>
             </div>
-            <div class="outcome-banner">
-              <div class="ob-icon">✅</div>
-              <div class="ob-text"><strong>Outcome:</strong> Robot program validated in Simatic Robotic Suite. NX digital twin configured with all CP Lab signals. NX ↔ Robotic Suite communication confirmed — both environments respond correctly to PLC signals.</div>
+            <!-- GALLERY BUTTON FOR STEP 3 -->
+            <div class="gallery-button-container">
+              <button class="gallery-btn" onclick="scrollToGallery()">
+               
+                Watch Demo Video and screenshots — Virtual Commissioning in Action
+                <span class="btn-arrow">→</span>
+              </button>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- STEP 4 -->
-    <div class="tl-step fade-up">
-      <div class="tl-step-dot partial">S4</div>
-      <div class="tl-card">
-        <div class="tl-card-header" onclick="toggleCard(this)">
-          <div class="tl-card-meta">
-            <div class="tl-step-week">Stage 04 · Integration — Both sides</div>
-            <h3>TIA Portal Programming & Full System Validation</h3>
-            <p class="tl-card-summary">Connecting the IoT data pipeline to the virtual commissioning environment: programming the PLC in TIA Portal, validating the OPC-UA handshake, and demonstrating the full system working end-to-end.</p>
-            <div class="tl-tags">
-              <span class="tl-tag g">Complete</span>
-              <span class="tl-tag n">TIA Portal V20</span>
-              <span class="tl-tag n">PLCSIM Advanced</span>
-              <span class="tl-tag r">Licensing constraints</span>
-              <span class="tl-tag b">Both sides</span>
+    <!-- STEP 4 - WITH GALLERY BUTTON -->
+    <div class="tl-step-full fade-up">
+      <div class="tl-step-connector-full">
+        <div class="tl-step-dot-full success">4</div>
+        <div class="tl-step-line-full"></div>
+      </div>
+      <div class="tl-card-full">
+        <div class="tl-card-header-full" onclick="toggleCardFull(this)">
+          <div class="tl-card-meta-full">
+            <div class="tl-step-week-full">Stage 04 · Integration — Both sides</div>
+            <h3>TIA Portal & Full System Validation</h3>
+            <p class="tl-card-summary-full">Connecting the IoT data pipeline to the virtual commissioning environment: programming the PLC and demonstrating the full system working end-to-end.</p>
+            <div class="tl-tags-full">
+              <span class="tl-tag-full g">Complete</span>
+              <span class="tl-tag-full n">TIA Portal V20</span>
+              <span class="tl-tag-full n">PLCSIM Advanced</span>
+              <span class="tl-tag-full r">Licensing constraints</span>
             </div>
           </div>
-          <button class="tl-toggle" aria-label="Expand">+</button>
+          <button class="tl-toggle-full" aria-label="Expand">+</button>
         </div>
-        <div class="tl-card-body">
-          <div class="tl-card-inner">
-            <div class="detail-grid">
-              <div class="detail-block">
-                <div class="db-lbl">TIA Portal V20 — PLC Programming</div>
+        <div class="tl-card-body-full">
+          <div class="tl-card-inner-full">
+            <div class="detail-grid-full">
+              <div class="detail-block-full">
+                <div class="db-lbl-full">TIA Portal V20</div>
                 <ul>
-                  <li>Programmed the PLC logic in TIA Portal V20 to control the full cell sequence: conveyor movements, station triggers, and robot activation.</li>
-                  <li>Configured the OPC-UA server within TIA Portal so that the PLC's data model is exposed and subscribable by external clients.</li>
-                  <li>Mapped PLC output tags to the NX signal interface — each signal in NX corresponds to a tag in the TIA Portal program.</li>
-                  <li>PLCSIM Advanced runs the PLC program virtually — no physical hardware required for validation.</li>
+                  <li>Programmed PLC logic for full cell sequence.</li>
+                  <li>Configured OPC-UA server within TIA Portal.</li>
+                  <li>Mapped PLC tags to NX signal interface.</li>
+                  <li>PLCSIM Advanced runs PLC program virtually.</li>
                 </ul>
               </div>
-              <div class="detail-block">
-                <div class="db-lbl">OPC-UA Handshake Validation</div>
+              <div class="detail-block-full">
+                <div class="db-lbl-full">OPC-UA Handshake Validation</div>
                 <ul>
-                  <li>The intended validation was: CP Lab OPC-UA data → Node-RED → MQTT → HiveMQ → PC 2 → OPC-UA to TIA Portal.</li>
-                  <li>Due to university admin rights restrictions, TIA Portal could not be installed on lab PCs and Node-RED OPC-UA nodes were inaccessible.</li>
-                  <li><strong>Workaround:</strong> UA Expert was used as an OPC-UA subscriber to simulate the PLC subscriber behaviour — confirming that data arrives correctly at the OPC-UA endpoint on PC 2.</li>
-                  <li>The OPC-UA handshake was fully validated: data structure, node addresses, and data types confirmed correct.</li>
+                  <li>UA Expert used as OPC-UA subscriber to simulate PLC behaviour.</li>
+                  <li>Data structure, node addresses, data types confirmed correct.</li>
                 </ul>
               </div>
-              <div class="detail-block dark">
-                <div class="db-lbl">HMI Licensing Issue & Workaround</div>
-                <p>The university's Siemens license expired mid-project, removing access to the HMI component. The HMI was the intended source of the trigger signal that activates the robot's point path sequence. <strong>Workaround:</strong> an alternative PLC program was developed that demonstrates automatic cell functioning — all components (conveyor, robot, NX twin) operate in sequence, demonstrating full system feasibility even without the HMI trigger.</p>
-              </div>
-              <div class="detail-block rose">
-                <div class="db-lbl">What was demonstrated</div>
-                <ul>
-                  <li>NX and Simatic Robotic Suite working simultaneously with correct signal exchange.</li>
-                  <li>PLC signals correctly driving robot movements visible in both virtual environments.</li>
-                  <li>OPC-UA data flow validated end-to-end with UA Expert.</li>
-                  <li>Automatic cell cycle functioning — demonstrating the full architecture is viable.</li>
-                </ul>
+              <div class="detail-block-full dark">
+                <div class="db-lbl-full">HMI Licensing Workaround</div>
+                <p>License expired — alternative PLC program developed demonstrating automatic cell functioning without HMI trigger.</p>
               </div>
             </div>
-            <div class="img-placeholder light">
-              <div class="ip-icon">🖼</div>
-              <span>Screenshot placeholder — TIA Portal program / UA Expert OPC-UA validation / NX + Robotic Suite running</span>
+            <div class="outcome-banner-full">
+         
+              <div class="ob-text-full"><strong>Outcome:</strong> Full system feasibility demonstrated. NX ↔ Simatic Robotic Suite ↔ TIA Portal communication confirmed.</div>
             </div>
-            <div class="outcome-banner partial">
-              <div class="ob-icon">⚠️</div>
-              <div class="ob-text"><strong>Outcome:</strong> Full system feasibility demonstrated. OPC-UA handshake validated via UA Expert. NX ↔ Simatic Robotic Suite ↔ TIA Portal communication confirmed. The intended HMI-triggered sequence could not be completed due to license expiry — replaced with an automatic sequence program that demonstrates all components working correctly.</div>
+            <!-- GALLERY BUTTON FOR STEP 4 -->
+            <div class="gallery-button-container">
+              <button class="gallery-btn" onclick="scrollToGallery()">
+           
+                View Final Results & Gallery
+                <span class="btn-arrow">→</span>
+              </button>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-  </div><!-- end unified-tl -->
+  </div><!-- end horizontal-tl-full -->
 </section>
+
+<style>
+/* FULL WIDTH HORIZONTAL TIMELINE STYLES */
+.horizontal-tl-full {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  gap: 1rem;
+  width: 100%;
+  overflow-x: auto;
+  padding: 1rem 0.5rem;
+  scrollbar-width: thin;
+}
+
+.tl-step-full {
+  flex: 1;
+  min-width: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Connector */
+.tl-step-connector-full {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+  width: 100%;
+  position: relative;
+}
+
+/* ALL DOTS - consistent green success styling */
+.tl-step-dot-full {
+  width: 48px;
+  height: 48px;
+  background: var(--olive);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--cream);
+  border: 3px solid var(--olive-light);
+  z-index: 2;
+  position: relative;
+}
+
+/* ALL STEPS HAVE THE SAME HORIZONTAL LINE */
+.tl-step-line-full {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--olive-light), var(--olive));
+  margin-top: -4px;
+  z-index: 1;
+}
+
+/* Card styling - consistent across all steps */
+.tl-card-full {
+  background: var(--cream);
+  border: 1px solid var(--olive-light);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+
+.tl-card-full:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+}
+
+.tl-card-header-full {
+  padding: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+  background: var(--cream);
+}
+
+.tl-card-meta-full {
+  flex: 1;
+}
+
+.tl-step-week-full {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--olive);
+  margin-bottom: 0.5rem;
+}
+
+.tl-card-meta-full h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.tl-card-summary-full {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--ink-mid);
+  margin-bottom: 0.75rem;
+}
+
+.tl-tags-full {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tl-tag-full {
+  padding: 0.2rem 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 12px;
+}
+
+.tl-tag-full.g {
+  background: var(--olive);
+  color: var(--cream);
+}
+
+.tl-tag-full.n {
+  background: var(--olive-light);
+  color: var(--olive-dark);
+}
+
+.tl-tag-full.r {
+  background: var(--rose-light);
+  color: var(--rose-dark);
+}
+
+.tl-toggle-full {
+  background: none;
+  border: 1px solid var(--olive-light);
+  border-radius: 20px;
+  width: 28px;
+  height: 28px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: var(--olive);
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.tl-toggle-full:hover {
+  background: var(--olive-light);
+}
+
+.tl-card-body-full {
+  display: none;
+  border-top: 1px solid var(--olive-light);
+  padding: 1.2rem;
+  background: var(--olive-pale);
+}
+
+.tl-card-body-full.open {
+  display: block;
+}
+
+.tl-card-inner-full {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.detail-grid-full {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.detail-block-full {
+  background: var(--cream);
+  border-radius: 12px;
+  padding: 0.8rem;
+}
+
+.detail-block-full.dark {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.detail-block-full.dark .db-lbl-full {
+  color: var(--rose);
+}
+
+.detail-block-full.dark li {
+  color: var(--olive-light);
+}
+
+.db-lbl-full {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--olive);
+  margin-bottom: 0.5rem;
+}
+
+.detail-block-full ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.detail-block-full li {
+  font-size: 0.7rem;
+  line-height: 1.5;
+  padding-left: 1rem;
+  position: relative;
+  margin-bottom: 0.3rem;
+  color: var(--ink-mid);
+}
+
+.detail-block-full li::before {
+  content: '▹';
+  position: absolute;
+  left: 0;
+  color: var(--rose);
+  font-size: 0.65rem;
+}
+
+.detail-block-full p {
+  font-size: 0.7rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.outcome-banner-full {
+  background: var(--olive);
+  border-radius: 12px;
+  padding: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.ob-icon-full {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.ob-text-full {
+  font-size: 0.7rem;
+  color: var(--cream);
+  line-height: 1.4;
+}
+
+/* GALLERY BUTTON STYLES */
+.gallery-button-container {
+  margin-top: 0.8rem;
+  text-align: center;
+}
+
+.gallery-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.7rem 1rem;
+  background: var(--ink);
+  color: var(--cream);
+  border: 1px solid var(--rose);
+  border-radius: 40px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.gallery-btn:hover {
+  background: var(--rose);
+  color: var(--ink);
+  border-color: var(--rose-dark);
+  transform: translateY(-2px);
+}
+
+.gallery-btn .btn-icon {
+  font-size: 0.9rem;
+}
+
+.gallery-btn .btn-arrow {
+  font-size: 0.9rem;
+  transition: transform 0.2s ease;
+}
+
+.gallery-btn:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+/* Responsive: scroll horizontally on smaller screens */
+@media (max-width: 1100px) {
+  .horizontal-tl-full {
+    justify-content: flex-start;
+    padding: 1rem;
+  }
+  
+  .tl-step-full {
+    min-width: 280px;
+  }
+}
+</style>
+
+<script>
+function toggleCardFull(header) {
+  const card = header.closest('.tl-card-full');
+  const body = card.querySelector('.tl-card-body-full');
+  const toggleBtn = header.querySelector('.tl-toggle-full');
+  
+  if (body.classList.contains('open')) {
+    body.classList.remove('open');
+    toggleBtn.textContent = '+';
+  } else {
+    body.classList.add('open');
+    toggleBtn.textContent = '−';
+  }
+}
+
+function scrollToGallery() {
+  const gallerySection = document.getElementById('gallery');
+  if (gallerySection) {
+    gallerySection.scrollIntoView({ behavior: 'smooth' });
+  } else {
+    // If gallery section doesn't exist yet, show alert or scroll to where it will be
+    alert('Gallery section coming soon with screenshots and videos of the implementation!');
+  }
+}
+</script>
 
 <!-- KEY FINDINGS -->
 <section id="findings">
