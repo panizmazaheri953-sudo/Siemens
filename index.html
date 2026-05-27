@@ -359,6 +359,563 @@
   <div class="ts-item"><span class="ts-dot"></span>UA Expert</div>
 </div>
 
+  
+<!-- Sección Challenge con íconos SVG estilo "Explore my work" -->
+<section id="challenge" style="padding: 6rem 4rem; background: var(--cream);">
+  
+  <!-- Encabezado -->
+  <div class="fade-up" style="max-width: 900px; margin: 0 auto 4rem auto; text-align: center;">
+    <p style="font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--olive); margin-bottom: 1rem;">THE CHALLENGE</p>
+    <h2 style="font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.1; margin-bottom: 1.5rem; color: var(--ink);">
+      Industrial Commissioning is Still <em style="color: var(--rose-dark);">Expensive</em>, 
+      <em style="color: var(--olive);">Centralized</em>, and 
+      <em style="color: var(--rose-dark);">Difficult to Scale</em>
+    </h2>
+    <p style="font-size: 1.1rem; line-height: 1.7; color: var(--ink-mid); max-width: 700px; margin: 0 auto;">
+      Traditional workflows are holding Industry 4.0 back. Here's what's broken:
+    </p>
+  </div>
+
+  <!-- Grid de tarjetas de problemas (5 problemas) -->
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-bottom: 4rem;">
+    
+    <!-- Tarjeta 1: PLC validation -->
+    <div class="challenge-card fade-up" style="background: var(--cream); border: 1px solid var(--olive-light); transition: transform 0.3s, box-shadow 0.3s; cursor: default;">
+      <div style="padding: 2rem;">
+        <!-- Icono SVG PLC -->
+        <div style="margin-bottom: 1.5rem;">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="12" width="32" height="24" rx="3" fill="none" stroke="var(--olive)" stroke-width="1.5"/>
+            <rect x="12" y="16" width="8" height="6" rx="1" fill="var(--olive-mid)" opacity="0.3"/>
+            <rect x="12" y="26" width="8" height="6" rx="1" fill="var(--olive-mid)" opacity="0.3"/>
+            <rect x="28" y="16" width="8" height="6" rx="1" fill="var(--rose)" opacity="0.3"/>
+            <rect x="28" y="26" width="8" height="6" rx="1" fill="var(--rose)" opacity="0.3"/>
+            <line x1="20" y1="19" x2="28" y2="19" stroke="var(--olive)" stroke-width="1" stroke-dasharray="2 2"/>
+            <line x1="20" y1="29" x2="28" y2="29" stroke="var(--olive)" stroke-width="1" stroke-dasharray="2 2"/>
+            <circle cx="36" cy="36" r="3" fill="none" stroke="var(--rose)" stroke-width="1.5"/>
+            <line x1="36" y1="33" x2="36" y2="24" stroke="var(--rose)" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3 style="font-family: var(--font-display); font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--ink);">PLC Validation</h3>
+        <p style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--rose); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;">The Problem</p>
+        <p style="font-size: 0.85rem; line-height: 1.6; color: var(--ink-mid);">Engineers must be on-site to verify PLC logic against real equipment, causing delays when issues arise.</p>
+      </div>
+    </div>
+
+    <!-- Tarjeta 2: Robot testing -->
+    <div class="challenge-card fade-up" style="background: var(--cream); border: 1px solid var(--olive-light); transition: transform 0.3s, box-shadow 0.3s; cursor: default;">
+      <div style="padding: 2rem;">
+        <!-- Icono SVG Robot -->
+        <div style="margin-bottom: 1.5rem;">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="16" y="24" width="16" height="12" rx="2" fill="none" stroke="var(--olive)" stroke-width="1.5"/>
+            <rect x="18" y="26" width="5" height="4" rx="1" fill="var(--olive-mid)" opacity="0.3"/>
+            <rect x="25" y="26" width="5" height="4" rx="1" fill="var(--olive-mid)" opacity="0.3"/>
+            <circle cx="20" cy="20" r="3" fill="none" stroke="var(--rose)" stroke-width="1.5"/>
+            <circle cx="28" cy="20" r="3" fill="none" stroke="var(--rose)" stroke-width="1.5"/>
+            <rect x="22" y="32" width="4" height="8" rx="1" fill="var(--olive-mid)" opacity="0.3"/>
+            <rect x="14" y="36" width="6" height="4" rx="1" fill="none" stroke="var(--olive)" stroke-width="1"/>
+            <rect x="28" y="36" width="6" height="4" rx="1" fill="none" stroke="var(--olive)" stroke-width="1"/>
+            <rect x="20" y="16" width="8" height="3" rx="1" fill="var(--rose)" opacity="0.4"/>
+          </svg>
+        </div>
+        <h3 style="font-family: var(--font-display); font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--ink);">Robot Testing</h3>
+        <p style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--rose); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;">The Problem</p>
+        <p style="font-size: 0.85rem; line-height: 1.6; color: var(--ink-mid);">Physical robot testing requires safety zones, dedicated time slots, and expert presence impossible to scale.</p>
+      </div>
+    </div>
+
+    <!-- Tarjeta 3: Automation troubleshooting -->
+    <div class="challenge-card fade-up" style="background: var(--cream); border: 1px solid var(--olive-light); transition: transform 0.3s, box-shadow 0.3s; cursor: default;">
+      <div style="padding: 2rem;">
+        <!-- Icono SVG Troubleshooting -->
+        <div style="margin-bottom: 1.5rem;">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="16" fill="none" stroke="var(--olive)" stroke-width="1.5"/>
+            <line x1="24" y1="16" x2="24" y2="24" stroke="var(--rose)" stroke-width="1.5"/>
+            <line x1="24" y1="28" x2="24" y2="30" stroke="var(--rose)" stroke-width="2" stroke-linecap="round"/>
+            <line x1="16" y1="24" x2="20" y2="24" stroke="var(--olive-mid)" stroke-width="1.5"/>
+            <line x1="28" y1="24" x2="32" y2="24" stroke="var(--olive-mid)" stroke-width="1.5"/>
+            <path d="M32 32L36 36" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M16 32L12 36" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 style="font-family: var(--font-display); font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--ink);">Automation Troubleshooting</h3>
+        <p style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--rose); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;">The Problem</p>
+        <p style="font-size: 0.85rem; line-height: 1.6; color: var(--ink-mid);">Debugging automation issues remotely is nearly impossible without real-time data synchronization.</p>
+      </div>
+    </div>
+
+    <!-- Tarjeta 4: Sequence validation -->
+    <div class="challenge-card fade-up" style="background: var(--cream); border: 1px solid var(--olive-light); transition: transform 0.3s, box-shadow 0.3s; cursor: default;">
+      <div style="padding: 2rem;">
+        <!-- Icono SVG Sequence -->
+        <div style="margin-bottom: 1.5rem;">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="14" width="6" height="6" rx="1" fill="var(--rose)" opacity="0.4"/>
+            <rect x="10" y="26" width="6" height="6" rx="1" fill="none" stroke="var(--olive)" stroke-width="1.5"/>
+            <rect x="10" y="38" width="6" height="6" rx="1" fill="none" stroke="var(--olive)" stroke-width="1.5"/>
+            <line x1="16" y1="17" x2="36" y2="17" stroke="var(--olive)" stroke-width="1.5"/>
+            <line x1="16" y1="29" x2="32" y2="29" stroke="var(--olive-mid)" stroke-width="1" stroke-dasharray="3 2"/>
+            <line x1="16" y1="41" x2="28" y2="41" stroke="var(--olive-mid)" stroke-width="1" stroke-dasharray="3 2"/>
+            <circle cx="38" cy="17" r="3" fill="none" stroke="var(--rose)" stroke-width="1.5"/>
+            <line x1="38" y1="14" x2="38" y2="10" stroke="var(--rose)" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3 style="font-family: var(--font-display); font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--ink);">Sequence Validation</h3>
+        <p style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--rose); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;">The Problem</p>
+        <p style="font-size: 0.85rem; line-height: 1.6; color: var(--ink-mid);">Validating production sequences requires running the physical line, causing downtime and risk.</p>
+      </div>
+    </div>
+
+    <!-- Tarjeta 5: Fault analysis -->
+    <div class="challenge-card fade-up" style="background: var(--cream); border: 1px solid var(--olive-light); transition: transform 0.3s, box-shadow 0.3s; cursor: default;">
+      <div style="padding: 2rem;">
+        <!-- Icono SVG Fault Analysis -->
+        <div style="margin-bottom: 1.5rem;">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="12" y="28" width="8" height="12" rx="1" fill="none" stroke="var(--olive)" stroke-width="1.5"/>
+            <rect x="24" y="20" width="8" height="20" rx="1" fill="none" stroke="var(--olive)" stroke-width="1.5"/>
+            <rect x="36" y="12" width="8" height="28" rx="1" fill="none" stroke="var(--olive)" stroke-width="1.5"/>
+            <line x1="16" y1="28" x2="16" y2="24" stroke="var(--rose)" stroke-width="1.5"/>
+            <line x1="28" y1="20" x2="28" y2="16" stroke="var(--rose)" stroke-width="1.5"/>
+            <line x1="40" y1="12" x2="40" y2="8" stroke="var(--rose)" stroke-width="1.5"/>
+            <circle cx="16" cy="26" r="2" fill="var(--rose)" opacity="0.4"/>
+            <circle cx="28" cy="18" r="2" fill="var(--rose)" opacity="0.4"/>
+            <circle cx="40" cy="10" r="2" fill="var(--rose)" opacity="0.4"/>
+          </svg>
+        </div>
+        <h3 style="font-family: var(--font-display); font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--ink);">Fault Analysis</h3>
+        <p style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--rose); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;">The Problem</p>
+        <p style="font-size: 0.85rem; line-height: 1.6; color: var(--ink-mid);">Fault diagnosis depends on fragmented data logs and physical inspection — slow and inefficient.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cuadro de Workflows (impactos) - estilo "stat-card" de la otra página -->
+  <div class="fade-up" style="display: grid; grid-template-columns: repeat(5, 1fr); background: var(--ink); margin-bottom: 4rem;">
+    <div class="stat-card" style="padding: 2rem 1.5rem; text-align: center; border-right: 1px solid rgba(255,255,255,0.1);">
+      <div style="margin-bottom: 1rem;">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="14" fill="none" stroke="var(--rose)" stroke-width="1.5"/>
+          <text x="16" y="21" text-anchor="middle" fill="var(--rose)" font-size="10" font-family="monospace">$</text>
+        </svg>
+      </div>
+      <h4 style="font-family: var(--font-display); font-size: 1rem; color: var(--cream); margin-bottom: 0.5rem;">High Operational Costs</h4>
+      <p style="font-size: 0.7rem; color: var(--olive-light);">Travel, accommodation, on-site equipment</p>
+    </div>
+    <div class="stat-card" style="padding: 2rem 1.5rem; text-align: center; border-right: 1px solid rgba(255,255,255,0.1);">
+      <div style="margin-bottom: 1rem;">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="14" fill="none" stroke="var(--rose)" stroke-width="1.5"/>
+          <path d="M16 8L16 16L20 20" stroke="var(--rose)" stroke-width="1.5" fill="none"/>
+        </svg>
+      </div>
+      <h4 style="font-family: var(--font-display); font-size: 1rem; color: var(--cream); margin-bottom: 0.5rem;">Increased Time</h4>
+      <p style="font-size: 0.7rem; color: var(--olive-light);">Days or weeks lost to travel and coordination</p>
+    </div>
+    <div class="stat-card" style="padding: 2rem 1.5rem; text-align: center; border-right: 1px solid rgba(255,255,255,0.1);">
+      <div style="margin-bottom: 1rem;">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="14" fill="none" stroke="var(--rose)" stroke-width="1.5"/>
+          <rect x="12" y="12" width="8" height="10" rx="1" fill="none" stroke="var(--rose)" stroke-width="1.5"/>
+          <line x1="16" y1="12" x2="16" y2="8" stroke="var(--rose)" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <h4 style="font-family: var(--font-display); font-size: 1rem; color: var(--cream); margin-bottom: 0.5rem;">Limited Accessibility</h4>
+      <p style="font-size: 0.7rem; color: var(--olive-light);">Expertise locked to specific locations</p>
+    </div>
+    <div class="stat-card" style="padding: 2rem 1.5rem; text-align: center; border-right: 1px solid rgba(255,255,255,0.1);">
+      <div style="margin-bottom: 1rem;">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="14" fill="none" stroke="var(--rose)" stroke-width="1.5"/>
+          <circle cx="16" cy="14" r="4" fill="none" stroke="var(--rose)" stroke-width="1.5"/>
+          <path d="M12 18L10 22" stroke="var(--rose)" stroke-width="1.5"/>
+          <path d="M20 18L22 22" stroke="var(--rose)" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <h4 style="font-family: var(--font-display); font-size: 1rem; color: var(--cream); margin-bottom: 0.5rem;">Sustainability Concerns</h4>
+      <p style="font-size: 0.7rem; color: var(--olive-light);">Unnecessary travel increases carbon footprint</p>
+    </div>
+    <div class="stat-card" style="padding: 2rem 1.5rem; text-align: center;">
+      <div style="margin-bottom: 1rem;">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="14" fill="none" stroke="var(--rose)" stroke-width="1.5"/>
+          <rect x="10" y="12" width="12" height="10" rx="1" fill="none" stroke="var(--rose)" stroke-width="1.5"/>
+          <line x1="14" y1="14" x2="18" y2="14" stroke="var(--rose)" stroke-width="1.5"/>
+          <line x1="14" y1="18" x2="18" y2="18" stroke="var(--rose)" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <h4 style="font-family: var(--font-display); font-size: 1rem; color: var(--cream); margin-bottom: 0.5rem;">Fragmented Environments</h4>
+      <p style="font-size: 0.7rem; color: var(--olive-light);">Disconnected tools and data silos</p>
+    </div>
+  </div>
+
+  <!-- Estado actual de sistemas de virtual commissioning (2 columnas estilo "about-right") -->
+  <div class="fade-up" style="display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 4rem;">
+    
+    <!-- Columna izquierda: Many virtual commissioning systems remain -->
+    <div class="stat-card" style="background: var(--olive-pale); padding: 2.5rem;">
+      <p style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--olive); text-transform: uppercase; margin-bottom: 1rem;">At the same time</p>
+      <h3 style="font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--ink);">Many Virtual Commissioning Systems remain:</h3>
+      <div style="margin-bottom: 1rem;">
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="9" stroke="var(--rose)" stroke-width="1.5"/>
+            <line x1="10" y1="5" x2="10" y2="10" stroke="var(--rose)" stroke-width="1.5"/>
+            <circle cx="10" cy="14" r="1" fill="var(--rose)"/>
+          </svg>
+          <span style="font-size: 0.9rem;"><strong>Locally isolated</strong> no cloud connectivity</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="9" stroke="var(--rose)" stroke-width="1.5"/>
+            <path d="M6 10L9 13L14 7" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span style="font-size: 0.9rem;"><strong>Disconnected from real production data</strong> static simulations only</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="9" stroke="var(--rose)" stroke-width="1.5"/>
+            <line x1="6" y1="6" x2="14" y2="14" stroke="var(--rose)" stroke-width="1.5"/>
+            <line x1="14" y1="6" x2="6" y2="14" stroke="var(--rose)" stroke-width="1.5"/>
+          </svg>
+          <span style="font-size: 0.9rem;"><strong>Difficult to integrate</strong> into scalable Industry 4.0 infrastructures</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna derecha: The Gap / What's Missing? -->
+    <div class="stat-card" style="background: var(--rose-pale); padding: 2.5rem;">
+      <p style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--rose-dark); text-transform: uppercase; margin-bottom: 1rem;">The Gap</p>
+      <h3 style="font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 1rem; color: var(--ink);">What's Missing?</h3>
+      <p style="font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.5rem;">A <strong>distributed virtual commissioning architecture</strong> capable of:</p>
+      <div>
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="9" fill="none" stroke="var(--olive)" stroke-width="1.5"/>
+            <polyline points="6 10 9 13 14 7" stroke="var(--olive)" stroke-width="1.5" fill="none"/>
+          </svg>
+          <span>Securely synchronizing real industrial signals</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="9" fill="none" stroke="var(--olive)" stroke-width="1.5"/>
+            <polyline points="6 10 9 13 14 7" stroke="var(--olive)" stroke-width="1.5" fill="none"/>
+          </svg>
+          <span>Remote digital twin environment access</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="9" fill="none" stroke="var(--olive)" stroke-width="1.5"/>
+            <polyline points="6 10 9 13 14 7" stroke="var(--olive)" stroke-width="1.5" fill="none"/>
+          </svg>
+          <span>Vendor-agnostic integration</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mensaje final destacado (estilo comp-banner simplificado) -->
+  <div class="fade-up" style="background: var(--ink); padding: 3rem 4rem; text-align: center;">
+    <p style="font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rose); margin-bottom: 1rem;">Our Mission</p>
+    <p style="font-size: 1.15rem; line-height: 1.6; max-width: 800px; margin: 0 auto; color: var(--cream);">
+      <strong style="color: var(--olive-light);">Our project addresses these challenges</strong> by demonstrating a distributed virtual commissioning architecture capable of securely synchronizing real industrial signals into a remote digital twin environment.
+    </p>
+  </div>
+</section>
+
+<style>
+  .challenge-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .challenge-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+  }
+  
+  @media (max-width: 900px) {
+    #challenge {
+      padding: 4rem 1.5rem !important;
+    }
+    .fade-up[style*="display: grid; grid-template-columns: repeat(5, 1fr)"] {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+    .fade-up[style*="display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 4rem;"] {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>
+  
+  
+  <!-- Sección WHY THIS MATTERS - inspirada en Machine Qualification -->
+<section id="why-matters" class="fade-up" style="background: var(--cream); border-top: 3px solid var(--rose);">
+  
+  <!-- Hero de la sección (estilo takt-hero pero adaptado) -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr; min-height: auto;">
+    
+    <!-- Lado izquierdo - título principal -->
+    <div style="background: var(--ink); color: var(--cream); padding: 4rem 3rem; display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <p style="font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rose); margin-bottom: 1rem;">WHY THIS MATTERS</p>
+        <h2 style="font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.5rem); line-height: 0.95; text-transform: uppercase; margin-bottom: 1.5rem;">
+          Extending Virtual Commissioning<br>
+          <em style="color: var(--olive-light);">Beyond Local Simulation</em>
+        </h2>
+        <p style="font-size: 0.95rem; line-height: 1.65; color: var(--olive-light); max-width: 450px;">
+          Most virtual commissioning implementations remain locally centralized and disconnected from distributed engineering workflows.
+        </p>
+      </div>
+      <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; margin-top: 2rem;">
+        <div style="font-family: var(--font-display); font-size: 2rem; color: var(--rose);">IT/OT Convergence</div>
+        <p style="font-size: 0.7rem; color: var(--muted); font-family: var(--font-mono); margin-top: 0.5rem;">Information Technology · Operational Technology</p>
+      </div>
+    </div>
+    
+    <!-- Lado derecho - estadísticas clave -->
+    <div style="background: var(--olive-pale); padding: 4rem 3rem; display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <p style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--olive); text-transform: uppercase; margin-bottom: 1rem;">The Evolution</p>
+        <div style="margin-bottom: 2rem;">
+          <div style="font-family: var(--font-display); font-size: 4rem; line-height: 1; color: var(--ink);">Traditional VC</div>
+          <div style="font-size: 1.2rem; color: var(--rose-dark); margin: 0.5rem 0;">TO</div>
+          <div style="font-family: var(--font-display); font-size: 4rem; line-height: 1; color: var(--olive);">Remote-Ready Industry 4.0</div>
+        </div>
+      </div>
+      <div style="border-top: 1px solid var(--olive-light); padding-top: 1rem;">
+        <p style="font-size: 0.8rem; color: var(--ink-mid); line-height: 1.5;">Our project demonstrates how virtual commissioning can evolve into a remote-ready architecture.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grid de 4 componentes clave (estilo services-grid de Machine Qualification) -->
+  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;">
+    
+    <!-- Componente 1: IT/OT convergence -->
+    <div class="service-card" style="position: relative; overflow: hidden; background: var(--ink); min-height: 260px;">
+      <div style="position: absolute; top: 0; left: 0; right: 0; padding: 2rem;">
+        <div style="margin-bottom: 1rem;">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="20" r="18" stroke="var(--rose)" stroke-width="1.5" fill="none"/>
+            <path d="M12 20L16 24L28 12" stroke="var(--rose)" stroke-width="1.5" fill="none"/>
+            <line x1="20" y1="8" x2="20" y2="4" stroke="var(--olive-light)" stroke-width="1.5"/>
+            <line x1="20" y1="36" x2="20" y2="32" stroke="var(--olive-light)" stroke-width="1.5"/>
+            <line x1="8" y1="20" x2="4" y2="20" stroke="var(--olive-light)" stroke-width="1.5"/>
+            <line x1="36" y1="20" x2="32" y2="20" stroke="var(--olive-light)" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3 style="font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--cream);">IT/OT<br>Convergence</h3>
+        <p style="font-size: 0.8rem; line-height: 1.5; color: var(--olive-light);">Bridging information technology with operational technology for seamless data flow.</p>
+      </div>
+    </div>
+
+    <!-- Componente 2: digital twin synchronization -->
+    <div class="service-card" style="position: relative; overflow: hidden; background: var(--olive); min-height: 260px;">
+      <div style="position: absolute; top: 0; left: 0; right: 0; padding: 2rem;">
+        <div style="margin-bottom: 1rem;">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <rect x="6" y="12" width="12" height="16" rx="2" stroke="var(--cream)" stroke-width="1.5" fill="none"/>
+            <rect x="22" y="12" width="12" height="16" rx="2" stroke="var(--cream)" stroke-width="1.5" fill="none"/>
+            <line x1="12" y1="28" x2="12" y2="32" stroke="var(--cream)" stroke-width="1.5"/>
+            <line x1="28" y1="28" x2="28" y2="32" stroke="var(--cream)" stroke-width="1.5"/>
+            <path d="M18 20L22 20" stroke="var(--cream)" stroke-width="1.5"/>
+            <circle cx="12" cy="18" r="1.5" fill="var(--cream)"/>
+            <circle cx="28" cy="18" r="1.5" fill="var(--cream)"/>
+          </svg>
+        </div>
+        <h3 style="font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--cream);">Digital Twin<br>Synchronization</h3>
+        <p style="font-size: 0.8rem; line-height: 1.5; color: var(--olive-pale);">Real-time mirroring of physical assets into virtual environments.</p>
+      </div>
+    </div>
+
+    <!-- Componente 3: secure IoT communication -->
+    <div class="service-card" style="position: relative; overflow: hidden; background: var(--ink); min-height: 260px;">
+      <div style="position: absolute; top: 0; left: 0; right: 0; padding: 2rem;">
+        <div style="margin-bottom: 1rem;">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <path d="M20 8L8 14V26L20 32L32 26V14L20 8Z" stroke="var(--rose)" stroke-width="1.5" fill="none"/>
+            <circle cx="20" cy="20" r="4" stroke="var(--rose)" stroke-width="1.5" fill="none"/>
+            <line x1="20" y1="12" x2="20" y2="16" stroke="var(--olive-light)" stroke-width="1"/>
+            <line x1="20" y1="24" x2="20" y2="28" stroke="var(--olive-light)" stroke-width="1"/>
+            <line x1="12" y1="20" x2="16" y2="20" stroke="var(--olive-light)" stroke-width="1"/>
+            <line x1="24" y1="20" x2="28" y2="20" stroke="var(--olive-light)" stroke-width="1"/>
+          </svg>
+        </div>
+        <h3 style="font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--cream);">Secure IoT<br>Communication</h3>
+        <p style="font-size: 0.8rem; line-height: 1.5; color: var(--olive-light);">Encrypted MQTT over TLS following Purdue cybersecurity model.</p>
+      </div>
+    </div>
+
+    <!-- Componente 4: scalable engineering collaboration -->
+    <div class="service-card" style="position: relative; overflow: hidden; background: var(--olive); min-height: 260px;">
+      <div style="position: absolute; top: 0; left: 0; right: 0; padding: 2rem;">
+        <div style="margin-bottom: 1rem;">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <circle cx="13" cy="13" r="5" stroke="var(--cream)" stroke-width="1.5" fill="none"/>
+            <circle cx="27" cy="13" r="5" stroke="var(--cream)" stroke-width="1.5" fill="none"/>
+            <circle cx="20" cy="28" r="5" stroke="var(--cream)" stroke-width="1.5" fill="none"/>
+            <line x1="16" y1="16" x2="18" y2="24" stroke="var(--cream)" stroke-width="1.5"/>
+            <line x1="24" y1="16" x2="22" y2="24" stroke="var(--cream)" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3 style="font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--cream);">Scalable Engineering<br>Collaboration</h3>
+        <p style="font-size: 0.8rem; line-height: 1.5; color: var(--olive-pale);">Multi-site teams working together through cloud-connected twins.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabla de resultados / capacidades (estilo summary cards de PFMEA) -->
+  <div style="padding: 4rem 4rem; background: var(--cream);">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      
+      <!-- Subtítulo -->
+      <div style="text-align: center; margin-bottom: 3rem;">
+        <p style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--rose); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.5rem;">The Result</p>
+        <h3 style="font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--ink);">A framework capable of supporting:</h3>
+      </div>
+
+      <!-- Grid de 5 capacidades con íconos SVG personalizados -->
+      <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; margin-bottom: 3rem;">
+        
+        <!-- Remote FAT -->
+        <div style="background: var(--ink); padding: 1.5rem; text-align: center;">
+          <div style="margin-bottom: 0.75rem;">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <rect x="4" y="14" width="24" height="14" rx="2" stroke="var(--rose)" stroke-width="1.5" fill="none"/>
+              <rect x="10" y="4" width="12" height="10" rx="1" stroke="var(--olive-light)" stroke-width="1.5" fill="none"/>
+              <line x1="10" y1="8" x2="22" y2="8" stroke="var(--olive-light)" stroke-width="1"/>
+              <circle cx="16" cy="21" r="2" fill="var(--rose)" opacity="0.5"/>
+            </svg>
+          </div>
+          <h4 style="font-family: var(--font-display); font-size: 1rem; color: var(--cream);">Remote FAT</h4>
+          <p style="font-size: 0.7rem; color: var(--olive-light); margin-top: 0.5rem;">Factory Acceptance Testing from anywhere</p>
+        </div>
+        
+        <!-- Distributed OEM Support -->
+        <div style="background: var(--olive); padding: 1.5rem; text-align: center;">
+          <div style="margin-bottom: 0.75rem;">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <circle cx="16" cy="12" r="5" stroke="var(--cream)" stroke-width="1.5" fill="none"/>
+              <circle cx="26" cy="24" r="4" stroke="var(--cream)" stroke-width="1.5" fill="none"/>
+              <circle cx="6" cy="24" r="4" stroke="var(--cream)" stroke-width="1.5" fill="none"/>
+              <line x1="16" y1="17" x2="16" y2="22" stroke="var(--cream)" stroke-width="1.5"/>
+              <line x1="22" y1="22" x2="22" y2="24" stroke="var(--cream)" stroke-width="1"/>
+              <line x1="10" y1="22" x2="10" y2="24" stroke="var(--cream)" stroke-width="1"/>
+            </svg>
+          </div>
+          <h4 style="font-family: var(--font-display); font-size: 1rem; color: var(--cream);">Distributed OEM Support</h4>
+          <p style="font-size: 0.7rem; color: var(--olive-pale); margin-top: 0.5rem;">Global collaboration without travel</p>
+        </div>
+        
+        <!-- Cloud-Integrated Manufacturing -->
+        <div style="background: var(--ink); padding: 1.5rem; text-align: center;">
+          <div style="margin-bottom: 0.75rem;">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <path d="M8 22L16 26L24 22" stroke="var(--rose)" stroke-width="1.5" fill="none"/>
+              <path d="M8 16L16 20L24 16" stroke="var(--rose)" stroke-width="1.5" fill="none"/>
+              <path d="M8 10L16 14L24 10" stroke="var(--rose)" stroke-width="1.5" fill="none"/>
+              <line x1="16" y1="4" x2="16" y2="8" stroke="var(--olive-light)" stroke-width="1.5"/>
+              <line x1="16" y1="20" x2="16" y2="26" stroke="var(--olive-light)" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <h4 style="font-family: var(--font-display); font-size: 1rem; color: var(--cream);">Cloud-Integrated Manufacturing</h4>
+          <p style="font-size: 0.7rem; color: var(--olive-light); margin-top: 0.5rem;">Data-driven production insights</p>
+        </div>
+        
+        <!-- Multi-Site Collaboration -->
+        <div style="background: var(--olive); padding: 1.5rem; text-align: center;">
+          <div style="margin-bottom: 0.75rem;">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <rect x="2" y="14" width="8" height="14" rx="1" stroke="var(--cream)" stroke-width="1.5" fill="none"/>
+              <rect x="12" y="8" width="8" height="20" rx="1" stroke="var(--cream)" stroke-width="1.5" fill="none"/>
+              <rect x="22" y="4" width="8" height="24" rx="1" stroke="var(--cream)" stroke-width="1.5" fill="none"/>
+              <line x1="6" y1="14" x2="6" y2="10" stroke="var(--olive-pale)" stroke-width="1"/>
+              <line x1="16" y1="8" x2="16" y2="4" stroke="var(--olive-pale)" stroke-width="1"/>
+              <line x1="26" y1="4" x2="26" y2="2" stroke="var(--olive-pale)" stroke-width="1"/>
+            </svg>
+          </div>
+          <h4 style="font-family: var(--font-display); font-size: 1rem; color: var(--cream);">Multi-Site Collaboration</h4>
+          <p style="font-size: 0.7rem; color: var(--olive-pale); margin-top: 0.5rem;">Engineering teams working synchronously</p>
+        </div>
+        
+        <!-- Smart Factory Initiatives -->
+        <div style="background: var(--ink); padding: 1.5rem; text-align: center;">
+          <div style="margin-bottom: 0.75rem;">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <rect x="6" y="18" width="6" height="10" rx="1" stroke="var(--rose)" stroke-width="1.5" fill="none"/>
+              <rect x="14" y="12" width="6" height="16" rx="1" stroke="var(--rose)" stroke-width="1.5" fill="none"/>
+              <rect x="22" y="6" width="6" height="22" rx="1" stroke="var(--rose)" stroke-width="1.5" fill="none"/>
+              <line x1="9" y1="18" x2="9" y2="14" stroke="var(--olive-light)" stroke-width="1"/>
+              <line x1="17" y1="12" x2="17" y2="8" stroke="var(--olive-light)" stroke-width="1"/>
+              <line x1="25" y1="6" x2="25" y2="2" stroke="var(--olive-light)" stroke-width="1"/>
+              <circle cx="9" cy="16" r="1" fill="var(--rose)" opacity="0.6"/>
+              <circle cx="17" cy="10" r="1" fill="var(--rose)" opacity="0.6"/>
+              <circle cx="25" cy="4" r="1" fill="var(--rose)" opacity="0.6"/>
+            </svg>
+          </div>
+          <h4 style="font-family: var(--font-display); font-size: 1rem; color: var(--cream);">Smart Factory Initiatives</h4>
+          <p style="font-size: 0.7rem; color: var(--olive-light); margin-top: 0.5rem;">Future-ready infrastructure</p>
+        </div>
+      </div>
+
+      <!-- Mensaje final destacado -->
+      <div style="background: var(--rose-pale); padding: 2rem; text-align: center; border-left: 4px solid var(--rose);">
+        <p style="font-size: 0.95rem; line-height: 1.6; color: var(--ink); max-width: 800px; margin: 0 auto;">
+          <strong style="color: var(--rose-dark);">The vision:</strong> A future where commissioning engineers work remotely with confidence, 
+          where digital twins reflect real-time production data, and where global teams collaborate 
+          seamlessly through secure, scalable Industry 4.0 architectures.
+        </p>
+      </div>
+      
+    </div>
+  </div>
+  
+</section>
+
+<style>
+  .service-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+  }
+  
+  @media (max-width: 900px) {
+    #why-matters > div:first-child {
+      grid-template-columns: 1fr !important;
+    }
+    #why-matters > div:first-child > div {
+      padding: 2rem 1.5rem !important;
+    }
+    #why-matters .service-card {
+      min-height: auto !important;
+    }
+    #why-matters div[style*="display: grid; grid-template-columns: repeat(4, 1fr)"] {
+      grid-template-columns: 1fr !important;
+    }
+    #why-matters div[style*="display: grid; grid-template-columns: repeat(5, 1fr)"] {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 0.75rem !important;
+    }
+    #why-matters > div:last-child {
+      padding: 2rem 1.5rem !important;
+    }
+  }
+</style>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 <section id="overview">
   <div class="ov-card dark fade-up">
     <div class="ov-num">01</div>
