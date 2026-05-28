@@ -964,6 +964,30 @@
   color: var(--cream);
   line-height: 1.4;
 }
+  
+  /* ── GALLERY STYLES ── */
+.gallery-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item:hover .gallery-image img {
+  transform: scale(1.05);
+}
+
+.gallery-item:hover .image-overlay {
+  opacity: 1;
+}
+
+.filter-btn:hover {
+  background: var(--olive-light) !important;
+  color: var(--ink) !important;
+}
+
+.filter-btn.active {
+  background: var(--olive) !important;
+  color: var(--cream) !important;
+}
 
 /* GALLERY BUTTON STYLES */
 .gallery-button-container {
@@ -1091,6 +1115,277 @@ function scrollToGallery() {
     </div>
   </div>
 </section>
+  
+  
+  <!-- ══════════════════════════════════════════════
+     GALLERY SECTION
+══════════════════════════════════════════════ -->
+<section id="gallery" style="padding: 6rem 4rem; background: var(--cream);">
+  
+  <!-- Encabezado de galería -->
+  <div class="gallery-header fade-up" style="margin-bottom: 3rem;">
+    <p class="section-lbl" style="color: var(--rose);">Visual Documentation</p>
+    <div style="display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;">
+      <h2 style="font-family: var(--font-display); font-size: clamp(2.5rem, 4vw, 4rem); line-height: 1; text-transform: uppercase;">
+        Project<br><span style="color: var(--olive);">Gallery</span>
+      </h2>
+      <p style="max-width: 420px; font-size: 0.9rem; line-height: 1.6; color: var(--muted);">
+        Key moments from the development process — from physical setup to virtual commissioning validation.
+      </p>
+    </div>
+  </div>
+
+  <!-- FILTROS (opcional) -->
+  <div class="gallery-filters fade-up" style="display: flex; gap: 0.5rem; margin-bottom: 2.5rem; flex-wrap: wrap; border-bottom: 1px solid var(--olive-light); padding-bottom: 1rem;">
+    <button class="filter-btn active" data-filter="all" style="background: var(--olive); color: var(--cream); padding: 0.4rem 1.2rem; font-family: var(--font-condensed); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; transition: all 0.2s;">All</button>
+    <button class="filter-btn" data-filter="nodered" style="background: transparent; color: var(--ink-mid); padding: 0.4rem 1.2rem; font-family: var(--font-condensed); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; transition: all 0.2s;">Node-RED</button>
+    <button class="filter-btn" data-filter="nx" style="background: transparent; color: var(--ink-mid); padding: 0.4rem 1.2rem; font-family: var(--font-condensed); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; transition: all 0.2s;">Siemens NX</button>
+    <button class="filter-btn" data-filter="robot" style="background: transparent; color: var(--ink-mid); padding: 0.4rem 1.2rem; font-family: var(--font-condensed); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; transition: all 0.2s;">SRPS</button>
+    <button class="filter-btn" data-filter="tia" style="background: transparent; color: var(--ink-mid); padding: 0.4rem 1.2rem; font-family: var(--font-condensed); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; transition: all 0.2s;">TIA Portal</button>
+    <button class="filter-btn" data-filter="opcua" style="background: transparent; color: var(--ink-mid); padding: 0.4rem 1.2rem; font-family: var(--font-condensed); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; transition: all 0.2s;">OPC UA Validation</button>
+    <button class="filter-btn" data-filter="los" style="background: transparent; color: var(--ink-mid); padding: 0.4rem 1.2rem; font-family: var(--font-condensed); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; transition: all 0.2s;">LoS</button>
+    <button class="filter-btn" data-filter="festo" style="background: transparent; color: var(--ink-mid); padding: 0.4rem 1.2rem; font-family: var(--font-condensed); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; transition: all 0.2s;">Festo CP Lab</button>
+  </div>
+
+  <!-- GRID DE GALERÍA -->
+  <div class="gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
+    
+    <!-- Item 1 - Hardware -->
+    <div class="gallery-item fade-up" data-category="festo" style="background: var(--cream); border: 1px solid var(--olive-light); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox(this)">
+      <div class="gallery-image" style="position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--olive-pale);">
+        <img src="assets/images/festo-cp-lab.jpg" alt="Festo CP Lab physical setup" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" onerror="this.src='https://placehold.co/600x450/EDF0E0/5C6B3A?text=Festo+CP+Lab'">
+        <div class="image-overlay" style="position: absolute; inset: 0; background: rgba(28, 31, 20, 0.4); opacity: 0; transition: opacity 0.3s ease;"></div>
+      </div>
+      <div class="gallery-info" style="padding: 1.2rem 1.5rem;">
+        <span class="gallery-category" style="display: inline-block; font-family: var(--font-condensed); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.5rem;">Festo CP Lab</span>
+        <h3 style="font-family: var(--font-condensed); font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">Festo CP Lab</h3>
+        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">Physical assembly line used for data acquisition — conveyor system with 6 stations.</p>
+      </div>
+    </div>
+
+    <!-- Item 2 - Software -->
+    <div class="gallery-item fade-up" data-category="nodered" style="background: var(--cream); border: 1px solid var(--olive-light); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox(this)">
+      <div class="gallery-image" style="position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--olive-pale);">
+        <img src="assets/images/Screenshot 2026-05-26 152030.png" alt="Node-RED flow configuration" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" onerror="this.src='https://placehold.co/600x450/EDF0E0/5C6B3A?text=Node-RED+Flow'">
+        <div class="image-overlay" style="position: absolute; inset: 0; background: rgba(28, 31, 20, 0.4); opacity: 0; transition: opacity 0.3s ease;"></div>
+      </div>
+      <div class="gallery-info" style="padding: 1.2rem 1.5rem;">
+        <span class="gallery-category" style="display: inline-block; font-family: var(--font-condensed); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.5rem;">Node-RED</span>
+        <h3 style="font-family: var(--font-condensed); font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">Signal overview<br>Node-RED Acquisition 1</h3>
+        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">Complete OPC UA to MQTT workflow showing all connected nodes in FestoPC.</p>
+      </div>
+    </div>
+    
+    <div class="gallery-item fade-up" data-category="nodered" style="background: var(--cream); border: 1px solid var(--olive-light); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox(this)">
+      <div class="gallery-image" style="position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--olive-pale);">
+        <img src="assets/images/Screenshot 2026-05-26 150618.png" alt="Node-RED flow configuration" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" onerror="this.src='https://placehold.co/600x450/EDF0E0/5C6B3A?text=Node-RED+Flow'">
+        <div class="image-overlay" style="position: absolute; inset: 0; background: rgba(28, 31, 20, 0.4); opacity: 0; transition: opacity 0.3s ease;"></div>
+      </div>
+      <div class="gallery-info" style="padding: 1.2rem 1.5rem;">
+        <span class="gallery-category" style="display: inline-block; font-family: var(--font-condensed); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.5rem;">Node-RED</span>
+        <h3 style="font-family: var(--font-condensed); font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">OPC UA-> MQTT Transform<br>Node-RED Acquisition 1</h3>
+        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">Function that allows the OPC-UA to MQTT transformation being the critical middleware bridging both protocols.</p>
+      </div>
+    </div>
+    
+    <div class="gallery-item fade-up" data-category="nodered" style="background: var(--cream); border: 1px solid var(--olive-light); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox(this)">
+      <div class="gallery-image" style="position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--olive-pale);">
+        <img src="assets/images/final.png" alt="Node-RED flow configuration" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" onerror="this.src='https://placehold.co/600x450/EDF0E0/5C6B3A?text=Node-RED+Flow'">
+        <div class="image-overlay" style="position: absolute; inset: 0; background: rgba(28, 31, 20, 0.4); opacity: 0; transition: opacity 0.3s ease;"></div>
+      </div>
+      <div class="gallery-info" style="padding: 1.2rem 1.5rem;">
+        <span class="gallery-category" style="display: inline-block; font-family: var(--font-condensed); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.5rem;">Node-RED</span>
+        <h3 style="font-family: var(--font-condensed); font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">Signal overview<br>Node-RED Acquisition 2</h3>
+        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">Complete MQTT to OPC UA workflow showing all connected nodes in Virtual CommissioningPC.</p>
+      </div>
+    </div>
+    
+    <div class="gallery-item fade-up" data-category="nodered" style="background: var(--cream); border: 1px solid var(--olive-light); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox(this)">
+      <div class="gallery-image" style="position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--olive-pale);">
+        <img src="assets/images/Captura de pantalla 2026-05-26 151551.png" alt="Node-RED flow configuration" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" onerror="this.src='https://placehold.co/600x450/EDF0E0/5C6B3A?text=Node-RED+Flow'">
+        <div class="image-overlay" style="position: absolute; inset: 0; background: rgba(28, 31, 20, 0.4); opacity: 0; transition: opacity 0.3s ease;"></div>
+      </div>
+      <div class="gallery-info" style="padding: 1.2rem 1.5rem;">
+        <span class="gallery-category" style="display: inline-block; font-family: var(--font-condensed); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.5rem;">Node-RED</span>
+        <h3 style="font-family: var(--font-condensed); font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">OPC UA Signal Init<br>Node-RED Acquisition 2</h3>
+        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">Initializes OPC UA server signals for data access through OPC UA CLIENT (WRITE) nodes.</p>
+      </div>
+    </div>
+    
+    <div class="gallery-item fade-up" data-category="nodered" style="background: var(--cream); border: 1px solid var(--olive-light); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox(this)">
+      <div class="gallery-image" style="position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--olive-pale);">
+        <img src="assets/images/Captura de pantalla 2026-05-26 151607.png" alt="Node-RED flow configuration" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" onerror="this.src='https://placehold.co/600x450/EDF0E0/5C6B3A?text=Node-RED+Flow'">
+        <div class="image-overlay" style="position: absolute; inset: 0; background: rgba(28, 31, 20, 0.4); opacity: 0; transition: opacity 0.3s ease;"></div>
+      </div>
+      <div class="gallery-info" style="padding: 1.2rem 1.5rem;">
+        <span class="gallery-category" style="display: inline-block; font-family: var(--font-condensed); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.5rem;">Node-RED</span>
+        <h3 style="font-family: var(--font-condensed); font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">MQTT JSON Parsing<br>Node-RED Acquisition 2</h3>
+        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">Function node configured to parse MQTT JSON data and map selected values to OPC UA variables.</p>
+      </div>
+    </div>
+
+    <!-- Item 3 - Validation -->
+    <div class="gallery-item fade-up" data-category="opcua" style="background: var(--cream); border: 1px solid var(--olive-light); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox(this)">
+      <div class="gallery-image" style="position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--olive-pale);">
+        <img src="assets/images/Captura de pantalla 2026-05-26 141945.png" alt="UA Expert OPC-UA validation" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" onerror="this.src='https://placehold.co/600x450/EDF0E0/5C6B3A?text=UA+Expert'">
+        <div class="image-overlay" style="position: absolute; inset: 0; background: rgba(28, 31, 20, 0.4); opacity: 0; transition: opacity 0.3s ease;"></div>
+      </div>
+      <div class="gallery-info" style="padding: 1.2rem 1.5rem;">
+        <span class="gallery-category" style="display: inline-block; font-family: var(--font-condensed); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.5rem;">OPC UA Validation</span>
+        <h3 style="font-family: var(--font-condensed); font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">OPC UA Server Validation</h3>
+        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">UA Expert client connected to the Node-RED OPC UA server, validating correct signal creation, live data availability, and client accessibility.</p>
+      </div>
+    </div>
+
+    <!-- Item 4 - Hardware -->
+    <div class="gallery-item fade-up" data-category="hardware" style="background: var(--cream); border: 1px solid var(--olive-light); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox(this)">
+      <div class="gallery-image" style="position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--olive-pale);">
+        <img src="assets/images/plcsim-advanced.jpg" alt="PLCSIM Advanced configuration" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" onerror="this.src='https://placehold.co/600x450/EDF0E0/5C6B3A?text=PLCSIM+Advanced'">
+        <div class="image-overlay" style="position: absolute; inset: 0; background: rgba(28, 31, 20, 0.4); opacity: 0; transition: opacity 0.3s ease;"></div>
+      </div>
+      <div class="gallery-info" style="padding: 1.2rem 1.5rem;">
+        <span class="gallery-category" style="display: inline-block; font-family: var(--font-condensed); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.5rem;">Hardware</span>
+        <h3 style="font-family: var(--font-condensed); font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">PLCSIM Advanced</h3>
+        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">Virtual PLC running on PC 2 — no physical hardware required for commissioning.</p>
+      </div>
+    </div>
+
+    <!-- Item 5 - Software -->
+    <div class="gallery-item fade-up" data-category="tia" style="background: var(--cream); border: 1px solid var(--olive-light); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox(this)">
+      <div class="gallery-image" style="position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--olive-pale);">
+        <img src="assets/images/tia-portal.jpg" alt="TIA Portal PLC program" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" onerror="this.src='https://placehold.co/600x450/EDF0E0/5C6B3A?text=TIA+Portal'">
+        <div class="image-overlay" style="position: absolute; inset: 0; background: rgba(28, 31, 20, 0.4); opacity: 0; transition: opacity 0.3s ease;"></div>
+      </div>
+      <div class="gallery-info" style="padding: 1.2rem 1.5rem;">
+        <span class="gallery-category" style="display: inline-block; font-family: var(--font-condensed); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.5rem;">TIA Portal</span>
+        <h3 style="font-family: var(--font-condensed); font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">TIA Portal V20</h3>
+        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">PLC program controlling the full cell sequence — conveyor, robot, and station logic.</p>
+      </div>
+    </div>
+
+    <!-- Item 6 - Validation -->
+    <div class="gallery-item fade-up" data-category="nx" style="background: var(--cream); border: 1px solid var(--olive-light); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox(this)">
+      <div class="gallery-image" style="position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--olive-pale);">
+        <img src="assets/images/siemens-nx-twin.jpg" alt="Siemens NX digital twin" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" onerror="this.src='https://placehold.co/600x450/EDF0E0/5C6B3A?text=Siemens+NX'">
+        <div class="image-overlay" style="position: absolute; inset: 0; background: rgba(28, 31, 20, 0.4); opacity: 0; transition: opacity 0.3s ease;"></div>
+      </div>
+      <div class="gallery-info" style="padding: 1.2rem 1.5rem;">
+        <span class="gallery-category" style="display: inline-block; font-family: var(--font-condensed); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.5rem;">Siemens NX</span>
+        <h3 style="font-family: var(--font-condensed); font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">Siemens NX Digital Twin</h3>
+        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">Virtual representation of CP Lab responding to PLC signals in real-time.</p>
+      </div>
+    </div>
+    
+    <div class="gallery-item fade-up" data-category="nx" style="background: var(--cream); border: 1px solid var(--olive-light); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox(this)">
+      <div class="gallery-image" style="position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--olive-pale);">
+        <img src="assets/images/siemens-nx-twin.jpg" alt="Siemens NX digital twin" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" onerror="this.src='https://placehold.co/600x450/EDF0E0/5C6B3A?text=Siemens+NX'">
+        <div class="image-overlay" style="position: absolute; inset: 0; background: rgba(28, 31, 20, 0.4); opacity: 0; transition: opacity 0.3s ease;"></div>
+      </div>
+      <div class="gallery-info" style="padding: 1.2rem 1.5rem;">
+        <span class="gallery-category" style="display: inline-block; font-family: var(--font-condensed); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.5rem;">Siemens NX</span>
+        <h3 style="font-family: var(--font-condensed); font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">Siemens NX Digital Twin</h3>
+        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">Virtual representation of CP Lab responding to PLC signals in real-time.</p>
+      </div>
+    </div>
+    
+    <div class="gallery-item fade-up" data-category="nx" style="background: var(--cream); border: 1px solid var(--olive-light); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox(this)">
+      <div class="gallery-image" style="position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--olive-pale);">
+        <img src="assets/images/siemens-nx-twin.jpg" alt="Siemens NX digital twin" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" onerror="this.src='https://placehold.co/600x450/EDF0E0/5C6B3A?text=Siemens+NX'">
+        <div class="image-overlay" style="position: absolute; inset: 0; background: rgba(28, 31, 20, 0.4); opacity: 0; transition: opacity 0.3s ease;"></div>
+      </div>
+      <div class="gallery-info" style="padding: 1.2rem 1.5rem;">
+        <span class="gallery-category" style="display: inline-block; font-family: var(--font-condensed); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.5rem;">Siemens NX</span>
+        <h3 style="font-family: var(--font-condensed); font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">Siemens NX Digital Twin</h3>
+        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">Virtual representation of CP Lab responding to PLC signals in real-time.</p>
+      </div>
+    </div>
+    
+    <div class="gallery-item fade-up" data-category="nx" style="background: var(--cream); border: 1px solid var(--olive-light); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox(this)">
+      <div class="gallery-image" style="position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--olive-pale);">
+        <img src="assets/images/siemens-nx-twin.jpg" alt="Siemens NX digital twin" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" onerror="this.src='https://placehold.co/600x450/EDF0E0/5C6B3A?text=Siemens+NX'">
+        <div class="image-overlay" style="position: absolute; inset: 0; background: rgba(28, 31, 20, 0.4); opacity: 0; transition: opacity 0.3s ease;"></div>
+      </div>
+      <div class="gallery-info" style="padding: 1.2rem 1.5rem;">
+        <span class="gallery-category" style="display: inline-block; font-family: var(--font-condensed); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.5rem;">Siemens NX</span>
+        <h3 style="font-family: var(--font-condensed); font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">Siemens NX Digital Twin</h3>
+        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">Virtual representation of CP Lab responding to PLC signals in real-time.</p>
+      </div>
+    </div>
+    
+    <div class="gallery-item fade-up" data-category="nx" style="background: var(--cream); border: 1px solid var(--olive-light); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox(this)">
+      <div class="gallery-image" style="position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--olive-pale);">
+        <img src="assets/images/siemens-nx-twin.jpg" alt="Siemens NX digital twin" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" onerror="this.src='https://placehold.co/600x450/EDF0E0/5C6B3A?text=Siemens+NX'">
+        <div class="image-overlay" style="position: absolute; inset: 0; background: rgba(28, 31, 20, 0.4); opacity: 0; transition: opacity 0.3s ease;"></div>
+      </div>
+      <div class="gallery-info" style="padding: 1.2rem 1.5rem;">
+        <span class="gallery-category" style="display: inline-block; font-family: var(--font-condensed); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.5rem;">Siemens NX</span>
+        <h3 style="font-family: var(--font-condensed); font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">Siemens NX Digital Twin</h3>
+        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">Virtual representation of CP Lab responding to PLC signals in real-time.</p>
+      </div>
+    </div>
+    
+    <!-- Item de VÍDEO -->
+<div class="gallery-item fade-up" data-category="nx" style="background: var(--cream); border: 1px solid var(--olive-light); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openVideoLightbox(this)">
+  <div class="gallery-image" style="position: relative; overflow: hidden; aspect-ratio: 16/9; background: var(--ink);">
+    <video 
+      src="assets/videos/tu-video.mp4" 
+      style="width: 100%; height: 100%; object-fit: cover;"
+      preload="metadata"
+      muted
+      playsinline>
+    </video>
+    <!-- Overlay con ícono de play -->
+    <div class="video-play-overlay" style="position: absolute; inset: 0; background: rgba(28, 31, 20, 0.5); display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;">
+      <div style="width: 60px; height: 60px; background: var(--rose); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform 0.2s;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+          <polygon points="5 3 19 12 5 21 5 3" fill="white"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="gallery-info" style="padding: 1.2rem 1.5rem;">
+    <span class="gallery-category" style="display: inline-block; font-family: var(--font-condensed); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.5rem;">Video</span>
+    <h3 style="font-family: var(--font-condensed); font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">Operating cell</h3>
+    <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">Demonstration of the fully configured industrial cell operating in the NX simulation environment.</p>
+  </div>
+</div>
+    
+    <div class="gallery-item fade-up" data-category="nx" style="background: var(--cream); border: 1px solid var(--olive-light); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox(this)">
+      <div class="gallery-image" style="position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--olive-pale);">
+        <img src="assets/images/siemens-nx-twin.jpg" alt="Siemens NX digital twin" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" onerror="this.src='https://placehold.co/600x450/EDF0E0/5C6B3A?text=Siemens+NX'">
+        <div class="image-overlay" style="position: absolute; inset: 0; background: rgba(28, 31, 20, 0.4); opacity: 0; transition: opacity 0.3s ease;"></div>
+      </div>
+      <div class="gallery-info" style="padding: 1.2rem 1.5rem;">
+        <span class="gallery-category" style="display: inline-block; font-family: var(--font-condensed); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.5rem;">Siemens NX</span>
+        <h3 style="font-family: var(--font-condensed); font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">Siemens NX Digital Twin</h3>
+        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">Virtual representation of CP Lab responding to PLC signals in real-time.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Ver más / Cargar más (opcional) -->
+  <div class="gallery-footer" style="text-align: center; margin-top: 3rem;">
+    <button id="loadMoreBtn" style="background: transparent; border: 2px solid var(--olive); padding: 0.8rem 2rem; font-family: var(--font-condensed); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--olive-dark); cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='var(--olive)'; this.style.color='var(--cream)'" onmouseout="this.style.background='transparent'; this.style.color='var(--olive-dark)'">
+      Load More Photos →
+    </button>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     LIGHTBOX MODAL (para ver imágenes ampliadas)
+══════════════════════════════════════════════ -->
+<div id="lightbox" style="display: none; position: fixed; inset: 0; background: rgba(28, 31, 20, 0.95); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(8px);">
+  <div style="position: relative; max-width: 90vw; max-height: 90vh;">
+    <img id="lightbox-img" src="" alt="Imagen ampliada" style="max-width: 100%; max-height: 85vh; object-fit: contain; border-radius: 8px; box-shadow: 0 20px 40px rgba(0,0,0,0.3);">
+    <button onclick="closeLightbox()" style="position: absolute; top: -40px; right: 0; background: var(--rose); border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; color: var(--ink); transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">✕</button>
+  </div>
+  <div id="lightbox-caption" style="position: absolute; bottom: 20px; left: 20px; right: 20px; text-align: center; color: var(--cream); font-family: var(--font-body); font-size: 0.85rem; padding: 0.75rem; background: rgba(0,0,0,0.5); border-radius: 8px;"></div>
+</div>
+  
+  
+  
+  
 
 <!-- CHALLENGES TABLE -->
 <section id="challenges">
@@ -1159,6 +1454,124 @@ function scrollToGallery() {
   }
   const obs = new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:.1});
   document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+  // ── GALERÍA: FILTROS ──
+const filterBtns = document.querySelectorAll('.filter-btn');
+const galleryItems = document.querySelectorAll('.gallery-item');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    // Actualizar estado activo de botones
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    
+    const filter = btn.getAttribute('data-filter');
+    
+    galleryItems.forEach(item => {
+      if (filter === 'all' || item.getAttribute('data-category') === filter) {
+        item.style.display = 'block';
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+          item.style.opacity = '1';
+          item.style.transform = 'translateY(0)';
+        }, 50);
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  });
+});
+
+// ── LIGHTBOX ──
+function openLightbox(element) {
+  const img = element.querySelector('.gallery-image img');
+  const caption = element.querySelector('.gallery-info h3')?.innerText || '';
+  const description = element.querySelector('.gallery-info p')?.innerText || '';
+  
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const captionEl = document.getElementById('lightbox-caption');
+  
+  lightboxImg.src = img.src;
+  captionEl.innerHTML = `<strong>${caption}</strong><br>${description}`;
+  lightbox.style.display = 'flex';
+  
+  // Prevenir scroll del body
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  const lightbox = document.getElementById('lightbox');
+  lightbox.style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
+
+// Cerrar con tecla ESC
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeLightbox();
+  }
+});
+
+// Cerrar haciendo clic fuera de la imagen
+document.getElementById('lightbox')?.addEventListener('click', (e) => {
+  if (e.target === document.getElementById('lightbox')) {
+    closeLightbox();
+  }
+});
+
+  // ── VIDEO LIGHTBOX ──
+function openVideoLightbox(element) {
+  const video = element.querySelector('video');
+  const caption = element.querySelector('.gallery-info h3')?.innerText || '';
+  const description = element.querySelector('.gallery-info p')?.innerText || '';
+  const videoSrc = video.querySelector('source')?.src || video.src;
+  
+  const lightbox = document.getElementById('videoLightbox');
+  const videoElement = document.getElementById('lightbox-video');
+  const captionEl = document.getElementById('videoLightbox-caption');
+  
+  // Pausar el video original
+  video.pause();
+  
+  // Configurar el lightbox
+  videoElement.src = videoSrc;
+  videoElement.load();
+  captionEl.innerHTML = `<strong>${caption}</strong><br>${description}`;
+  lightbox.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeVideoLightbox() {
+  const lightbox = document.getElementById('videoLightbox');
+  const videoElement = document.getElementById('lightbox-video');
+  
+  // Pausar y resetear el video
+  videoElement.pause();
+  videoElement.currentTime = 0;
+  
+  lightbox.style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
+  
+// ── LOAD MORE BUTTON (simula carga adicional) ──
+let itemsLoaded = 6;
+const totalItems = 9; // Asumiendo que tienes 9 imágenes en total
+
+document.getElementById('loadMoreBtn')?.addEventListener('click', () => {
+  // Aquí puedes añadir lógica para cargar más items dinámicamente
+  // Por ahora, solo mostramos un mensaje
+  const btn = document.getElementById('loadMoreBtn');
+  if (itemsLoaded < totalItems) {
+    btn.textContent = 'No more photos available';
+    btn.disabled = true;
+    btn.style.opacity = '0.5';
+  } else {
+    btn.textContent = 'No more photos available';
+    btn.disabled = true;
+    btn.style.opacity = '0.5';
+  }
+});
 </script>
 </body>
 </html>
