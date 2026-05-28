@@ -194,7 +194,16 @@
     .cta-btn.dk:hover{background:var(--rose);color:var(--ink)}
     .cta-btn.lt{background:var(--cream);color:var(--ink)}
     .cta-btn.lt:hover{background:var(--rose-light)}
+
+    /* Efecto hover en overlay de video */
+    .gallery-item:hover .video-play-overlay {
+      background: rgba(28, 31, 20, 0.3) !important;
+    }
     
+    .gallery-item:hover .video-play-overlay div {
+      transform: scale(1.1);
+      background: var(--rose-dark);
+    }
     
      /* HEADER BLOCK */
     .page-header{margin-bottom:3rem}
@@ -238,7 +247,8 @@
     tbody tr{border-bottom:1px solid var(--olive-light);transition:background .15s}
     tbody tr:last-child{border-bottom:none}
     tbody tr:hover{background:rgba(92,107,58,.06)}
- 
+
+    
     /* alternating subtle rows */
     tbody tr:nth-child(even){background:rgba(237,240,224,.45)}
     tbody tr:nth-child(even):hover{background:rgba(92,107,58,.08)}
@@ -1848,6 +1858,23 @@ function scrollToGallery() {
     <button onclick="closeLightbox()" style="position: absolute; top: -40px; right: 0; background: var(--rose); border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; color: var(--ink); transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">✕</button>
   </div>
   <div id="lightbox-caption" style="position: absolute; bottom: 20px; left: 20px; right: 20px; text-align: center; color: var(--cream); font-family: var(--font-body); font-size: 0.85rem; padding: 0.75rem; background: rgba(0,0,0,0.5); border-radius: 8px;"></div>
+</div>
+
+  <!-- LIGHTBOX PARA VÍDEO -->
+<div id="videoLightbox" style="display: none; position: fixed; inset: 0; background: rgba(28, 31, 20, 0.95); z-index: 1001; align-items: center; justify-content: center; backdrop-filter: blur(8px);">
+  <div style="position: relative; width: 90vw; max-width: 1200px;">
+    <video 
+      id="lightbox-video" 
+      controls 
+      autoplay
+      style="width: 100%; height: auto; max-height: 85vh; border-radius: 8px; box-shadow: 0 20px 40px rgba(0,0,0,0.3);"
+      controlsList="nodownload">
+      <source src="" type="video/mp4">
+      Tu navegador no soporta videos.
+    </video>
+    <button onclick="closeVideoLightbox()" style="position: absolute; top: -40px; right: 0; background: var(--rose); border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; color: var(--ink); transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">✕</button>
+  </div>
+  <div id="videoLightbox-caption" style="position: absolute; bottom: 20px; left: 20px; right: 20px; text-align: center; color: var(--cream); font-family: var(--font-body); font-size: 0.85rem; padding: 0.75rem; background: rgba(0,0,0,0.5); border-radius: 8px;"></div>
 </div>
   
   <div style="max-width: 1000px; margin: 0 auto; padding: 0 2rem;">
