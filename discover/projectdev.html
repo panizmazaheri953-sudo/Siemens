@@ -312,6 +312,12 @@
       .stat-chip{flex:1 1 40%;border-bottom:1px solid var(--olive-light)}
       thead th,td{padding:.75rem .9rem}
       td.addr{white-space:normal;word-break:break-all}
+        #limitations > div[style*="grid-template-columns: 340px"] {
+    grid-template-columns: 1fr !important;
+  }
+  #limitations .lim-row {
+    grid-template-columns: 48px 1fr !important;
+  }
       
     }
   </style>
@@ -1211,7 +1217,135 @@ function scrollToGallery() {
   </div>
 </section>
   
-  
+  <!-- ============================================== -->
+<!-- HTML STRUCTURE FOR LIMITATIONS SECTION         -->
+<!-- ============================================== -->
+<section id="limitations" style="padding: 0; background: var(--olive-pale); overflow: hidden;">
+
+  <!-- Top accent bar -->
+  <div style="height: 4px; background: linear-gradient(90deg, var(--rose-dark) 0%, var(--rose) 40%, var(--olive-mid) 100%);"></div>
+
+  <div style="display: grid; grid-template-columns: 340px 1fr; min-height: 560px;">
+
+    <!-- LEFT PANEL — dark, editorial -->
+    <div style="background: var(--ink); padding: 4rem 3rem; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden;">
+      <!-- watermark -->
+      <div style="position: absolute; bottom: -1rem; left: -1rem; font-family: var(--font-display); font-size: 9rem; line-height: 1; color: rgba(255,255,255,.025); pointer-events: none; letter-spacing: -.02em; user-select: none;">LIM<br>ITS</div>
+
+      <div>
+        <p style="font-family: var(--font-condensed); font-weight: 700; font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; color: var(--rose); margin-bottom: 1rem;">Scope &amp; Constraints</p>
+        <h2 style="font-family: var(--font-display); font-size: clamp(3rem, 4vw, 4.8rem); line-height: .88; text-transform: uppercase; color: var(--cream); margin-bottom: 1.5rem;">Known<br><span style="color: var(--rose-light);">Limitations</span></h2>
+        <p style="font-size: .88rem; line-height: 1.75; color: #888; max-width: 260px;">Every prototype has boundaries. These are the constraints encountered — and what they mean for real-world replication.</p>
+      </div>
+
+      <!-- Count pills -->
+      <div style="display: flex; flex-direction: column; gap: .6rem; margin-top: 2rem;">
+        <div style="display: flex; align-items: center; gap: .75rem;">
+          <span style="font-family: var(--font-display); font-size: 2.2rem; line-height: 1; color: var(--rose);">3</span>
+          <span style="font-family: var(--font-condensed); font-weight: 700; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: #666;">Licensing constraints</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: .75rem;">
+          <span style="font-family: var(--font-display); font-size: 2.2rem; line-height: 1; color: var(--olive-mid);">2</span>
+          <span style="font-family: var(--font-condensed); font-weight: 700; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: #666;">Infrastructure boundaries</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: .75rem;">
+          <span style="font-family: var(--font-display); font-size: 2.2rem; line-height: 1; color: #666;">1</span>
+          <span style="font-family: var(--font-condensed); font-weight: 700; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: #666;">Scope boundary</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL — stacked limitation rows -->
+    <div style="display: flex; flex-direction: column; gap: 0;">
+
+      <!-- Limitation 01 -->
+      <div class="lim-row" style="display: grid; grid-template-columns: 64px 1fr; gap: 0; border-bottom: 1px solid var(--olive-light); transition: background .2s;" onmouseover="this.style.background='rgba(92,107,58,.08)'" onmouseout="this.style.background=''">
+        <div style="background: var(--rose-dark); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.4rem; color: var(--rose-pale); min-height: 100px;">01</div>
+        <div style="padding: 1.6rem 2rem;">
+          <div style="display: flex; align-items: center; gap: .75rem; margin-bottom: .5rem; flex-wrap: wrap;">
+            <span style="font-family: var(--font-condensed); font-weight: 900; font-size: 1rem; text-transform: uppercase; color: var(--ink);">HMI License Expiry</span>
+            <span style="background: var(--rose-light); color: var(--rose-dark); padding: .15rem .6rem; font-family: var(--font-condensed); font-weight: 700; font-size: .6rem; letter-spacing: .08em; text-transform: uppercase;">Licensing</span>
+          </div>
+          <p style="font-size: .85rem; line-height: 1.65; color: var(--muted); margin-bottom: .75rem;">The TIA Portal HMI license expired mid-project, preventing a full HMI-triggered end-to-end run. A workaround PLC program was developed that demonstrates automatic cell operation without the HMI trigger — the core functionality is preserved, but the intended human-machine interface layer could not be validated in the final demo.</p>
+          <span style="font-family: var(--font-condensed); font-weight: 700; font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; color: var(--olive); background: var(--olive-pale); padding: .2rem .6rem;">Workaround applied ✓</span>
+        </div>
+      </div>
+
+      <!-- Limitation 02 -->
+      <div class="lim-row" style="display: grid; grid-template-columns: 64px 1fr; gap: 0; border-bottom: 1px solid var(--olive-light); transition: background .2s;" onmouseover="this.style.background='rgba(92,107,58,.08)'" onmouseout="this.style.background=''">
+        <div style="background: var(--rose-mid); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.4rem; color: var(--rose-pale); min-height: 100px;">02</div>
+        <div style="padding: 1.6rem 2rem;">
+          <div style="display: flex; align-items: center; gap: .75rem; margin-bottom: .5rem; flex-wrap: wrap;">
+            <span style="font-family: var(--font-condensed); font-weight: 900; font-size: 1rem; text-transform: uppercase; color: var(--ink);">University Admin Rights</span>
+            <span style="background: var(--rose-light); color: var(--rose-dark); padding: .15rem .6rem; font-family: var(--font-condensed); font-weight: 700; font-size: .6rem; letter-spacing: .08em; text-transform: uppercase;">Licensing</span>
+          </div>
+          <p style="font-size: .85rem; line-height: 1.65; color: var(--muted); margin-bottom: .75rem;">Restricted admin rights on university machines limited software installation flexibility. Some components had to be configured around system policies rather than optimally. This is a realistic constraint any organisation faces when deploying in managed IT environments — and it reinforces the case for open, standards-based protocols that don't require deep system access.</p>
+          <span style="font-family: var(--font-condensed); font-weight: 700; font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); background: #eee; padding: .2rem .6rem;">Navigated — not resolved</span>
+        </div>
+      </div>
+
+      <!-- Limitation 03 -->
+      <div class="lim-row" style="display: grid; grid-template-columns: 64px 1fr; gap: 0; border-bottom: 1px solid var(--olive-light); transition: background .2s;" onmouseover="this.style.background='rgba(92,107,58,.08)'" onmouseout="this.style.background=''">
+        <div style="background: var(--olive-mid); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.4rem; color: var(--olive-pale); min-height: 100px;">03</div>
+        <div style="padding: 1.6rem 2rem;">
+          <div style="display: flex; align-items: center; gap: .75rem; margin-bottom: .5rem; flex-wrap: wrap;">
+            <span style="font-family: var(--font-condensed); font-weight: 900; font-size: 1rem; text-transform: uppercase; color: var(--ink);">PLCSIM Advanced — Single Instance</span>
+            <span style="background: var(--rose-light); color: var(--rose-dark); padding: .15rem .6rem; font-family: var(--font-condensed); font-weight: 700; font-size: .6rem; letter-spacing: .08em; text-transform: uppercase;">Licensing</span>
+          </div>
+          <p style="font-size: .85rem; line-height: 1.65; color: var(--muted); margin-bottom: .75rem;">PLCSIM Advanced only permits one virtual PLC instance at a time under the available license tier. This prevented testing multiple concurrent virtual controllers simultaneously, which would be relevant for larger multi-cell environments. A production deployment would require higher-tier licensing or physical PLC hardware.</p>
+          <span style="font-family: var(--font-condensed); font-weight: 700; font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; color: var(--olive); background: var(--olive-pale); padding: .2rem .6rem;">Out of scope for this prototype</span>
+        </div>
+      </div>
+
+      <!-- Limitation 04 -->
+      <div class="lim-row" style="display: grid; grid-template-columns: 64px 1fr; gap: 0; border-bottom: 1px solid var(--olive-light); transition: background .2s;" onmouseover="this.style.background='rgba(92,107,58,.08)'" onmouseout="this.style.background=''">
+        <div style="background: var(--olive); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.4rem; color: var(--olive-pale); min-height: 100px;">04</div>
+        <div style="padding: 1.6rem 2rem;">
+          <div style="display: flex; align-items: center; gap: .75rem; margin-bottom: .5rem; flex-wrap: wrap;">
+            <span style="font-family: var(--font-condensed); font-weight: 900; font-size: 1rem; text-transform: uppercase; color: var(--ink);">Two-PC Dependency</span>
+            <span style="background: var(--olive-light); color: var(--olive-dark); padding: .15rem .6rem; font-family: var(--font-condensed); font-weight: 700; font-size: .6rem; letter-spacing: .08em; text-transform: uppercase;">Infrastructure</span>
+          </div>
+          <p style="font-size: .85rem; line-height: 1.65; color: var(--muted); margin-bottom: .75rem;">The architecture separates physical acquisition (PC 1) and virtual commissioning (PC 2) across two machines. While this follows a sound network security model, it introduces a physical dependency — both machines must be available and networked for the system to function. A containerised or cloud-hosted deployment could remove this constraint.</p>
+          <span style="font-family: var(--font-condensed); font-weight: 700; font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; color: var(--olive); background: var(--olive-pale); padding: .2rem .6rem;">Design decision — not a flaw</span>
+        </div>
+      </div>
+
+      <!-- Limitation 05 -->
+      <div class="lim-row" style="display: grid; grid-template-columns: 64px 1fr; gap: 0; border-bottom: 1px solid var(--olive-light); transition: background .2s;" onmouseover="this.style.background='rgba(92,107,58,.08)'" onmouseout="this.style.background=''">
+        <div style="background: var(--olive-dark); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.4rem; color: var(--olive-light); min-height: 100px;">05</div>
+        <div style="padding: 1.6rem 2rem;">
+          <div style="display: flex; align-items: center; gap: .75rem; margin-bottom: .5rem; flex-wrap: wrap;">
+            <span style="font-family: var(--font-condensed); font-weight: 900; font-size: 1rem; text-transform: uppercase; color: var(--ink);">No Bidirectional Feedback Loop</span>
+            <span style="background: var(--olive-light); color: var(--olive-dark); padding: .15rem .6rem; font-family: var(--font-condensed); font-weight: 700; font-size: .6rem; letter-spacing: .08em; text-transform: uppercase;">Infrastructure</span>
+          </div>
+          <p style="font-size: .85rem; line-height: 1.65; color: var(--muted); margin-bottom: .75rem;">Data currently flows from the physical line to the virtual environment. The reverse — virtual environment sending commands back to the physical CP Lab — was not implemented. A full closed-loop system would require bidirectional OPC-UA write access to the physical PLC, which introduces safety and access control considerations beyond this project's scope.</p>
+          <span style="font-family: var(--font-condensed); font-weight: 700; font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); background: #eee; padding: .2rem .6rem;">Future work</span>
+        </div>
+      </div>
+
+      <!-- Limitation 06 -->
+      <div class="lim-row" style="display: grid; grid-template-columns: 64px 1fr; gap: 0; transition: background .2s;" onmouseover="this.style.background='rgba(92,107,58,.08)'" onmouseout="this.style.background=''">
+        <div style="background: var(--ink-mid); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.4rem; color: #555; min-height: 100px;">06</div>
+        <div style="padding: 1.6rem 2rem;">
+          <div style="display: flex; align-items: center; gap: .75rem; margin-bottom: .5rem; flex-wrap: wrap;">
+            <span style="font-family: var(--font-condensed); font-weight: 900; font-size: 1rem; text-transform: uppercase; color: var(--ink);">Prototype Scope — Not Production Scale</span>
+            <span style="background: #eee; color: var(--muted); padding: .15rem .6rem; font-family: var(--font-condensed); font-weight: 700; font-size: .6rem; letter-spacing: .08em; text-transform: uppercase;">Scope</span>
+          </div>
+          <p style="font-size: .85rem; line-height: 1.65; color: var(--muted); margin-bottom: .75rem;">This is a proof-of-concept demonstrating feasibility, not a production-hardened deployment. Considerations such as redundancy, failover, latency profiling under load, formal cybersecurity audit, and enterprise-scale signal volumes were not addressed. The architecture is sound as a foundation — but scaling it would require additional engineering effort in each of those areas.</p>
+          <span style="font-family: var(--font-condensed); font-weight: 700; font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); background: #eee; padding: .2rem .6rem;">Known &amp; intentional</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div style="background: var(--ink); padding: 1.2rem 4rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; border-top: 1px solid #2a2d1e;">
+    <p style="font-family: var(--font-condensed); font-weight: 700; font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: #555; margin: 0;">None of these constraints invalidate the core finding — the architecture works and is replicable.</p>
+    <span style="font-family: var(--font-condensed); font-weight: 700; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--olive-mid);">6 limitations documented</span>
+  </div>
+
+</section>
   
   <!-- ══════════════════════════════════════════════
      GALLERY SECTION
