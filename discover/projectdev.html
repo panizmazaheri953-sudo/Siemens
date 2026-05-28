@@ -32,7 +32,7 @@
     /* ── PAGE HERO ── */
     #page-hero{margin-top:60px;display:grid;grid-template-columns:1fr 1fr;min-height:320px}
     .ph-left{background:var(--ink);padding:4rem 3.5rem;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
-    .ph-left::before{content:'DEVELOPMENT';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--font-display);font-size:7rem;color:rgba(255,255,255,.025);white-space:nowrap;pointer-events:none;letter-spacing:.05em}
+    .ph-left::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--font-display);font-size:7rem;color:rgba(255,255,255,.025);white-space:nowrap;pointer-events:none;letter-spacing:.05em}
     .ph-eyebrow{font-family:var(--font-condensed);font-weight:700;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--rose);margin-bottom:.8rem}
     .ph-left h1{font-family:var(--font-display);font-size:clamp(3.5rem,5vw,5.5rem);line-height:.9;color:var(--cream);text-transform:uppercase}
     .ph-left h1 .a{color:var(--olive-light)}
@@ -281,6 +281,220 @@
     .leg-dot.s{background:var(--olive)}
     .leg-dot.c{background:var(--rose)}
     .leg-dot.x{background:var(--muted)}
+    
+      @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;600;700&display=swap');
+
+  .conc-wrap {
+    font-family: 'Barlow', sans-serif;
+    background: #1C1F14;
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .conc-top-bar {
+    height: 4px;
+    background: linear-gradient(90deg, #C4706A 0%, #E8A5A0 35%, #7A8C4E 70%, #C8D4A0 100%);
+  }
+
+  .conc-inner {
+    padding: 4rem 3.5rem 3rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .conc-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11rem;
+    line-height: 1;
+    color: rgba(255,255,255,0.025);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+    user-select: none;
+    z-index: 1;
+  }
+
+  .conc-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #E8A5A0;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .conc-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 2px;
+    background: #E8A5A0;
+  }
+
+  .conc-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.2rem, 6vw, 5.5rem);
+    line-height: 0.88;
+    text-transform: uppercase;
+    color: #F7F4EE;
+    margin-bottom: 2.5rem;
+  }
+
+  .conc-headline .hl-olive { color: #C8D4A0; }
+  .conc-headline .hl-rose { color: #E8A5A0; }
+
+  .conc-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .conc-statement {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: #9A9D90;
+    grid-column: 1 / -1;
+    max-width: 720px;
+    border-left: 3px solid #5C6B3A;
+    padding-left: 1.5rem;
+  }
+
+  .conc-statement strong {
+    color: #C8D4A0;
+    font-weight: 600;
+  }
+
+  .conc-pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: #2a2d1e;
+    margin-bottom: 2.5rem;
+  }
+
+  .pillar {
+    background: #242719;
+    padding: 1.5rem 1.25rem;
+    position: relative;
+    transition: background 0.2s;
+  }
+
+  .pillar:hover { background: #3D4826; }
+
+  .pillar-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.8rem;
+    line-height: 1;
+    color: #3D4826;
+    margin-bottom: 0.5rem;
+    transition: color 0.2s;
+  }
+
+  .pillar:hover .pillar-num { color: #7A8C4E; }
+
+  .pillar-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #C8D4A0;
+    margin-bottom: 0.4rem;
+  }
+
+  .pillar-text {
+    font-size: 0.75rem;
+    line-height: 1.55;
+    color: #666;
+  }
+
+  .conc-footer-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid #2a2d1e;
+  }
+
+  .conc-stamp {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .stamp-circle {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 2px solid #5C6B3A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .stamp-circle-inner {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #5C6B3A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .stamp-check {
+    color: #C8D4A0;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .stamp-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #5C6B3A;
+    line-height: 1.4;
+  }
+
+  .stamp-text strong {
+    display: block;
+    color: #C8D4A0;
+    font-size: 0.9rem;
+  }
+
+  .conc-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .ctag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+    border: 1px solid;
+  }
+
+  .ctag.o { border-color: #5C6B3A; color: #7A8C4E; }
+  .ctag.r { border-color: #C4706A; color: #E8A5A0; }
+  .ctag.m { border-color: #3a3d2e; color: #555; }
 
     /* ── FOOTER ── */
     footer{background:var(--ink);color:var(--cream);padding:3rem 4rem;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:2rem}
@@ -318,7 +532,11 @@
   #limitations .lim-row {
     grid-template-columns: 48px 1fr !important;
   }
-      
+   
+    .conc-inner { padding: 2.5rem 1.5rem 2rem; }
+    .conc-pillars { grid-template-columns: 1fr; }
+    .conc-footer-row { flex-direction: column; align-items: flex-start; }
+   
     }
   </style>
 </head>
@@ -1364,7 +1582,7 @@ function scrollToGallery() {
   <!-- Bottom bar -->
   <div style="background: var(--ink); padding: 1.2rem 4rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; border-top: 1px solid #2a2d1e;">
     <p style="font-family: var(--font-condensed); font-weight: 700; font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: white; margin: 0;">None of these constraints invalidate the core finding, the architecture works and is replicable.</p>
-    <span style="font-family: var(--font-condensed); font-weight: 700; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--olive-mid);">6 limitations documented</span>
+    <span style="font-family: var(--font-condensed); font-weight: 700; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--olive-mid);">7 limitations documented</span>
   </div>
 
 </section>
@@ -1792,6 +2010,43 @@ function scrollToGallery() {
     <div class="leg-item"><span class="leg-dot x"></span>System control</div>
   </div>
  </div>
+  <div class="conc-wrap">
+  <div class="conc-top-bar"></div>
+  <div class="conc-watermark"></div>
+  <div class="conc-inner">
+
+    <div class="conc-eyebrow">Final Remarks</div>
+
+    <h2 class="conc-headline">
+      Beyond<br>
+      <span class="hl-olive">Local</span><br>
+      <span class="hl-rose">Simulation.</span>
+    </h2>
+
+    <p class="conc-statement">
+      Our project demonstrates how <strong>distributed digital twins</strong>, industrial IoT communication, and
+      <strong>Siemens Xcelerator technologies</strong> can extend virtual commissioning beyond local simulation, into
+      a <strong>secure, scalable, Purdue-model-aligned</strong> remote engineering ecosystem that reduces commissioning
+      costs, improves sustainability, and accelerates Industry 4.0 deployment.
+    </p>
+
+    <div class="conc-pillars">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <div class="pillar-title">Architecture Works</div>
+        <div class="pillar-text">End-to-end OPC-UA → MQTT/TLS → OPC-UA pipeline validated across two machines and a cloud broker.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <div class="pillar-title">Vendor-Agnostic</div>
+        <div class="pillar-text">Open standards and open-source middleware mean the design is not locked to any single hardware vendor.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <div class="pillar-title">Industry 4.0 Ready</div>
+        <div class="pillar-text">The Purdue Model separation, TLS encryption, and scalable cloud broker provide a production-credible baseline.</div>
+      </div>
+    </div>
   
 
 <footer>
