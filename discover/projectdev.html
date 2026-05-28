@@ -1212,6 +1212,7 @@ function scrollToGallery() {
 </section>
   
   
+  
   <!-- ══════════════════════════════════════════════
      GALLERY SECTION
 ══════════════════════════════════════════════ -->
@@ -1238,7 +1239,6 @@ function scrollToGallery() {
     <button class="filter-btn" data-filter="robot" style="background: transparent; color: var(--ink-mid); padding: 0.4rem 1.2rem; font-family: var(--font-condensed); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; transition: all 0.2s;">SRPS</button>
     <button class="filter-btn" data-filter="tia" style="background: transparent; color: var(--ink-mid); padding: 0.4rem 1.2rem; font-family: var(--font-condensed); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; transition: all 0.2s;">TIA Portal</button>
     <button class="filter-btn" data-filter="opcua" style="background: transparent; color: var(--ink-mid); padding: 0.4rem 1.2rem; font-family: var(--font-condensed); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; transition: all 0.2s;">OPC UA Validation</button>
-    <button class="filter-btn" data-filter="los" style="background: transparent; color: var(--ink-mid); padding: 0.4rem 1.2rem; font-family: var(--font-condensed); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; transition: all 0.2s;">LoS</button>
     <button class="filter-btn" data-filter="festo" style="background: transparent; color: var(--ink-mid); padding: 0.4rem 1.2rem; font-family: var(--font-condensed); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; transition: all 0.2s;">Festo CP Lab</button>
   </div>
 
@@ -1361,61 +1361,74 @@ function scrollToGallery() {
     <!-- Item 6 - Validation -->
     <div class="gallery-item fade-up" data-category="nx" style="background: var(--cream); border: 1px solid var(--olive-light); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox(this)">
       <div class="gallery-image" style="position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--olive-pale);">
-        <img src="assets/images/siemens-nx-twin.jpg" alt="Siemens NX digital twin" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" onerror="this.src='https://placehold.co/600x450/EDF0E0/5C6B3A?text=Siemens+NX'">
+        <img src="assets/images/Screenshot 2026-05-28 124603.png" alt="Siemens NX digital twin" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" onerror="this.src='https://placehold.co/600x450/EDF0E0/5C6B3A?text=Siemens+NX'">
         <div class="image-overlay" style="position: absolute; inset: 0; background: rgba(28, 31, 20, 0.4); opacity: 0; transition: opacity 0.3s ease;"></div>
       </div>
       <div class="gallery-info" style="padding: 1.2rem 1.5rem;">
         <span class="gallery-category" style="display: inline-block; font-family: var(--font-condensed); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.5rem;">Siemens NX</span>
-        <h3 style="font-family: var(--font-condensed); font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">Siemens NX Digital Twin</h3>
-        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">Virtual representation of CP Lab responding to PLC signals in real-time.</p>
+        <h3 style="font-family: var(--font-condensed); font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">Basic Physics Model</h3>
+        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">Definition of rigid bodies, collision models, and object sources in Siemens NX for physical simulation of the digital twin environment.</p>
       </div>
     </div>
     
     <div class="gallery-item fade-up" data-category="nx" style="background: var(--cream); border: 1px solid var(--olive-light); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox(this)">
       <div class="gallery-image" style="position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--olive-pale);">
-        <img src="assets/images/siemens-nx-twin.jpg" alt="Siemens NX digital twin" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" onerror="this.src='https://placehold.co/600x450/EDF0E0/5C6B3A?text=Siemens+NX'">
+        <img src="assets/images/Screenshot 2026-05-28 124631.png" alt="Siemens NX digital twin" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" onerror="this.src='https://placehold.co/600x450/EDF0E0/5C6B3A?text=Siemens+NX'">
         <div class="image-overlay" style="position: absolute; inset: 0; background: rgba(28, 31, 20, 0.4); opacity: 0; transition: opacity 0.3s ease;"></div>
       </div>
       <div class="gallery-info" style="padding: 1.2rem 1.5rem;">
         <span class="gallery-category" style="display: inline-block; font-family: var(--font-condensed); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.5rem;">Siemens NX</span>
-        <h3 style="font-family: var(--font-condensed); font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">Siemens NX Digital Twin</h3>
-        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">Virtual representation of CP Lab responding to PLC signals in real-time.</p>
+        <h3 style="font-family: var(--font-condensed); font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">Joint & Constraint Setup</h3>
+        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">Implementation of kinematic joints and constraints for accurate motion behavior within the NX digital twin environment.</p>
       </div>
     </div>
     
     <div class="gallery-item fade-up" data-category="nx" style="background: var(--cream); border: 1px solid var(--olive-light); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox(this)">
       <div class="gallery-image" style="position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--olive-pale);">
-        <img src="assets/images/siemens-nx-twin.jpg" alt="Siemens NX digital twin" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" onerror="this.src='https://placehold.co/600x450/EDF0E0/5C6B3A?text=Siemens+NX'">
+        <img src="assets/images/Screenshot 2026-05-28 124655.png" alt="Siemens NX digital twin" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" onerror="this.src='https://placehold.co/600x450/EDF0E0/5C6B3A?text=Siemens+NX'">
         <div class="image-overlay" style="position: absolute; inset: 0; background: rgba(28, 31, 20, 0.4); opacity: 0; transition: opacity 0.3s ease;"></div>
       </div>
       <div class="gallery-info" style="padding: 1.2rem 1.5rem;">
         <span class="gallery-category" style="display: inline-block; font-family: var(--font-condensed); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.5rem;">Siemens NX</span>
-        <h3 style="font-family: var(--font-condensed); font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">Siemens NX Digital Twin</h3>
-        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">Virtual representation of CP Lab responding to PLC signals in real-time.</p>
+        <h3 style="font-family: var(--font-condensed); font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">Sensors & Actuators Setup</h3>
+        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">Configuration of sensors and actuators within Siemens NX to enable input/output interaction and realistic digital twin behavior.</p>
       </div>
     </div>
     
     <div class="gallery-item fade-up" data-category="nx" style="background: var(--cream); border: 1px solid var(--olive-light); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox(this)">
       <div class="gallery-image" style="position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--olive-pale);">
-        <img src="assets/images/siemens-nx-twin.jpg" alt="Siemens NX digital twin" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" onerror="this.src='https://placehold.co/600x450/EDF0E0/5C6B3A?text=Siemens+NX'">
+        <img src="assets/images/Screenshot 2026-05-28 124740.png" alt="Siemens NX digital twin" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" onerror="this.src='https://placehold.co/600x450/EDF0E0/5C6B3A?text=Siemens+NX'">
         <div class="image-overlay" style="position: absolute; inset: 0; background: rgba(28, 31, 20, 0.4); opacity: 0; transition: opacity 0.3s ease;"></div>
       </div>
       <div class="gallery-info" style="padding: 1.2rem 1.5rem;">
         <span class="gallery-category" style="display: inline-block; font-family: var(--font-condensed); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.5rem;">Siemens NX</span>
-        <h3 style="font-family: var(--font-condensed); font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">Siemens NX Digital Twin</h3>
-        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">Virtual representation of CP Lab responding to PLC signals in real-time.</p>
+        <h3 style="font-family: var(--font-condensed); font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">Signal Definition & Mapping</h3>
+        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">Definition and mapping of input and output signals within Siemens NX to enable communication between the digital twin components.</p>
       </div>
     </div>
     
     <div class="gallery-item fade-up" data-category="nx" style="background: var(--cream); border: 1px solid var(--olive-light); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox(this)">
       <div class="gallery-image" style="position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--olive-pale);">
-        <img src="assets/images/siemens-nx-twin.jpg" alt="Siemens NX digital twin" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" onerror="this.src='https://placehold.co/600x450/EDF0E0/5C6B3A?text=Siemens+NX'">
+        <img src="assets/images/Screenshot 2026-05-28 130019.png" alt="Siemens NX digital twin" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" onerror="this.src='https://placehold.co/600x450/EDF0E0/5C6B3A?text=Siemens+NX'">
         <div class="image-overlay" style="position: absolute; inset: 0; background: rgba(28, 31, 20, 0.4); opacity: 0; transition: opacity 0.3s ease;"></div>
       </div>
       <div class="gallery-info" style="padding: 1.2rem 1.5rem;">
         <span class="gallery-category" style="display: inline-block; font-family: var(--font-condensed); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.5rem;">Siemens NX</span>
-        <h3 style="font-family: var(--font-condensed); font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">Siemens NX Digital Twin</h3>
-        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">Virtual representation of CP Lab responding to PLC signals in real-time.</p>
+        <h3 style="font-family: var(--font-condensed); font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">Sensor Signal Integration</h3>
+        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">Visualization of internal and external input signals in NX. External signals that are mapped to real PLC data through OPC UA can be seen in green.</p>
+      </div>
+    </div>
+    
+    
+    <div class="gallery-item fade-up" data-category="nx" style="background: var(--cream); border: 1px solid var(--olive-light); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox(this)">
+      <div class="gallery-image" style="position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--olive-pale);">
+        <img src="assets/images/Screenshot 2026-05-28 132649.png" alt="Siemens NX digital twin" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" onerror="this.src='https://placehold.co/600x450/EDF0E0/5C6B3A?text=Siemens+NX'">
+        <div class="image-overlay" style="position: absolute; inset: 0; background: rgba(28, 31, 20, 0.4); opacity: 0; transition: opacity 0.3s ease;"></div>
+      </div>
+      <div class="gallery-info" style="padding: 1.2rem 1.5rem;">
+        <span class="gallery-category" style="display: inline-block; font-family: var(--font-condensed); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.5rem;">Siemens NX</span>
+        <h3 style="font-family: var(--font-condensed); font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">Robot Joint Configuration</h3>
+        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">Definition of robot joints in Siemens NX to configure the motion behavior within the digital twin model.</p>
       </div>
     </div>
     
@@ -1423,7 +1436,7 @@ function scrollToGallery() {
 <div class="gallery-item fade-up" data-category="nx" style="background: var(--cream); border: 1px solid var(--olive-light); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openVideoLightbox(this)">
   <div class="gallery-image" style="position: relative; overflow: hidden; aspect-ratio: 16/9; background: var(--ink);">
     <video 
-      src="assets/videos/tu-video.mp4" 
+      src="assets/videos/NX.mp4" 
       style="width: 100%; height: 100%; object-fit: cover;"
       preload="metadata"
       muted
@@ -1466,7 +1479,6 @@ function scrollToGallery() {
     </button>
   </div>
 </section>
-
 <!-- ══════════════════════════════════════════════
      LIGHTBOX MODAL (para ver imágenes ampliadas)
 ══════════════════════════════════════════════ -->
