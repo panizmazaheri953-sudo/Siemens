@@ -55,17 +55,6 @@
     .fade-up{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
     .fade-up.visible{opacity:1;transform:translateY(0)}
 
-
-        /* Efecto hover en overlay de video */
-    .gallery-item:hover .video-play-overlay {
-      background: rgba(28, 31, 20, 0.3) !important;
-    }
-    
-    .gallery-item:hover .video-play-overlay div {
-      transform: scale(1.1);
-      background: var(--rose-dark);
-    }
-    
     /* ── CONNECTION DIAGRAM ── */
     #connection{padding:5rem 4rem;background:var(--cream)}
     .conn-head{display:grid;grid-template-columns:1fr 1fr;align-items:end;margin-bottom:3rem;gap:2rem}
@@ -338,12 +327,12 @@
 <nav>
   <a class="nav-logo" href="index.html">IoT · Virtual Commissioning</a>
   <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="background.html">Background</a></li>
-    <li><a href="development.html" class="active">Development</a></li>
-    <li><a href="results.html">Results</a></li>
+    <li><a href="../index.html">Home</a></li>
+    
+    <li><a href="projectdev.html" class="active">Development</a></li>
+    
   </ul>
-  <a class="nav-cta" href="results.html">Results<span class="dot"></span></a>
+  <a class="nav-cta" href="#gallery">Gallery<span class="dot"></span></a>
 </nav>
 
 <!-- PAGE HERO -->
@@ -353,7 +342,7 @@
     <h1>Technical<br><span class="a">Development</span></h1>
   </div>
   <div class="ph-right">
-    <p>A unified walkthrough of how the <strong>IoT data pipeline</strong> and the <strong>virtual commissioning environment</strong> were built, connected, and validated — step by step, decision by decision.</p>
+    <p>A unified walkthrough of how the <strong>IoT data pipeline</strong> and the <strong>virtual commissioning environment</strong> were built, connected, and validated step by step, decision by decision.</p>
     <div class="ph-meta">
       <div class="ph-meta-item"><div class="lbl">Stages</div><div class="val">4 Complete</div></div>
       <div class="ph-meta-item"><div class="lbl">Tools</div><div class="val">7 Integrated</div></div>
@@ -446,9 +435,9 @@
 
   <!-- ETIQUETAS DE CAPA -->
   <text x="20" y="55" font-family="DM Mono" font-size="9" fill="rgba(35, 38, 42, 0.9)" letter-spacing="2">PHYSICAL</text>
-  <text x="20" y="155" font-family="DM Mono" font-size="9" fill="rgba(35, 38, 42, 0.9)" letter-spacing="2">ACQUISITION 1 (UP)</text>
+  <text x="20" y="155" font-family="DM Mono" font-size="9" fill="rgba(35, 38, 42, 0.9)" letter-spacing="2">ACQUISITION 1</text>
   <text x="20" y="255" font-family="DM Mono" font-size="9" fill="rgba(35, 38, 42, 0.9)" letter-spacing="2">CLOUD BROKER</text>
-  <text x="20" y="355" font-family="DM Mono" font-size="9" fill="rgba(35, 38, 42, 0.9)" letter-spacing="2">ACQUISITION 2 (DOWN)</text>
+  <text x="20" y="355" font-family="DM Mono" font-size="9" fill="rgba(35, 38, 42, 0.9)" letter-spacing="2">ACQUISITION 2</text>
   <text x="20" y="455" font-family="DM Mono" font-size="9" fill="rgba(35, 38, 42, 0.9)" letter-spacing="2">VIRTUAL ENV</text>
 
   <!-- fondos de capa -->
@@ -585,7 +574,7 @@
           <div class="tl-card-meta-full">
             <div class="tl-step-week-full">Stage 01 · Research & Architecture Design</div>
             <h3>Feasibility Study & System Design</h3>
-            <p class="tl-card-summary-full">Both sides investigated whether connecting a live production line to a virtual commissioning environment via IoT was technically feasible — and designed the architecture to do it.</p>
+            <p class="tl-card-summary-full">Both sides investigated whether connecting a live production line to a virtual commissioning environment via IoT was technically feasible and designed the architecture to do it.</p>
             <div class="tl-tags-full">
               <span class="tl-tag-full g">Complete</span>
               <span class="tl-tag-full n">OPC-UA</span>
@@ -635,9 +624,9 @@
       <div class="tl-card-full">
         <div class="tl-card-header-full" onclick="toggleCardFull(this)">
           <div class="tl-card-meta-full">
-            <div class="tl-step-week-full">Stage 02 · IoT Side — PC 1</div>
+            <div class="tl-step-week-full">Stage 02 · IoT Side — Festo PC</div>
             <h3>OPC-UA Server & Node-RED Pipeline</h3>
-            <p class="tl-card-summary-full">Setting up the data acquisition side: extracting live CP Lab data via OPC-UA, transforming it in Node-RED, and publishing to HiveMQ via MQTT over TLS.</p>
+            <p class="tl-card-summary-full">Setting up the data acquisition side: extracting live CP Lab data via OPC-UA, validating the acquired data, transforming it in Node-RED, and publishing to HiveMQ via MQTT over TLS.</p>
             <div class="tl-tags-full">
               <span class="tl-tag-full g">Complete</span>
               <span class="tl-tag-full n">OPC-UA</span>
@@ -653,26 +642,31 @@
               <div class="detail-block-full">
                 <div class="db-lbl-full">OPC-UA Server Setup</div>
                 <ul>
-                  <li>Configured OPC-UA server to expose live CP Lab sensor/actuator data.</li>
-                  <li>Mapped process variables to OPC-UA node addresses.</li>
-                  <li>Tested direct subscription using UA Expert.</li>
+                  <li>Selected relevant signals to extract from the live CP Lab sensor/actuator data.</li>
+                  <li>Validated the selected signals using the OPC UA Expert client to verify their reliability before acquiring them through Node-RED.</li>
+                  <li>Configured the signal acquisition pipeline in Node-RED.</li>
                 </ul>
               </div>
               <div class="detail-block-full">
                 <div class="db-lbl-full">Node-RED: JSON → OPC-UA Transform</div>
                 <ul>
-                  <li>MQTT JSON payloads transformed to OPC-UA structured nodes.</li>
-                  <li>Maintained data types (bool, int, float) across protocol boundary.</li>
+                  <li>Transformed the signals acquired by the OPC UA client node into a JSON payload for transmission to the MQTT broker.</li>
+                  <li>Received the MQTT JSON payload on the Virtual Commissioning PC and transformed it into structured OPC UA nodes.</li>
+                  <li>Ensured that “undefined” values from non-updated signals during OPC UA acquisition from the Festo CP Lab were not transmitted to the broker; instead, the last valid data value was retained and sent.</li>
                 </ul>
               </div>
               <div class="detail-block-full dark">
                 <div class="db-lbl-full">MQTT/TLS — HiveMQ</div>
-                <p>Broker configured with TLS encryption per Purdue Model. Receives publications from PC 1, delivers to subscribers on PC 2.</p>
+                <p>Configured the MQTT broker with TLS encryption and authentication in accordance with the Purdue Model, enabling secure reception of publications from PC 1 and delivery to subscribers on PC 2.</p>
+              </div>
+              <div class="detail-block-full dark">
+                <div class="db-lbl-full">OPC UA Data Pipeline Validation</div>
+                <p>The initial connection to the data received by the MQTT broker and subsequently transformed into OPC UA nodes was originally intended to be accessed through an OPC UA client configured in TIA Portal and simulated using PLC SIM Advanced. However, the university computers hosting TIA Portal, Siemens NX, SRPS, and PLC SIM Advanced required institution-specific licenses and did not provide administrator privileges, preventing the installation of Node-RED and its OPC UA nodes on those machines.<br> <br>To validate the communication pipeline, Node-RED was instead installed on a personal computer. The OPC UA server configured within Node-RED was then accessed using UA Expert to verify the integrity and reliability of the data exchange with the Virtual Commissioning PC.</p>
               </div>
             </div>
             <div class="outcome-banner-full">
            
-              <div class="ob-text-full"><strong>Outcome:</strong> End-to-end data flow validated. Communication confirmed with UA Expert as OPC-UA client on PC 2.</div>
+              <div class="ob-text-full"><strong>Outcome:</strong> End-to-end data flow validated. Communication confirmed with UA Expert as OPC-UA client on the Virtual Commissioning PC.</div>
             </div>
             <!-- GALLERY BUTTON FOR STEP 2 -->
             <div class="gallery-button-container">
@@ -696,7 +690,7 @@
       <div class="tl-card-full">
         <div class="tl-card-header-full" onclick="toggleCardFull(this)">
           <div class="tl-card-meta-full">
-            <div class="tl-step-week-full">Stage 03 · Virtual Side — PC 2</div>
+            <div class="tl-step-week-full">Stage 03 · Virtual Side - Virtual Commissioning PC</div>
             <h3>Siemens NX Digital Twin & Robot Programming</h3>
             <p class="tl-card-summary-full">Building the virtual commissioning environment: configuring the NX digital twin, programming the robot in Simatic Robotic Suite, and mapping I/O signals.</p>
             <div class="tl-tags-full">
@@ -716,12 +710,13 @@
                 <ul>
                   <li>Imported reference frame for CP Lab output station.</li>
                   <li>Defined and validated robot pickup points.</li>
-                  <li>Programmed point path sequence — vendor-agnostic configuration.</li>
+                  <li>Programmed point path sequence vendor-agnostic configuration.</li>
                 </ul>
               </div>
               <div class="detail-block-full">
                 <div class="db-lbl-full">Siemens NX Configuration</div>
                 <ul>
+                  <li>Implemented the physical and control configuration of the imported CAD modules in Siemens NX, including kinematic constraints, rigid bodies, collision sensors, and actuator controls to reproduce real system behavior.</li>
                   <li>Replicated robot positioning inside NX MCD model.</li>
                   <li>Configured all signals: inputs from PLC, outputs to PLC.</li>
                   <li>Validated NX response matches physical behaviour.</li>
@@ -734,13 +729,13 @@
             </div>
             <div class="outcome-banner-full">
              
-              <div class="ob-text-full"><strong>Outcome:</strong> Robot program validated. NX ↔ Robotic Suite communication confirmed — both respond correctly to PLC signals.</div>
+              <div class="ob-text-full"><strong>Outcome:</strong> Robot program validated. NX ↔ Robotic Suite communication confirmed both respond correctly to PLC signals.</div>
             </div>
             <!-- GALLERY BUTTON FOR STEP 3 -->
             <div class="gallery-button-container">
               <button class="gallery-btn" onclick="scrollToGallery()">
                
-                Watch Demo Video and screenshots — Virtual Commissioning in Action
+                Watch Demo Video and screenshots: Virtual Commissioning in Action
                 <span class="btn-arrow">→</span>
               </button>
             </div>
@@ -779,24 +774,24 @@
                   <li>Programmed PLC logic for full cell sequence.</li>
                   <li>Configured OPC-UA server within TIA Portal.</li>
                   <li>Mapped PLC tags to NX signal interface.</li>
-                  <li>PLCSIM Advanced runs PLC program virtually.</li>
+                  
                 </ul>
               </div>
               <div class="detail-block-full">
                 <div class="db-lbl-full">OPC-UA Handshake Validation</div>
                 <ul>
-                  <li>UA Expert used as OPC-UA subscriber to simulate PLC behaviour.</li>
-                  <li>Data structure, node addresses, data types confirmed correct.</li>
+                  <li>OPC UA Client configuration deployed in TIA Portal to subscribe to the server implemented in the Virtual Commissioning PC in Node-RED</li>
+                  
                 </ul>
               </div>
               <div class="detail-block-full dark">
-                <div class="db-lbl-full">HMI Licensing Workaround</div>
-                <p>License expired — alternative PLC program developed demonstrating automatic cell functioning without HMI trigger.</p>
+                <div class="db-lbl-full">Licensing and Admin rights Workaround</div>
+                <p>As mentioned in Stage 2, the university computers containing the licensed software required for the project did not provide administrator privileges. As a result, direct access to the signals transmitted through the MQTT broker could not be established on those systems. Nevertheless, the communication handshake and signal exchange were successfully validated using UA Expert, as described previously.<br><br>Furthermore, implementing the complete automated solution required access to the robot HMI, in TIA Portal, to retrieve the execution signals associated with the programmed robot paths. However, the HMI licenses for the robotic system had expired, preventing direct integration and testing. To overcome this limitation, a simulated environment was developed to visualize the robot executing the programmed trajectories, along with a separate simulation of the output station of the Festo CP Lab system.<br><br>The steps described in this stage represent the logical continuation and intended deployment process for the complete project implementation under fully operational conditions and with unrestricted access to the required software and hardware resources.</p>
               </div>
             </div>
             <div class="outcome-banner-full">
          
-              <div class="ob-text-full"><strong>Outcome:</strong> Full system feasibility demonstrated. NX ↔ Simatic Robotic Suite ↔ TIA Portal communication confirmed.</div>
+              <div class="ob-text-full"><strong>Outcome:</strong> The feasibility of the proposed system was demonstrated using the available software tools under simulated and constrained deployment conditions. NX ↔ Simatic Robotic Suite ↔ TIA Portal communication confirmed.</div>
             </div>
             <!-- GALLERY BUTTON FOR STEP 4 -->
             <div class="gallery-button-container">
@@ -1198,31 +1193,26 @@ function scrollToGallery() {
     <div class="finding-card">
       <div class="fc-num">02</div>
       <div class="fc-title">Virtual Cell is Functional</div>
-      <p class="fc-text">NX, Simatic Robotic Suite and TIA Portal work together as expected. Signals are sent and received correctly. The robot performs its programmed sequence. The digital twin responds to PLC commands as the physical system would.</p>
+      <p class="fc-text">NX, Simatic Robotic Programming Suite and TIA Portal work together as expected. Signals are sent and received correctly. The robot performs its programmed sequence. The digital twin responds to PLC commands as the physical system would.</p>
       <span class="fc-tag">Validated ✓</span>
     </div>
     <div class="finding-card">
       <div class="fc-num">03</div>
-      <div class="fc-title">JSON→OPC-UA is the Hard Part</div>
-      <p class="fc-text">The most technically demanding step was transforming MQTT JSON payloads into OPC-UA structured data. Node-RED solves this elegantly — but requires careful field mapping and data-type management to maintain integrity across protocols.</p>
+      <div class="fc-title">JSON→OPC-UA transformation</div>
+      <p class="fc-text">One of the most technically demanding steps was transforming MQTT JSON payloads into OPC-UA structured data. Node-RED solves this elegantly, but requires careful field mapping and data formatting to maintain integrity across protocols.</p>
       <span class="fc-tag">Key insight</span>
     </div>
+    
     <div class="finding-card">
       <div class="fc-num">04</div>
-      <div class="fc-title">Licensing is a Real Barrier</div>
-      <p class="fc-text">University licensing and admin rights restrictions prevented full end-to-end PLC validation on lab machines. This is a real-world constraint any organisation faces — the project demonstrates why open protocols (OPC-UA, MQTT) reduce vendor dependency.</p>
-      <span class="fc-tag r">Constraint</span>
-    </div>
-    <div class="finding-card">
-      <div class="fc-num">05</div>
       <div class="fc-title">Vendor-Agnostic by Design</div>
-      <p class="fc-text">Simatic Robotic Suite supports KUKA, ABB, Fanuc, and others — not just Siemens robots. OPC-UA and MQTT are open standards. The architecture is not locked to any vendor and can be replicated with different hardware combinations.</p>
+      <p class="fc-text">Simatic Robotic Programming Suite supports KUKA, ABB, Fanuc, and others, not just Siemens robots. OPC-UA and MQTT are open standards used in an open source platform (Node-RED). The architecture is not locked to any vendor and can be replicated with different hardware combinations.</p>
       <span class="fc-tag">Architecture strength</span>
     </div>
     <div class="finding-card">
-      <div class="fc-num">06</div>
+      <div class="fc-num">05</div>
       <div class="fc-title">Cybersecurity Matters</div>
-      <p class="fc-text">MQTT over TLS on HiveMQ Cloud, following the Purdue Model, provides a solid baseline. The architecture naturally separates OT (physical line) from IT (cloud and virtual env), reducing attack surface — though VPN and firewall layers would strengthen it further.</p>
+      <p class="fc-text">MQTT over TLS on HiveMQ Cloud with authentication, following the Purdue Model, provides a solid baseline. The architecture naturally separates OT (physical line) from IT (cloud and virtual env), reducing attack surface. However, further cybersecurity measures can be implemented by adding VPNs and firewalls layers.</p>
       <span class="fc-tag">Purdue Model</span>
     </div>
   </div>
@@ -1246,22 +1236,22 @@ function scrollToGallery() {
       <div>
         <p style="font-family: var(--font-condensed); font-weight: 700; font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; color: var(--rose); margin-bottom: 1rem;">Scope &amp; Constraints</p>
         <h2 style="font-family: var(--font-display); font-size: clamp(3rem, 4vw, 4.8rem); line-height: .88; text-transform: uppercase; color: var(--cream); margin-bottom: 1.5rem;">Known<br><span style="color: var(--rose-light);">Limitations</span></h2>
-        <p style="font-size: .88rem; line-height: 1.75; color: #888; max-width: 260px;">Every prototype has boundaries. These are the constraints encountered — and what they mean for real-world replication.</p>
+        <p style="font-size: .88rem; line-height: 1.75; color: #888; max-width: 260px;">Every prototype has boundaries. These are the constraints encountered and what they mean for real-world replication.</p>
       </div>
 
       <!-- Count pills -->
       <div style="display: flex; flex-direction: column; gap: .6rem; margin-top: 2rem;">
         <div style="display: flex; align-items: center; gap: .75rem;">
-          <span style="font-family: var(--font-display); font-size: 2.2rem; line-height: 1; color: var(--rose);">3</span>
-          <span style="font-family: var(--font-condensed); font-weight: 700; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: #666;">Licensing constraints</span>
+          <span style="font-family: var(--font-display); font-size: 2.2rem; line-height: 1; color: var(--rose);">2</span>
+          <span style="font-family: var(--font-condensed); font-weight: 700; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: #666;">Our Project</span>
         </div>
         <div style="display: flex; align-items: center; gap: .75rem;">
-          <span style="font-family: var(--font-display); font-size: 2.2rem; line-height: 1; color: var(--olive-mid);">2</span>
-          <span style="font-family: var(--font-condensed); font-weight: 700; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: #666;">Infrastructure boundaries</span>
+          <span style="font-family: var(--font-display); font-size: 2.2rem; line-height: 1; color: var(--olive-mid);">3</span>
+          <span style="font-family: var(--font-condensed); font-weight: 700; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: #666;">Reproduciblity Considerations</span>
         </div>
         <div style="display: flex; align-items: center; gap: .75rem;">
-          <span style="font-family: var(--font-display); font-size: 2.2rem; line-height: 1; color: #666;">1</span>
-          <span style="font-family: var(--font-condensed); font-weight: 700; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: #666;">Scope boundary</span>
+          <span style="font-family: var(--font-display); font-size: 2.2rem; line-height: 1; color: #666;">2</span>
+          <span style="font-family: var(--font-condensed); font-weight: 700; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: #666;">Our Project & <br> Reproduciblity Considerations</span>
         </div>
       </div>
     </div>
@@ -1270,89 +1260,110 @@ function scrollToGallery() {
     <div style="display: flex; flex-direction: column; gap: 0;">
 
       <!-- Limitation 01 -->
+      
       <div class="lim-row" style="display: grid; grid-template-columns: 64px 1fr; gap: 0; border-bottom: 1px solid var(--olive-light); transition: background .2s;" onmouseover="this.style.background='rgba(92,107,58,.08)'" onmouseout="this.style.background=''">
-        <div style="background: var(--rose-dark); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.4rem; color: var(--rose-pale); min-height: 100px;">01</div>
+        <div style="background: var(--rose-dark); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.4rem; color: var(--rose-pale); min-height: 100px;"></div>
+        <div style="padding: 1.6rem 2rem;">
+          <div style="display: flex; align-items: center; gap: .75rem; margin-bottom: .5rem; flex-wrap: wrap;">
+            <span style="font-family: var(--font-condensed); font-weight: 900; font-size: 1rem; text-transform: uppercase; color: var(--ink);">University Admin Rights</span>
+            <span style="background: var(--rose-light); color: var(--rose-dark); padding: .15rem .6rem; font-family: var(--font-condensed); font-weight: 700; font-size: .6rem; letter-spacing: .08em; text-transform: uppercase;">Our Project</span>
+          </div>
+          <p style="font-size: .85rem; line-height: 1.65; color: var(--muted); margin-bottom: .75rem;">Access to the university’s development workstations was restricted due to the absence of administrator privileges. This prevented the installation and configuration of required middleware and communication tools, such as Node-RED OPC UA nodes. As a result, direct deployment and testing of the full MQTT-to-OPC UA communication pipeline on the target systems could not be performed, requiring the use of an external personal computer for communiction protocol validation.</p>
+          <span style="font-family: var(--font-condensed); font-weight: 700; font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; color: var(--olive); background: var(--olive-pale); padding: .2rem .6rem;">Workaround applied ✓</span>
+        </div>
+      </div>
+      
+      <div class="lim-row" style="display: grid; grid-template-columns: 64px 1fr; gap: 0; border-bottom: 1px solid var(--olive-light); transition: background .2s;" onmouseover="this.style.background='rgba(92,107,58,.08)'" onmouseout="this.style.background=''">
+        <div style="background: var(--rose-dark); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.4rem; color: var(--rose-pale); min-height: 100px;"></div>
         <div style="padding: 1.6rem 2rem;">
           <div style="display: flex; align-items: center; gap: .75rem; margin-bottom: .5rem; flex-wrap: wrap;">
             <span style="font-family: var(--font-condensed); font-weight: 900; font-size: 1rem; text-transform: uppercase; color: var(--ink);">HMI License Expiry</span>
-            <span style="background: var(--rose-light); color: var(--rose-dark); padding: .15rem .6rem; font-family: var(--font-condensed); font-weight: 700; font-size: .6rem; letter-spacing: .08em; text-transform: uppercase;">Licensing</span>
+            <span style="background: var(--rose-light); color: var(--rose-dark); padding: .15rem .6rem; font-family: var(--font-condensed); font-weight: 700; font-size: .6rem; letter-spacing: .08em; text-transform: uppercase;">Our Project</span>
           </div>
-          <p style="font-size: .85rem; line-height: 1.65; color: var(--muted); margin-bottom: .75rem;">The TIA Portal HMI license expired mid-project, preventing a full HMI-triggered end-to-end run. A workaround PLC program was developed that demonstrates automatic cell operation without the HMI trigger — the core functionality is preserved, but the intended human-machine interface layer could not be validated in the final demo.</p>
+          <p style="font-size: .85rem; line-height: 1.65; color: var(--muted); margin-bottom: .75rem;">The TIA Portal HMI license expired, preventing the execution of a full end-to-end run with the full automation solution implemented in the IoT Virtual Commissioning environment. To address this limitation, a workaround PLC program was developed. On one side, the automatic operation of the cell was demonstrated, and on the other, the communication handshake between SRPS and Siemens NX was depicted. However, due to the absence of the HMI trigger, the intended full automation workflow could not be completely implemented.</p>
           <span style="font-family: var(--font-condensed); font-weight: 700; font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; color: var(--olive); background: var(--olive-pale); padding: .2rem .6rem;">Workaround applied ✓</span>
+        </div>
+      </div>
+      
+      <div class="lim-row" style="display: grid; grid-template-columns: 64px 1fr; gap: 0; border-bottom: 1px solid var(--olive-light); transition: background .2s;" onmouseover="this.style.background='rgba(92,107,58,.08)'" onmouseout="this.style.background=''">
+        <div style="background: var(--rose-mid); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.4rem; color: var(--rose-pale); min-height: 100px;"></div>
+        <div style="padding: 1.6rem 2rem;">
+          <div style="display: flex; align-items: center; gap: .75rem; margin-bottom: .5rem; flex-wrap: wrap;">
+            <span style="font-family: var(--font-condensed); font-weight: 900; font-size: 1rem; text-transform: uppercase; color: var(--ink);">Licensing Costs</span>
+            <span style="background: var(--olive-light); color: var(--olive-dark); padding: .15rem .6rem; font-family: var(--font-condensed); font-weight: 700; font-size: .6rem; letter-spacing: .08em; text-transform: uppercase;">Reproducibility Considerations</span>
+          </div>
+          <p style="font-size: .85rem; line-height: 1.65; color: var(--muted); margin-bottom: .75rem;">Reproducibility is limited by the need for licensed proprietary tools, including TIA Portal, Siemens NX, PLC SIM Advanced, and SRPS. These tools are essential for PLC programming, simulation, CAD-based virtual commissioning, and robotic validation, but their high licensing costs can make them difficult to access for smaller companies and research groups.</p>
+          <span style="font-family: var(--font-condensed); font-weight: 700; font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); background: #eee; padding: .2rem .6rem;">Replicable-with-conditions</span>
         </div>
       </div>
 
       <!-- Limitation 02 -->
       <div class="lim-row" style="display: grid; grid-template-columns: 64px 1fr; gap: 0; border-bottom: 1px solid var(--olive-light); transition: background .2s;" onmouseover="this.style.background='rgba(92,107,58,.08)'" onmouseout="this.style.background=''">
-        <div style="background: var(--rose-mid); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.4rem; color: var(--rose-pale); min-height: 100px;">02</div>
+        <div style="background: var(--rose-mid); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.4rem; color: var(--rose-pale); min-height: 100px;"></div>
         <div style="padding: 1.6rem 2rem;">
           <div style="display: flex; align-items: center; gap: .75rem; margin-bottom: .5rem; flex-wrap: wrap;">
-            <span style="font-family: var(--font-condensed); font-weight: 900; font-size: 1rem; text-transform: uppercase; color: var(--ink);">University Admin Rights</span>
-            <span style="background: var(--rose-light); color: var(--rose-dark); padding: .15rem .6rem; font-family: var(--font-condensed); font-weight: 700; font-size: .6rem; letter-spacing: .08em; text-transform: uppercase;">Licensing</span>
+            <span style="font-family: var(--font-condensed); font-weight: 900; font-size: 1rem; text-transform: uppercase; color: var(--ink);">IoT infrastructure</span>
+            <span style="background: var(--olive-light); color: var(--olive-dark); padding: .15rem .6rem; font-family: var(--font-condensed); font-weight: 700; font-size: .6rem; letter-spacing: .08em; text-transform: uppercase;">Reproducibility Considerations</span>
           </div>
-          <p style="font-size: .85rem; line-height: 1.65; color: var(--muted); margin-bottom: .75rem;">Restricted admin rights on university machines limited software installation flexibility. Some components had to be configured around system policies rather than optimally. This is a realistic constraint any organisation faces when deploying in managed IT environments — and it reinforces the case for open, standards-based protocols that don't require deep system access.</p>
-          <span style="font-family: var(--font-condensed); font-weight: 700; font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); background: #eee; padding: .2rem .6rem;">Navigated — not resolved</span>
+          <p style="font-size: .85rem; line-height: 1.65; color: var(--muted); margin-bottom: .75rem;">Reproducibility of this system assumes the availability of a pre-existing IoT infrastructure within the deployment environment, as its setup is outside the scope of this implementation. While the communication protocols were implemented and the signals were selected and validated as part of this project, the OPC UA server deployment on the source PLC, as well as the PC already connected to the PLC, were already in place prior to the start of the implementation.</p>
+          <span style="font-family: var(--font-condensed); font-weight: 700; font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); background: #eee; padding: .2rem .6rem;">Replicable-with-conditions</span>
         </div>
       </div>
 
       <!-- Limitation 03 -->
       <div class="lim-row" style="display: grid; grid-template-columns: 64px 1fr; gap: 0; border-bottom: 1px solid var(--olive-light); transition: background .2s;" onmouseover="this.style.background='rgba(92,107,58,.08)'" onmouseout="this.style.background=''">
-        <div style="background: var(--olive-mid); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.4rem; color: var(--olive-pale); min-height: 100px;">03</div>
+        <div style="background: var(--olive-mid); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.4rem; color: var(--olive-pale); min-height: 100px;"></div>
         <div style="padding: 1.6rem 2rem;">
           <div style="display: flex; align-items: center; gap: .75rem; margin-bottom: .5rem; flex-wrap: wrap;">
-            <span style="font-family: var(--font-condensed); font-weight: 900; font-size: 1rem; text-transform: uppercase; color: var(--ink);">PLCSIM Advanced — Single Instance</span>
-            <span style="background: var(--rose-light); color: var(--rose-dark); padding: .15rem .6rem; font-family: var(--font-condensed); font-weight: 700; font-size: .6rem; letter-spacing: .08em; text-transform: uppercase;">Licensing</span>
+            <span style="font-family: var(--font-condensed); font-weight: 900; font-size: 1rem; text-transform: uppercase; color: var(--ink);">Network / infrastructure dependency</span>
+            <span style="background: var(--olive-light); color: var(--olive-dark); padding: .15rem .6rem; font-family: var(--font-condensed); font-weight: 700; font-size: .6rem; letter-spacing: .08em; text-transform: uppercase;">Reproducibility Considerations</span>
           </div>
-          <p style="font-size: .85rem; line-height: 1.65; color: var(--muted); margin-bottom: .75rem;">PLCSIM Advanced only permits one virtual PLC instance at a time under the available license tier. This prevented testing multiple concurrent virtual controllers simultaneously, which would be relevant for larger multi-cell environments. A production deployment would require higher-tier licensing or physical PLC hardware.</p>
-          <span style="font-family: var(--font-condensed); font-weight: 700; font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; color: var(--olive); background: var(--olive-pale); padding: .2rem .6rem;">Out of scope for this prototype</span>
+          <p style="font-size: .85rem; line-height: 1.65; color: var(--muted); margin-bottom: .75rem;">Replicability depends on stable internet connectivity and configurable firewall/NAT rules to allow MQTT over TLS communication via HiveMQ and OPC UA tunneling across network boundaries. Industrial environments with strict network segmentation may require additional configuration not covered in this implementation.</p>
+          <span style="font-family: var(--font-condensed); font-weight: 700; font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; color: var(--olive); background: var(--olive-pale); padding: .2rem .6rem;">Replicable-with-conditions</span>
         </div>
       </div>
 
       <!-- Limitation 04 -->
       <div class="lim-row" style="display: grid; grid-template-columns: 64px 1fr; gap: 0; border-bottom: 1px solid var(--olive-light); transition: background .2s;" onmouseover="this.style.background='rgba(92,107,58,.08)'" onmouseout="this.style.background=''">
-        <div style="background: var(--olive); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.4rem; color: var(--olive-pale); min-height: 100px;">04</div>
+        <div style="background: var(--olive); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.4rem; color: var(--olive-pale); min-height: 100px;"></div>
         <div style="padding: 1.6rem 2rem;">
           <div style="display: flex; align-items: center; gap: .75rem; margin-bottom: .5rem; flex-wrap: wrap;">
-            <span style="font-family: var(--font-condensed); font-weight: 900; font-size: 1rem; text-transform: uppercase; color: var(--ink);">Two-PC Dependency</span>
-            <span style="background: var(--olive-light); color: var(--olive-dark); padding: .15rem .6rem; font-family: var(--font-condensed); font-weight: 700; font-size: .6rem; letter-spacing: .08em; text-transform: uppercase;">Infrastructure</span>
+            <span style="font-family: var(--font-condensed); font-weight: 900; font-size: 1rem; text-transform: uppercase; color: var(--ink);">Latency and Synchronization Constraints</span>
+            <span style="background: var(--olive-light); color: var(--olive-dark); padding: .15rem .6rem; font-family: var(--font-condensed); font-weight: 700; font-size: .6rem; letter-spacing: .08em; text-transform: uppercase;">Reproducibility Considerations</span>
+            <span style="background: var(--rose-light); color: var(--rose-dark); padding: .15rem .6rem; font-family: var(--font-condensed); font-weight: 700; font-size: .6rem; letter-spacing: .08em; text-transform: uppercase;">Our Project</span>
+            
           </div>
-          <p style="font-size: .85rem; line-height: 1.65; color: var(--muted); margin-bottom: .75rem;">The architecture separates physical acquisition (PC 1) and virtual commissioning (PC 2) across two machines. While this follows a sound network security model, it introduces a physical dependency — both machines must be available and networked for the system to function. A containerised or cloud-hosted deployment could remove this constraint.</p>
-          <span style="font-family: var(--font-condensed); font-weight: 700; font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; color: var(--olive); background: var(--olive-pale); padding: .2rem .6rem;">Design decision — not a flaw</span>
+          <p style="font-size: .85rem; line-height: 1.65; color: var(--muted); margin-bottom: .75rem;">Due to the distributed nature of MQTT over internet-based brokers and OPC UA polling intervals, slight latency exists between physical system state changes and digital twin updates. This may affect strict real-time synchronization in high-speed automation scenarios.</p>
+          <span style="font-family: var(--font-condensed); font-weight: 700; font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; color: var(--olive); background: var(--olive-pale); padding: .2rem .6rem;">real-time-approximate-synchronization</span>
+        </div>
+      </div>
+      
+      <div class="lim-row" style="display: grid; grid-template-columns: 64px 1fr; gap: 0; border-bottom: 1px solid var(--olive-light); transition: background .2s;" onmouseover="this.style.background='rgba(92,107,58,.08)'" onmouseout="this.style.background=''">
+        <div style="background: var(--olive); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.4rem; color: var(--olive-pale); min-height: 100px;"></div>
+        <div style="padding: 1.6rem 2rem;">
+          <div style="display: flex; align-items: center; gap: .75rem; margin-bottom: .5rem; flex-wrap: wrap;">
+            <span style="font-family: var(--font-condensed); font-weight: 900; font-size: 1rem; text-transform: uppercase; color: var(--ink);">Scalability Constraints</span>
+            <span style="background: var(--olive-light); color: var(--olive-dark); padding: .15rem .6rem; font-family: var(--font-condensed); font-weight: 700; font-size: .6rem; letter-spacing: .08em; text-transform: uppercase;">Reproducibility Considerations</span>
+            <span style="background: var(--rose-light); color: var(--rose-dark); padding: .15rem .6rem; font-family: var(--font-condensed); font-weight: 700; font-size: .6rem; letter-spacing: .08em; text-transform: uppercase;">Our Project</span>
+            
+          </div>
+          <p style="font-size: .85rem; line-height: 1.65; color: var(--muted); margin-bottom: .75rem;">While the architecture is scalable in principle, performance depends on network bandwidth, broker capacity, and OPC UA subscription load. Large-scale deployments may require distributed broker architectures or load balancing strategies.</p>
+          <span style="font-family: var(--font-condensed); font-weight: 700; font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; color: var(--olive); background: var(--olive-pale); padding: .2rem .6rem;">Scalable-with-conditions</span>
         </div>
       </div>
 
       <!-- Limitation 05 -->
-      <div class="lim-row" style="display: grid; grid-template-columns: 64px 1fr; gap: 0; border-bottom: 1px solid var(--olive-light); transition: background .2s;" onmouseover="this.style.background='rgba(92,107,58,.08)'" onmouseout="this.style.background=''">
-        <div style="background: var(--olive-dark); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.4rem; color: var(--olive-light); min-height: 100px;">05</div>
-        <div style="padding: 1.6rem 2rem;">
-          <div style="display: flex; align-items: center; gap: .75rem; margin-bottom: .5rem; flex-wrap: wrap;">
-            <span style="font-family: var(--font-condensed); font-weight: 900; font-size: 1rem; text-transform: uppercase; color: var(--ink);">No Bidirectional Feedback Loop</span>
-            <span style="background: var(--olive-light); color: var(--olive-dark); padding: .15rem .6rem; font-family: var(--font-condensed); font-weight: 700; font-size: .6rem; letter-spacing: .08em; text-transform: uppercase;">Infrastructure</span>
-          </div>
-          <p style="font-size: .85rem; line-height: 1.65; color: var(--muted); margin-bottom: .75rem;">Data currently flows from the physical line to the virtual environment. The reverse — virtual environment sending commands back to the physical CP Lab — was not implemented. A full closed-loop system would require bidirectional OPC-UA write access to the physical PLC, which introduces safety and access control considerations beyond this project's scope.</p>
-          <span style="font-family: var(--font-condensed); font-weight: 700; font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); background: #eee; padding: .2rem .6rem;">Future work</span>
-        </div>
-      </div>
+     
 
       <!-- Limitation 06 -->
-      <div class="lim-row" style="display: grid; grid-template-columns: 64px 1fr; gap: 0; transition: background .2s;" onmouseover="this.style.background='rgba(92,107,58,.08)'" onmouseout="this.style.background=''">
-        <div style="background: var(--ink-mid); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.4rem; color: #555; min-height: 100px;">06</div>
-        <div style="padding: 1.6rem 2rem;">
-          <div style="display: flex; align-items: center; gap: .75rem; margin-bottom: .5rem; flex-wrap: wrap;">
-            <span style="font-family: var(--font-condensed); font-weight: 900; font-size: 1rem; text-transform: uppercase; color: var(--ink);">Prototype Scope — Not Production Scale</span>
-            <span style="background: #eee; color: var(--muted); padding: .15rem .6rem; font-family: var(--font-condensed); font-weight: 700; font-size: .6rem; letter-spacing: .08em; text-transform: uppercase;">Scope</span>
-          </div>
-          <p style="font-size: .85rem; line-height: 1.65; color: var(--muted); margin-bottom: .75rem;">This is a proof-of-concept demonstrating feasibility, not a production-hardened deployment. Considerations such as redundancy, failover, latency profiling under load, formal cybersecurity audit, and enterprise-scale signal volumes were not addressed. The architecture is sound as a foundation — but scaling it would require additional engineering effort in each of those areas.</p>
-          <span style="font-family: var(--font-condensed); font-weight: 700; font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); background: #eee; padding: .2rem .6rem;">Known &amp; intentional</span>
-        </div>
-      </div>
+      
 
     </div>
   </div>
 
   <!-- Bottom bar -->
   <div style="background: var(--ink); padding: 1.2rem 4rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; border-top: 1px solid #2a2d1e;">
-    <p style="font-family: var(--font-condensed); font-weight: 700; font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: #555; margin: 0;">None of these constraints invalidate the core finding — the architecture works and is replicable.</p>
+    <p style="font-family: var(--font-condensed); font-weight: 700; font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: white; margin: 0;">None of these constraints invalidate the core finding, the architecture works and is replicable.</p>
     <span style="font-family: var(--font-condensed); font-weight: 700; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--olive-mid);">6 limitations documented</span>
   </div>
 
@@ -1371,7 +1382,7 @@ function scrollToGallery() {
         Project<br><span style="color: var(--olive);">Gallery</span>
       </h2>
       <p style="max-width: 420px; font-size: 0.9rem; line-height: 1.6; color: var(--muted);">
-        Key moments from the development process — from physical setup to virtual commissioning validation.
+        Key moments from the development process from physical setup to virtual commissioning validation.
       </p>
     </div>
   </div>
@@ -1620,22 +1631,6 @@ function scrollToGallery() {
   </div>
   <div id="lightbox-caption" style="position: absolute; bottom: 20px; left: 20px; right: 20px; text-align: center; color: var(--cream); font-family: var(--font-body); font-size: 0.85rem; padding: 0.75rem; background: rgba(0,0,0,0.5); border-radius: 8px;"></div>
 </div>
-  <!-- LIGHTBOX PARA VÍDEO -->
-<div id="videoLightbox" style="display: none; position: fixed; inset: 0; background: rgba(28, 31, 20, 0.95); z-index: 1001; align-items: center; justify-content: center; backdrop-filter: blur(8px);">
-  <div style="position: relative; width: 90vw; max-width: 1200px;">
-    <video 
-      id="lightbox-video" 
-      controls 
-      autoplay
-      style="width: 100%; height: auto; max-height: 85vh; border-radius: 8px; box-shadow: 0 20px 40px rgba(0,0,0,0.3);"
-      controlsList="nodownload">
-      <source src="" type="video/mp4">
-      Tu navegador no soporta videos.
-    </video>
-    <button onclick="closeVideoLightbox()" style="position: absolute; top: -40px; right: 0; background: var(--rose); border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; color: var(--ink); transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">✕</button>
-  </div>
-  <div id="videoLightbox-caption" style="position: absolute; bottom: 20px; left: 20px; right: 20px; text-align: center; color: var(--cream); font-family: var(--font-body); font-size: 0.85rem; padding: 0.75rem; background: rgba(0,0,0,0.5); border-radius: 8px;"></div>
-</div>
   
   <div style="max-width: 1000px; margin: 0 auto; padding: 0 2rem;">
    <div class="page-header">
@@ -1802,13 +1797,13 @@ function scrollToGallery() {
 <footer>
   <div>
     <div class="foot-logo">IoT Virtual Commissioning</div>
-    <p>Siemens Xcelerator 2025 · Paniz Etemad Mazaheri &amp; Analucia Vera</p>
+    <p>Siemens Xcelerator 2026 · Paniz Etemad Mazaheri &amp; Analucia Vera</p>
   </div>
   <div>
-    <a href="index.html">Home</a>
-    <a href="background.html">Background</a>
-    <a href="development.html">Development</a>
-    <a href="results.html">Results</a>
+    <a href="../index.html">Home</a>
+
+    <a href="projectdev.html">Development</a>
+
   </div>
 </footer>
 
