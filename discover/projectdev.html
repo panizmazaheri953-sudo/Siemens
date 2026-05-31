@@ -1632,13 +1632,13 @@ function scrollToGallery() {
     <!-- Item 1 - Hardware -->
     <div class="gallery-item fade-up" data-category="festo" style="background: var(--cream); border: 1px solid var(--olive-light); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox(this)">
       <div class="gallery-image" style="position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--olive-pale);">
-        <img src="assets/images/festo-cp-lab.jpg" alt="Festo CP Lab physical setup" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" onerror="this.src='https://placehold.co/600x450/EDF0E0/5C6B3A?text=Festo+CP+Lab'">
+        <img src="assets/images/IMG_20260528_124316.jpg" alt="Festo CP Lab physical setup" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" onerror="this.src='https://placehold.co/600x450/EDF0E0/5C6B3A?text=Festo+CP+Lab'">
         <div class="image-overlay" style="position: absolute; inset: 0; background: rgba(28, 31, 20, 0.4); opacity: 0; transition: opacity 0.3s ease;"></div>
       </div>
       <div class="gallery-info" style="padding: 1.2rem 1.5rem;">
         <span class="gallery-category" style="display: inline-block; font-family: var(--font-condensed); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.5rem;">Festo CP Lab</span>
         <h3 style="font-family: var(--font-condensed); font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">Festo CP Lab</h3>
-        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">Physical assembly line used for data acquisition — conveyor system with 6 stations.</p>
+        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">Physical Pick and Place station used for data acquisition.</p>
       </div>
     </div>
 
@@ -1716,29 +1716,42 @@ function scrollToGallery() {
       </div>
     </div>
 
-    <!-- Item 4 - Hardware -->
-    <div class="gallery-item fade-up" data-category="hardware" style="background: var(--cream); border: 1px solid var(--olive-light); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox(this)">
-      <div class="gallery-image" style="position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--olive-pale);">
-        <img src="assets/images/plcsim-advanced.jpg" alt="PLCSIM Advanced configuration" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" onerror="this.src='https://placehold.co/600x450/EDF0E0/5C6B3A?text=PLCSIM+Advanced'">
-        <div class="image-overlay" style="position: absolute; inset: 0; background: rgba(28, 31, 20, 0.4); opacity: 0; transition: opacity 0.3s ease;"></div>
-      </div>
-      <div class="gallery-info" style="padding: 1.2rem 1.5rem;">
-        <span class="gallery-category" style="display: inline-block; font-family: var(--font-condensed); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.5rem;">Hardware</span>
-        <h3 style="font-family: var(--font-condensed); font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">PLCSIM Advanced</h3>
-        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">Virtual PLC running on PC 2 — no physical hardware required for commissioning.</p>
-      </div>
-    </div>
+    
 
     <!-- Item 5 - Software -->
     <div class="gallery-item fade-up" data-category="tia" style="background: var(--cream); border: 1px solid var(--olive-light); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox(this)">
       <div class="gallery-image" style="position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--olive-pale);">
-        <img src="assets/images/tia-portal.jpg" alt="TIA Portal PLC program" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" onerror="this.src='https://placehold.co/600x450/EDF0E0/5C6B3A?text=TIA+Portal'">
+        <img src="assets/images/Screenshot 2026-05-28 185449.png" alt="TIA Portal PLC program" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" onerror="this.src='https://placehold.co/600x450/EDF0E0/5C6B3A?text=TIA+Portal'">
         <div class="image-overlay" style="position: absolute; inset: 0; background: rgba(28, 31, 20, 0.4); opacity: 0; transition: opacity 0.3s ease;"></div>
       </div>
       <div class="gallery-info" style="padding: 1.2rem 1.5rem;">
         <span class="gallery-category" style="display: inline-block; font-family: var(--font-condensed); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.5rem;">TIA Portal</span>
         <h3 style="font-family: var(--font-condensed); font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">TIA Portal V20</h3>
-        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">PLC program controlling the full cell sequence — conveyor, robot, and station logic.</p>
+        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">PLC program controlling the cell sequence, conveyor, and station logic.</p>
+      </div>
+    </div>
+
+    <div class="gallery-item fade-up" data-category="tia" style="background: var(--cream); border: 1px solid var(--olive-light); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox(this)">
+      <div class="gallery-image" style="position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--olive-pale);">
+        <img src="assets/images/Screenshot 2026-05-28 185502.png" alt="TIA Portal PLC program" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" onerror="this.src='https://placehold.co/600x450/EDF0E0/5C6B3A?text=TIA+Portal'">
+        <div class="image-overlay" style="position: absolute; inset: 0; background: rgba(28, 31, 20, 0.4); opacity: 0; transition: opacity 0.3s ease;"></div>
+      </div>
+      <div class="gallery-info" style="padding: 1.2rem 1.5rem;">
+        <span class="gallery-category" style="display: inline-block; font-family: var(--font-condensed); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.5rem;">TIA Portal</span>
+        <h3 style="font-family: var(--font-condensed); font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">TIA Portal V20</h3>
+        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">Tags exchanged with NX from the PLC program controlling the cell sequence.</p>
+      </div>
+    </div>
+
+    <div class="gallery-item fade-up" data-category="tia" style="background: var(--cream); border: 1px solid var(--olive-light); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox(this)">
+      <div class="gallery-image" style="position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--olive-pale);">
+        <img src="assets/images/Screenshot 2026-05-28 185601.png" alt="TIA Portal PLC program" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;" onerror="this.src='https://placehold.co/600x450/EDF0E0/5C6B3A?text=TIA+Portal'">
+        <div class="image-overlay" style="position: absolute; inset: 0; background: rgba(28, 31, 20, 0.4); opacity: 0; transition: opacity 0.3s ease;"></div>
+      </div>
+      <div class="gallery-info" style="padding: 1.2rem 1.5rem;">
+        <span class="gallery-category" style="display: inline-block; font-family: var(--font-condensed); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.5rem;">TIA Portal</span>
+        <h3 style="font-family: var(--font-condensed); font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">TIA Portal V20</h3>
+        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">PLC program controlling the robot sequence.</p>
       </div>
     </div>
 
