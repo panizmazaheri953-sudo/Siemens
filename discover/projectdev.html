@@ -1855,7 +1855,30 @@ function scrollToGallery() {
   </div>
 </div>
     
-    
+    <div class="gallery-item fade-up" data-category="robot" style="background: var(--cream); border: 1px solid var(--olive-light); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openVideoLightbox(this)">
+  <div class="gallery-image" style="position: relative; overflow: hidden; aspect-ratio: 16/9; background: var(--ink);">
+    <video 
+      src="assets/videos/Robot_NX.mp4" 
+      style="width: 100%; height: 100%; object-fit: cover;"
+      preload="metadata"
+      muted
+      playsinline>
+    </video>
+    <!-- Overlay con ícono de play -->
+    <div class="video-play-overlay" style="position: absolute; inset: 0; background: rgba(28, 31, 20, 0.5); display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;">
+      <div style="width: 60px; height: 60px; background: var(--rose); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform 0.2s;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+          <polygon points="5 3 19 12 5 21 5 3" fill="white"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="gallery-info" style="padding: 1.2rem 1.5rem;">
+    <span class="gallery-category" style="display: inline-block; font-family: var(--font-condensed); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.5rem;">Video</span>
+    <h3 style="font-family: var(--font-condensed); font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem;">Operating Robot sequence SRPS&NX</h3>
+    <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.5;">Demonstration of the configured robot sequence between SRPS and NX simulation environments.</p>
+  </div>
+</div>
 
   </div>
 
